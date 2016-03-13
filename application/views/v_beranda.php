@@ -64,10 +64,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In</a>
                         <div class="dropdown-menu purple" style="padding: 15px; padding-bottom: 0px;">
                             <form action="" method="post" accept-charset="UTF-8">
-                                <div class="text-center">
-                                    <input style="margin-bottom: 15px" type="text" name="username" size="25%" placeholder="Username"/>
+                                <div class="text-center font-black">
+                                    <input style="margin-bottom: 15px" type="text" name="username" placeholder="Username"/>
                                     <br>
-                                    <input style="margin-bottom: 15px" type="password" name="password" size="25%" placeholder="Password"/>
+                                    <input style="margin-bottom: 15px" type="password" name="password" placeholder="Password"/>
                                     <br>
                                     <input class="btn btn-primary" style="clear: left; width: 45%; height: 32px; font-size: 13px; margin-bottom:10px;" type="submit" name="submit" value="Sign In"/>
                                 </div>
