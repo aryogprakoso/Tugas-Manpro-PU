@@ -4,11 +4,11 @@ class C_artikel extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->helper(array('form', 'url'));
-        $this->load->model('m_artikel');
+        $this->load->model('artikel_model');
     }
     
     public function index(){
-        $data = $this->m_artikel->GetData();
+        $data = $this->artikel_model->GetData();
      	$this->load->view('v_artikel', array('data' => $data));
     }
     
@@ -63,7 +63,9 @@ class C_artikel extends CI_Controller{
         }
     }
     
-    public function summernote_upload(){
+    
+    
+    /*public function summernote_upload(){
         $allowed = array('png', 'jpg', 'gif','zip');
 
         if(isset($_FILES['file']) && $_FILES['file']['error'] == 0){
@@ -72,7 +74,7 @@ class C_artikel extends CI_Controller{
                 echo '{"status":"error"}';
             exit;
             }
-            if(move_uploaded_file($_FILES['file']['tmp_name'], 'assets/'.$_FILES['file']['name'])){
+            if(move_uploaded_file($_FILES['file']['tmp_name'], 'assets/uploads/'.$_FILES['file']['name'])){
                 $tmp='images/'.$_FILES['file']['name'];
                 echo 'images/'.$_FILES['file']['name'];
                 //echo '{"status":"success"}';
@@ -81,6 +83,6 @@ class C_artikel extends CI_Controller{
         }
         echo '{"status":"error"}';
         exit;
-    }
+    }*/
 }
 ?>

@@ -95,14 +95,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     ],
                     //disableDragAndDrop: true,
                     
-                    callbacks:{
+                    /*callbacks:{
                         onImageUpload: function(files, editor, welEditable){
                             console.log("send");
                             sendFile(files[0],editor,welEditable);
                         }
-                    }
+                    }*/
                 });
-                function sendFile(file,editor,welEditable) {
+                /*function sendFile(file,editor,welEditable) {
                     data = new FormData();
                     data.append("file", file);
                     $.ajax({
@@ -121,7 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             console.log(textStatus+" "+errorThrown);
                         }
                     });
-                }
+                }*/
             });
         </script>
         Foto <input type="file" name="userfile">
