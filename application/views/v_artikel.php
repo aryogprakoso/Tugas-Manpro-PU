@@ -12,6 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src='<?php echo assets()."jquery-2.2.1.js"; ?>'></script>
     <script type="text/javascript" src='<?php echo assets()."bootstrap/js/bootstrap.js"; ?>'></script>
     
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+    
     
     <!-- MOBILE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,8 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav nav">
-                    <li class="active"><a href="http://localhost/pendeta_universitas/index.php/c_beranda">Beranda <span class="sr-only">(current)</span></a></li>
-                    <li><a href="http://localhost/pendeta_universitas/index.php/c_artikel">Artikel</a></li>
+                    <li><a href="http://localhost/pendeta_universitas/index.php/c_beranda">Beranda</a></li>
+                    <li class="active"><a href="http://localhost/pendeta_universitas/index.php/c_artikel">Artikel <span class="sr-only">(current)</span></a></li>
                     <li><a href="http://localhost/pendeta_universitas/index.php/c_peminjaman">Peminjaman</a></li>
                     <li><a href="http://localhost/pendeta_universitas/index.php/c_galeri">Galeri</a></li>
                     <li class="dropdown">
@@ -67,15 +70,95 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </nav>
     
     <!-- FORM -->
-    <form class="container" enctype="multipart/form-data" method="post" action="<?php echo base_url()."index.php/c_artikel/create"; ?>">
-        Judul Artikel <input type="text" name="judulArtikel"> 
+    <form class="container" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo base_url()."index.php/c_artikel/do_upload"; ?>">
+        *Judul Artikel <input type="text" name="judulArtikel"> 
         <br>
-        Isi <textarea name="isiArtikel"></textarea>
-        <br>
+        *Isi 
+        <textarea id="summernote" name="isiArtikel"></textarea>
+        <script>
+            $(document).ready(function() {
+                $('#summernote').summernote({
+                    height: 173,
+                    minHeight: 173,
+                    maxHeight: 500,
+                    focus: true,
+                    toolbar: [
+                        // [groupName, [list of button]]
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']],
+                        ['table', ['table']],
+                        ['insert', ['picture', 'hr']]
+                    ],
+                    //disableDragAndDrop: true,
+                    
+                    callbacks:{
+                        onImageUpload: function(files, editor, welEditable){
+                            console.log("send");
+                            sendFile(files[0],editor,welEditable);
+                        }
+                    }
+                });
+                function sendFile(file,editor,welEditable) {
+                    data = new FormData();
+                    data.append("file", file);
+                    $.ajax({
+                        url: "c_artikel/summernote_upload",
+                        data: data,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        type: 'POST',
+                        success: function(data){
+                            $('#summernote').summernote('insertImage', "", function ($image) {
+                                $image.attr('src', "localhost/pendeta_universitas/assets"+data);
+                            });
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            console.log(textStatus+" "+errorThrown);
+                        }
+                    });
+                }
+            });
+        </script>
         Foto <input type="file" name="userfile">
+        <br>
+        <p class="">Tanda * wajib diisi</p>
         <br>
         <input type="submit" name="submit" value="Submit"/>
     </form>
+    
+    <div class="container">
+        <br>
+        <br>
+        <?php 
+        foreach($data as $d){
+            setlocale(LC_ALL, 'INDONESIA');
+            $date = $d['waktu'];
+            $date = date_create($date);
+            $date = date_format($date,"l, d F Y");
+            $date = strftime("%A, %d %B %Y", time());
+            echo $date;
+        ?>
+        <br>
+        <?php if($d['pathGambar'] != NULL){ ?>
+            <img src='<?php echo assets()."uploads/".$d['pathGambar'];?>'>
+        <?php } ?>
+        <br>
+        <?php echo $d['judulArtikel']; ?>
+        <br>
+        <?php echo $d['isiArtikel']; ?>
+        <br>
+        <button>Edit</button>
+        <button>Delete</button>
+        <br>
+        <br>
+        <br>
+        <?php } ?>
+    </div>
     
     <!-- FOOTER -->
     <nav class="navbar navbar-static-bottom purple btn-border font-white footer">
