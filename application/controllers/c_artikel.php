@@ -30,7 +30,7 @@ class C_artikel extends CI_Controller{
         
         $id = $this->db->query("SELECT count(`idArtikel`) as `count` FROM `pu`.`artikel`" )->row_array()['count'];
         
-        if($judulArtikel == NULL && $isiArtikel == NULL){
+        if($judulArtikel == NULL || $isiArtikel == NULL){
             echo "Please fill";
             $this->load->view('v_artikel');
         }
@@ -45,18 +45,47 @@ class C_artikel extends CI_Controller{
                     'pathGambar' => $foto
                 );
                 //Transfering data to Model
-                $this->m_artikel->form_insert($data);
+                $this->artikel_model->form_insert($data);
                 $data['message'] = 'Data Inserted Successfully';
                 redirect('/c_artikel', 'refresh');
             }
             else{
+                $html = $this->input->post('isiArtikel');
+                $html = preg_replace_callback("/src=\"data:([^\"]+)\"/", function ($matches) {
+                    list($contentType, $encContent) = explode(';', $matches[1]);
+                    if (substr($encContent, 0, 6) != 'base64') {
+                        return $matches[0]; // Don't understand, return as is
+                    }
+                    $imgBase64 = substr($encContent, 6);
+                    $imgFilename = md5($imgBase64); // Get unique filename
+                    $imgExt = '';
+                    switch($contentType) {
+                        case 'image/jpeg':  $imgExt = 'jpg'; break;
+                        case 'image/gif':   $imgExt = 'gif'; break;
+                        case 'image/png':   $imgExt = 'png'; break;
+                        default:            return $matches[0]; // Don't understand, return as is
+                    }
+                    $imgPath = './assets/uploads/'.$imgFilename.'.'.$imgExt;
+                    // Save the file to disk if it doesn't exist
+                    if (!file_exists($imgPath)) {
+                        $imgDecoded = base64_decode($imgBase64);
+                        $fp = fopen($imgPath, 'w');
+                        if (!$fp) {
+                            return $matches[0];
+                        }
+                        fwrite($fp, $imgDecoded);
+                        fclose($fp);
+                    }
+                    return 'src="'.$imgPath.'"';
+                }, $html);
+                
                  $data = array(
                     'idArtikel' => $id,
                     'judulArtikel' => $this->input->post('judulArtikel'),
                     'isiArtikel' => $this->input->post('isiArtikel'),
                     'waktu' => date('Y-m-d', now())
                 );
-                $this->m_artikel->form_insert($data);
+                $this->artikel_model->form_insert($data);
                 $data['message'] = 'Data Inserted Successfully';
                 redirect('/c_artikel', 'refresh');
             }
