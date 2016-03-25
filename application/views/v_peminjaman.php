@@ -123,7 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Input Tanggal -->
     <div class="text-center">
         <label>Pilih Tanggal Peminjaman</label>
-        <input type="month" id="waktu"/>
+        <input type="month" id="waktuSearch"/>
     </div>
     
     <div class="row">a</div>
@@ -149,68 +149,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     ?>
     <!-- Button -->
     <div class="container">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Tambah Data</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="modalTambahData">Tambah Data</button>
     </div>
     <?php
         }
     ?>
     
     <!-- Modal -->
-    <form action="<?php echo site_url('c_peminjaman/tambah_data');?>" method="post" accept-charset="UTF-8" role="form">
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <button type="button" class="close" 
-                           data-dismiss="modal">
-                               <span aria-hidden="true">&times;</span>
-                               <span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            Modal title
-                        </h4>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                       data-dismiss="modal">
+                           <span aria-hidden="true">&times;</span>
+                           <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Modal title
+                    </h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                      <div class="form-group">
+                          <label class="col-sm-2">Waktu:</label>
+                          <input type="date"  name="waktuModal" id="waktuModal"/>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Ruang:</label>
+                          <label class="radio-inline"><input type="radio" name="ruang" value="Kapel Atas">Kapel Atas</label>
+                          <label class="radio-inline"><input type="radio" name="ruang" value="Kapel Bawah">Kapel Bawah</label>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Alat:</label>
+                          <label class="checkbox-inline"><input type="checkbox" name="alat[]" value="Alat Musik">Alat Musik</label>
+                          <label class="checkbox-inline"><input type="checkbox" name="alat[]" value="Alat Peribadatan">Alat Peribadatan</label>
+                          <label class="checkbox-inline"><input type="checkbox" name="alat[]" value="Alat Elektronik">Alat Elektronik</label>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-3">Keterangan:</label>
+                          <textarea class="form-control" rows="3" id="keterangan"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-4">Penanggung Jawab:</label>
+                          <select id="selectPJ"></select>
                     </div>
+                </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-
-
-                          <div class="form-group">
-                              <label class="col-sm-2">Waktu:</label>
-                              <input type="text" class="form-control" name="waktu"/>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-2">Ruang:</label>
-                              <label class="radio-inline"><input type="radio" name="ruang" value="Kapel Atas">Kapel Atas</label>
-                              <label class="radio-inline"><input type="radio" name="ruang" value="Kapel Bawah">Kapel Bawah</label>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-2">Alat:</label>
-                              <label class="checkbox-inline"><input type="checkbox" name="alat[]" value="Alat Musik">Alat Musik</label>
-                              <label class="checkbox-inline"><input type="checkbox" name="alat[]" value="Alat Peribadatan">Alat Peribadatan</label>
-                              <label class="checkbox-inline"><input type="checkbox" name="alat[]" value="Alat Elektronik">Alat Elektronik</label>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-3">Keterangan:</label>
-                              <textarea class="form-control" rows="3" id="comment"></textarea>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-4">Penanggung Jawab:</label>
-                              <input type="text" class="form-control" name="penanggungJawab"/>
-                          </div>
-
-                    </div>
-
-                    <!-- Modal Footer -->
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" name="submit"> Tambah Data </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
-                    </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-primary" name="submit" id="submitTambahPeminjaman" data-dismiss="modal"> Tambah Data </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
     
     <!-- FOOTER -->
     <nav class="navbar navbar-static-bottom purple btn-border font-white footer">
