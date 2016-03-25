@@ -88,44 +88,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         ['font', ['strikethrough', 'superscript', 'subscript']],
                         ['fontsize', ['fontsize']],
                         ['color', ['color']],
-                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['para', ['style', 'ul', 'ol', 'paragraph']],
                         ['height', ['height']],
                         ['table', ['table']],
-                        ['insert', ['picture', 'hr']]
+                        ['insert', ['picture', 'link', 'hr']],
+                        ['misc', ['undo', 'redo', 'help']]
                     ],
-                    //disableDragAndDrop: true,
-                    
-                    /*callbacks:{
-                        onImageUpload: function(files, editor, welEditable){
-                            console.log("send");
-                            sendFile(files[0],editor,welEditable);
-                        }
-                    }*/
+                    disableDragAndDrop: true,
                 });
-                /*function sendFile(file,editor,welEditable) {
-                    data = new FormData();
-                    data.append("file", file);
-                    $.ajax({
-                        url: "c_artikel/summernote_upload",
-                        data: data,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        type: 'POST',
-                        success: function(data){
-                            $('#summernote').summernote('insertImage', "", function ($image) {
-                                $image.attr('src', "localhost/pendeta_universitas/assets"+data);
-                            });
-                        },
-                        error: function(jqXHR, textStatus, errorThrown){
-                            console.log(textStatus+" "+errorThrown);
-                        }
-                    });
-                }*/
             });
         </script>
-        Foto <input type="file" name="userfile">
-        <br>
         <p class="">Tanda * wajib diisi</p>
         <br>
         <input type="submit" name="submit" value="Submit"/>
@@ -143,10 +115,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $date = strftime("%A, %d %B %Y", time());
             echo $date;
         ?>
-        <br>
-        <?php if($d['pathGambar'] != NULL){ ?>
-            <img src='<?php echo assets()."uploads/".$d['pathGambar'];?>'>
-        <?php } ?>
         <br>
         <?php echo $d['judulArtikel']; ?>
         <br>
