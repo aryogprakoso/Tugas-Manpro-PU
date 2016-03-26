@@ -10,11 +10,8 @@ class C_peminjaman extends CI_Controller{
         
     public function tambah_peminjaman()
     {
-        if($this->input->post('waktuModal') && $this->input->post('waktuSearch')  && $this->input->post('ruang') && $this->input->post('alat') && $this->input->post('keterangan') && $this->input->post('penanggungJawab'))
-        {
-            $this->load->model('peminjaman_model');
-            $this->peminjaman_model->tambahPeminjaman($this->input->post());
-        }
+        $this->load->model('peminjaman_model');
+        $this->peminjaman_model->tambahPeminjaman($this->input->post());
     }
     
     public function lihat_peminjaman()
