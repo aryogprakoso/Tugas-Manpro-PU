@@ -6,21 +6,34 @@ class peminjaman_model extends CI_Model{
         parent::__construct();
     }
 
-    public function tambahPeminjaman() 
+    public function tambahPeminjaman($data) 
     {
         //Query dibawah ini untuk mendapatkan dari 'idPenanggungJawab'
         //sesuai dengan 'namaPenanggungJawab yang' ada di table 'peminjaman'
         $this->db->select('idPenanggungJawab');
         $this->db->where('namaPenanggungJawab', $data['penanggungJawab']);
         $query = $this->db->get('penanggungjawab')->row();
-          
-        $insertTable = array(
-          'waktuPeminjaman' => $data['waktuModal'],
-          'ruangPeminjaman' => $data['ruang'],
-          'alatPeminjaman'  => $data['alat'],
-          'keteranganPeminjaman' => $data['keterangan'],
-          'idPenanggungJawab' => $query->idPenanggungJawab
-        );
+        
+        if(isset($data['alat']))
+        {
+            $insertTable = array(
+              'waktuPeminjaman' => $data['waktuModal'],
+              'ruangPeminjaman' => $data['ruang'],
+              'alatPeminjaman'  => $data['alat'],
+              'keteranganPeminjaman' => $data['keterangan'],
+              'idPenanggungJawab' => $query->idPenanggungJawab
+            );
+        }
+        else
+        {
+            $insertTable = array(
+              'waktuPeminjaman' => $data['waktuModal'],
+              'ruangPeminjaman' => $data['ruang'],
+              'alatPeminjaman'  => NULL,
+              'keteranganPeminjaman' => $data['keterangan'],
+              'idPenanggungJawab' => $query->idPenanggungJawab
+            );
+        }
               
         $this->db->insert('peminjaman', $insertTable);
         $this->lihatPeminjaman($data['waktuSearch']);
@@ -34,6 +47,7 @@ class peminjaman_model extends CI_Model{
         
         $this->db->where('MONTH(waktuPeminjaman)', $month);     //Query Builder dari CI untuk WHERE waktuPeminjaman
         $this->db->where('Year(waktuPeminjaman)', $year);       //Query Builder dari CI untuk WHERE waktuPeminjaman
+        $this->db->order_by('waktuPeminjaman', 'asc');
         $query =  $this->db->get('peminjaman');                 //Query Builder dari CI untuk SELECT ALL ke table 'peminjaman'
         
         foreach ($query->result() as $row)      //for untuk setiap row yang didapatkan dari query
@@ -45,11 +59,11 @@ class peminjaman_model extends CI_Model{
             $query2 = $this->db->get('penanggungjawab')->row();
     
             echo "<tr><td>" . $row->waktuPeminjaman . "</td>";      //echo ini digunakan untuk memunculkan waktuPeminjaman pada Tabel Peminjaman
-            if($row->ruang == 0)                //echo ini digunakan untuk memunculkan ruang pada Tabel Peminjaman
-                echo "<td> Kapel Atas </td>";
+            echo "<td> $row->ruangPeminjaman </td>";                //echo ini digunakan untuk memunculkan ruang pada Tabel Peminjaman
+            if($row->alatPeminjaman != NULL)                        //echo ini digunakan untuk memunculkan alat pada Tabel Peminjaman
+                echo "<td>" . $row->alatPeminjaman . "</td>"; 
             else
-                echo "<td> Kapel Bawah </td>";
-            echo "<td>" . $row->alat . "</td>"; //echo ini digunakan untuk memunculkan alat pada Tabel Peminjaman
+                echo "<td> - </td>";
             //echo ini digunakan untuk memunculkan keteranganPeminjaman pada Tabel Peminjaman
             echo "<td>" . $row->keteranganPeminjaman . "</td>";
             //echo ini digunakan untuk memunculkan idPenanggungJawab pada Tabel Peminjaman

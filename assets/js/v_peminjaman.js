@@ -42,6 +42,7 @@ $(document).ready(function()
     $(document).on("click", "#modalTambahData", function(){
         date = year + "-" + month + "-" + day;
         $('#waktuModal').val(date);
+        $("#submitTambahPeminjaman").prop('disabled', true);
          
         $.ajax({
             type     : 'POST',
@@ -53,6 +54,10 @@ $(document).ready(function()
                      }
          });
      });
+    
+    $(document).on("click", ":radio", function(){
+       $("#submitTambahPeminjaman").prop('disabled', false);            
+    });
     
     $(document).on("click", "#submitTambahPeminjaman", function(){
         var alatPeminjaman = "";
@@ -75,9 +80,14 @@ $(document).ready(function()
                        },
             success  : function(data)
             {
+                //console.log(data);
                 $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
                 $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
                 $(":radio:checked").attr('checked', false);
+                $(':checkbox:checked').each(function(){
+                    $(this).attr('checked', false);
+                });
+                $("#keterangan").val("");
             }
         });
     });

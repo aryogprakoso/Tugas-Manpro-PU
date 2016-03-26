@@ -8,12 +8,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Pendeta Universitas Kristen Duta Wacana</title>
     <link href='<?php echo assets()."bootstrap/css/bootstrap.css" ?>' rel="stylesheet" type="text/css"/>
-	<link href='<?php echo assets()."css/beranda.css" ?>' rel="stylesheet" type="text/css"/>
+    <link href='<?php echo assets()."css/beranda.css" ?>' rel="stylesheet" type="text/css"/>
+	<link href='<?php echo assets()."css/peminjaman.css" ?>' rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src='<?php echo assets()."jquery-2.2.1.js"; ?>'></script>
     <script type="text/javascript" src='<?php echo assets()."bootstrap/js/bootstrap.js"; ?>'></script>
     <script type="text/javascript" src='<?php echo assets()."js/v_peminjaman.js"; ?>'></script>
-    <link href='<?php echo assets()."summernote/dist/summernote.css" ?>' rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src='<?php echo assets()."summernote/dist/summernote.js"; ?>'></script>
     
     <!-- MOBILE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -176,22 +175,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                       <div class="form-group">
                           <label class="col-sm-2">Waktu:</label>
-                          <input type="date" id="waktuModal"/>
+                          <div class="col-sm-4">
+                            <input type="date" id="waktuModal" required="required"/>
+                          </div>
+                          <label><small>(Format Tanggal : Bulan/Hari/Tahun)</small></label>
+                          <div class="clearfix"></div>
                       </div>
                       <div class="form-group">
                           <label class="col-sm-2">Ruang:</label>
-                          <label class="radio-inline"><input type="radio" value="Kapel Atas">Kapel Atas</label>
-                          <label class="radio-inline"><input type="radio" value="Kapel Bawah">Kapel Bawah</label>
+                          <div class="col-sm-5">
+                                <label class="radio-inline"><input type="radio" name="ruang" value="Kapel Atas">Kapel Atas</label>
+                                <label class="radio-inline"><input type="radio" name="ruang" value="Kapel Bawah">Kapel Bawah</label>
+                          </div>
+                          <label><small>(Pilih Salah Satu Ruang)</small></label>
+                          <div class="clearfix"></div>
                       </div>
                       <div class="form-group">
                           <label class="col-sm-2">Alat:</label>
-                          <label class="checkbox-inline"><input type="checkbox" value="Alat Musik">Alat Musik</label>
-                          <label class="checkbox-inline"><input type="checkbox" value="Alat Peribadatan">Alat Peribadatan</label>
-                          <label class="checkbox-inline"><input type="checkbox" value="Alat Elektronik">Alat Elektronik</label>
+                          <div class="col-sm-8">
+                                <label class="checkbox-inline"><input type="checkbox" value="Alat Musik">Alat Musik</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="Alat Peribadatan">Alat Peribadatan</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="Alat Elektronik">Alat Elektronik</label>
+                          </div>
+                          <label><small>(Boleh Kosong)</small></label>
+                          <div class="clearfix"></div>
                       </div>
                       <div class="form-group">
-                          <label class="col-sm-3">Keterangan:</label>
-                          <textarea class="form-control" rows="3" id="comment"></textarea>
+                          <label class="col-sm-5">Keterangan: <small>(Sisa </small><small id="sisaHuruf">200</small><small> Huruf)</small></label>
+                          <textarea class="form-control" rows="3" id="keterangan"></textarea>
                       </div>
                       <div class="form-group">
                           <label class="col-sm-4">Penanggung Jawab:</label>
@@ -201,7 +212,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button class="btn btn-primary" id="submitTambahPeminjaman" data-dismiss="modal" disabled> Tambah Data </button>
+                    <button class="btn btn-primary" id="submitTambahPeminjaman" data-dismiss="modal"> Tambah Data </button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
                 </div>
             </div>
