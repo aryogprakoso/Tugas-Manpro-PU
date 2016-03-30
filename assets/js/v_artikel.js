@@ -8,7 +8,8 @@ function setEdit(event,element){
             if(data.length == 0){
                 console.log("gagal");
             }else{
-                $('#form').attr('action','c_artikel/do_edit')
+                $('#form').attr('action','c_artikel/do_edit');
+                $('#idArtikel').val(data[0].idArtikel);
                 $('#judulArtikel').val(data[0].judulArtikel);
                 $('#summernote').summernote('code',data[0].isiArtikel,{
                     height: 173,

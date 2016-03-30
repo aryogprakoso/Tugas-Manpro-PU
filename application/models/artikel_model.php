@@ -25,8 +25,16 @@ class artikel_model extends CI_Model{
         return $data->result_array();
     }
     
-    public function form_update($data,$where){
-        $res = $this->db->update('artikel', $data, $where);
+    public function form_update($id,$data){
+        $res = $this->db->where('idArtikel', $id);
+        $res = $this->db->update('artikel', $data);
+        return $res;
+    }
+    
+    public function isi_update($id,$data){
+        $res = $this->db->insert('isiartikel', $data);
+        $res = $this->db->where('idArtikel', $id);
+        $res = $this->db->update('isiartikel', $data);
         return $res;
     }
     
