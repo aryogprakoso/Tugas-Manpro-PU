@@ -44,6 +44,7 @@ class C_artikel extends CI_Controller{
             $html = $this->input->post('isiArtikel');
             //start parsing
             
+            /*
             $curr_pointer = 0;
             while(true){
                 $curr_img = strpos($html,'<img',$curr_pointer);
@@ -121,6 +122,43 @@ class C_artikel extends CI_Controller{
                 }catch(\Exception $exception){}
                 $curr_pointer = $curr_close+1;
             }
+            */            
+            
+            $html = preg_replace_callback("/src=\"data:([^\"]+)\"/", function ($matches) {
+                 list($contentType, $encContent) = explode(';', $matches[1]);
+                 
+                 if (substr($encContent, 0, 6) != 'base64') {
+                     return $matches[0]; // Don't understand, return as is
+                 }
+                 $imgBase64 = substr($encContent, 6);
+                 $imgFilename = base64_encode(time()).base64_encode(rand(0,1000));//md5($imgBase64); // Get unique filename
+                 $imgExt = '';
+                 switch($contentType) {
+                     case 'image/jpeg':  $imgExt = 'jpg'; break;
+                     case 'image/gif':   $imgExt = 'gif'; break;
+                     case 'image/png':   $imgExt = 'png'; break;
+                     default:            return $matches[0]; // Don't understand, return as is
+                 }
+                 $imgPath = 'assets/uploads/'.$imgFilename.'.'.$imgExt;
+                 // Save the file to disk if it doesn't exist
+                try{
+                     if (!file_exists($imgPath)) {
+                         $imgDecoded = base64_decode($imgBase64);
+                         $fp = fopen($imgPath, 'w');
+                         if (!$fp) {
+                             return $matches[0];
+                         }
+                         fwrite($fp, $imgDecoded);
+                         fclose($fp);
+                     }
+                 }catch(\Exception $e){
+                     if($fp!=null){
+                         fclose($fp);
+                     }
+                 }
+                return 'src="'.assets().'uploads/'.$imgFilename.'.'.$imgExt.'"';
+                return "i";
+            }, $html);
             
             //Setting values for tabel columns
             try{
@@ -189,6 +227,7 @@ class C_artikel extends CI_Controller{
             $html = $this->input->post('isiArtikel');
             //start parsing
             
+            /*
             $curr_pointer = 0;
             while(true){
                 $curr_img = strpos($html,'<img',$curr_pointer);
@@ -268,6 +307,43 @@ class C_artikel extends CI_Controller{
                 }
                 $curr_pointer = $curr_close+1;
             }
+            */
+            
+            $html = preg_replace_callback("/src=\"data:([^\"]+)\"/", function ($matches) {
+                 list($contentType, $encContent) = explode(';', $matches[1]);
+                 
+                 if (substr($encContent, 0, 6) != 'base64') {
+                     return $matches[0]; // Don't understand, return as is
+                 }
+                 $imgBase64 = substr($encContent, 6);
+                 $imgFilename = base64_encode(time()).base64_encode(rand(0,1000));//md5($imgBase64); // Get unique filename
+                 $imgExt = '';
+                 switch($contentType) {
+                     case 'image/jpeg':  $imgExt = 'jpg'; break;
+                     case 'image/gif':   $imgExt = 'gif'; break;
+                     case 'image/png':   $imgExt = 'png'; break;
+                     default:            return $matches[0]; // Don't understand, return as is
+                 }
+                 $imgPath = 'assets/uploads/'.$imgFilename.'.'.$imgExt;
+                 // Save the file to disk if it doesn't exist
+                try{
+                     if (!file_exists($imgPath)) {
+                         $imgDecoded = base64_decode($imgBase64);
+                         $fp = fopen($imgPath, 'w');
+                         if (!$fp) {
+                             return $matches[0];
+                         }
+                         fwrite($fp, $imgDecoded);
+                         fclose($fp);
+                     }
+                 }catch(\Exception $e){
+                     if($fp!=null){
+                         fclose($fp);
+                     }
+                 }
+                return 'src="'.assets().'uploads/'.$imgFilename.'.'.$imgExt.'"';
+                return "i";
+            }, $html);
             
             //Setting values for tabel columns
             try{
@@ -286,6 +362,7 @@ class C_artikel extends CI_Controller{
                 //delete isiArtikel dari database
                 //isi ulang
                 $this->db->delete('isiartikel',array('idArtikel' => $id));
+                echo $html;
                 $substring = htmlDivide($html);
                 for($i = 0; $i < count($substring); $i++){
                     $data = array(
