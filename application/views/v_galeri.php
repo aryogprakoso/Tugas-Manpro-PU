@@ -119,7 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     <!-- MARQUEE -->
     <div class="container padding-top-35px">
-        <marquee direction="left" scrollamount="4"><h3>SELAMAT DATANG DI WEBSITE PENDETA UNIVERSITAS KRISTEN DUTA WACANA</h3></marquee>
+       
     </div>
     
     <!-- IMAGE SLIDE SHOW -->
@@ -162,93 +162,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </a>-->
 </div>
     
-    <div class="container padding-top-35px">
-        <div class="row">
-            <div class="col-sm-9">
-                <h2 class="font-bold">Berita Pendeta Universitas</h2>
-                <hr class="line-bold">
-                <div>
-                    <p>Tanggal</p>
-                    <h3 class="font-bold">Lorem ipsum dolor sit amet</h3>
-                    <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">Baca Selengkapnya >></a>
-                    </p>
-                </div>
-                <div class="padding-top-35px">
-                    <p>Tanggal</p>
-                    <h3 class="font-bold">Lorem ipsum dolor sit amet</h3>
-                    <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">Baca Selengkapnya >></a>
-                    </p>
-                </div>
-                <div class="padding-top-35px">
-                    <p>Tanggal</p>
-                    <h3 class="font-bold">Lorem ipsum dolor sit amet</h3>
-                    <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">Baca Selengkapnya >></a>
-                    </p>
-                </div>
-            </div>
-            
-            <!-- LIST BERITA -->
-            <div class="col-sm-3">
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
-                </div>
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
-                </div>
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
-                </div>
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
-                </div>
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
-                </div>
-                <div>
-                    <nav>
-                        <ul class="pagination">
-                            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    
     <div class="container">
-        <form method="POST" action="<?php echo base_url()."index.php/Welcome/do_insert"; ?>">
-            <textarea id="summernote" name="summernote"></textarea>
-            <script>
-                $(document).ready(function() {
-                    $('#summernote').summernote({
-                        popover: {
-                          image: [
-                            ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
-                            ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                            ['remove', ['removeMedia']]
-                          ]
-                        },
-                        placeholder: 'write here...',
-                        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New']
-                    });
-                });
-            </script>
-            <input type="submit" name="btnSubmit" value="Simpan" />
+        <div class="header-container">
+            <h2><b>Masukan Gambar Baru :</b></h2>
+        </div>
+
+        <form class="container" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo base_url()."index.php/c_galeri/do_upload"; ?>">
+            <h5>Gambar</h5> <input type="file" name="userfile">
+            <h6>Keterangan Gambar :</h6> 
+                
+            <textarea rows="4" cols="50" name="keteranganGambar" form="usrform">Masukan Keterangan disini...</textarea>
+            <br>
+            <input type="submit" name="submit" value="Submit"/>
         </form>
     </div>
     
