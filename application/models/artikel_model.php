@@ -15,9 +15,15 @@ class artikel_model extends CI_Model{
         return $res;
     }
     
+    public function isi_insert($data){
+        $res = $this->db->insert('isiartikel', $data);
+        return $res;
+    }
+    
     public function GetData(){
         $data = $this->db->query('select * from artikel');
-        return $data->result_array();
+        $result = $data->result_array();
+        return $result;
     }
     
     public function form_update($data,$where){

@@ -106,7 +106,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="container">
         <br>
         <br>
-        <?php 
+        <?php
+        $i = 0;
         foreach($data as $d){
             setlocale(LC_ALL, 'INDONESIA');
             $date = $d['waktu'];
@@ -120,12 +121,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <br>
         <?php echo $d['isiArtikel']; ?>
         <br>
-        <button>Edit</button>
-        <button>Delete</button>
+        <button type="button" name="btn-edit<?php echo $i; ?>">Edit</button>
+        <button type="button" name="btn-delete<?php echo $i; ?>">Delete</button>
         <br>
         <br>
         <br>
-        <?php } ?>
+        <?php $i++; } ?>
     </div>
     
     <!-- FOOTER -->
