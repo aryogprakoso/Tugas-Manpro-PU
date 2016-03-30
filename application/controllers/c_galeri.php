@@ -8,7 +8,8 @@ class C_galeri extends CI_Controller{
     }
 
     public function index(){
-     	$this->load->view('v_galeri');   
+        $data = $this->m_galeri->GetData();
+     	$this->load->view('v_galeri', array('data' => $data));
     }
 
     public function do_upload(){
