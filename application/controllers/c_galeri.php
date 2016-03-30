@@ -14,6 +14,7 @@ class C_galeri extends CI_Controller{
     public function do_upload(){
         $keteranganGambar = $this->input->post('keteranganGambar');
         
+        $foto = time().$_FILES['userfile']['name'];
         $config['file_name']=$foto;
         $config['upload_path']= './assets/uploads';
         $config['allowed_types']='gif|jpeg|png|jpg|bmp';
