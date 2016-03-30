@@ -1,11 +1,11 @@
 <?php if(! defined('BASEPATH')) exit ('No direct script access allowed');
 
-class M_galeri extends CI_Model{
+class Galeri_model extends CI_Model{
     function __construct(){
         parent::__construct();
     }
     
-    function m_galeri(){
+    function galeri_model(){
         parent::Model();
         $this->load->database();
     }
