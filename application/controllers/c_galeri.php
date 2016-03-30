@@ -4,11 +4,11 @@ class C_galeri extends CI_Controller{
     public funtion __construct(){
         parent::__construct();
         $this->load->helper(array('form','url'));
-        $this->load->model('m_galeri');
+        $this->load->model('galeri_model');
     }
 
     public function index(){
-        $data = $this->m_galeri->GetData();
+        $data = $this->galeri_model->GetData();
      	$this->load->view('v_galeri', array('data' => $data));
     }
 
