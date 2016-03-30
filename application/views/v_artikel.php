@@ -15,6 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
     
+    <script type="text/javascript" src='<?php echo assets()."js/v_artikel.js"; ?>'></script>
+    
     
     <!-- MOBILE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,8 +72,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </nav>
     
     <!-- FORM -->
-    <form class="container" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo base_url()."index.php/c_artikel/do_upload"; ?>">
-        *Judul Artikel <input type="text" name="judulArtikel"> 
+    <form class="container" enctype="multipart/form-data" id="form" accept-charset="utf-8" method="post" action="<?php echo base_url()."index.php/c_artikel/do_upload"; ?>">
+        *Judul Artikel <input type="text" name="judulArtikel" id="judulArtikel"> 
         <br>
         *Isi 
         <textarea id="summernote" name="isiArtikel"></textarea>
@@ -121,8 +123,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <br>
         <?php echo $d['isiArtikel']; ?>
         <br>
-        <button type="button" name="btn-edit<?php echo $i; ?>">Edit</button>
-        <button type="button" name="btn-delete<?php echo $i; ?>">Delete</button>
+        <button type="button" onclick="setEdit(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-edit<?php echo $i; ?>">Edit</button>
+        <button type="button" onclick="setDelete(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-delete<?php echo $i; ?>">Delete</button>
         <br>
         <br>
         <br>

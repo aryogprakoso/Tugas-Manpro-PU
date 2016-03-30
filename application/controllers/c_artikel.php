@@ -34,7 +34,7 @@ class C_artikel extends CI_Controller{
         $judulArtikel = $this->input->post('judulArtikel');
         $isiArtikel = $this->input->post('isiArtikel');
         
-        $id = $this->db->query("SELECT count(`idArtikel`) as `count` FROM `pu`.`artikel`" )->row_array()['count'];
+        $id = $this->db->query("SELECT max(`idArtikel`) as `count` FROM `pu`.`artikel`" )->row_array()['count']+1;
         
         if($judulArtikel == NULL || $isiArtikel == NULL){
             echo "Please fill";
@@ -42,7 +42,7 @@ class C_artikel extends CI_Controller{
         }
         else{
             $html = $this->input->post('isiArtikel');
-            //start parsing by Alan Darmasaputra :v
+            //start parsing
             
             $curr_pointer = 0;
             while(true){
@@ -94,7 +94,7 @@ class C_artikel extends CI_Controller{
                     }
                     
                     $imgBase64 = substr($encContent, 6);
-                    $imgFilename = strtr(base64_encode(time()), '+/=', '-_,');
+                    $imgFilename = strtr(base64_encode(time()), '+/=', '-_,').strtr(base64_encode(rand(0,10000)), '+/=', '-_,');
                     $imgPath = 'assets/uploads/'.$imgFilename.'.'.$imgExt;
                     $urlPath = assets().'uploads/'.$imgFilename.'.'.$imgExt;
                     
@@ -123,58 +123,6 @@ class C_artikel extends CI_Controller{
                 }
                 $curr_pointer = $curr_close+1;
             }
-            /*
-            
-            
-            
-            
-            $html = preg_replace_callback("/src=\"data:([^\"]+)\"/", function ($matches) {
-                list($contentType, $encContent) = explode(';', $matches[1]);
-                echo "<pre>";
-                echo $matches[0];
-                echo "<br>";
-                echo $matches[1];
-                echo "<br>";
-                echo $contentType;
-                echo "<br>";
-                echo $encContent;
-                echo "</pre>";
-                if (substr($encContent, 0, 6) != 'base64') {
-                    return $matches[0]; // Don't understand, return as is
-                }
-                $imgBase64 = substr($encContent, 6);
-                $imgFilename = base64_encode(time()).base64_encode(rand(0,1000));//md5($imgBase64); // Get unique filename
-                $imgExt = '';
-                switch($contentType) {
-                    case 'image/jpeg':  $imgExt = 'jpg'; break;
-                    case 'image/gif':   $imgExt = 'gif'; break;
-                    case 'image/png':   $imgExt = 'png'; break;
-                    default:            return $matches[0]; // Don't understand, return as is
-                }
-                $imgPath = 'assets/uploads/'.$imgFilename.'.'.$imgExt;
-                // Save the file to disk if it doesn't exist
-                try{
-                    if (!file_exists($imgPath)) {
-                        $imgDecoded = base64_decode($imgBase64);
-                        $fp = fopen($imgPath, 'w');
-                        if (!$fp) {
-                            return $matches[0];
-                        }
-                        fwrite($fp, $imgDecoded);
-                        fclose($fp);
-                    }
-                }catch(\Exception $e){
-                    if($fp!=null){
-                        fclose($fp);
-                    }
-                }
-                
-                return 'src="'.assets().'uploads/'.$imgFilename.'.'.$imgExt.'"';
-                return "i";
-            }, $html); 
-            //source : https://github.com/summernote/summernote/issues/46 > shaggy8871's comment
-            */
-            
             
             //Setting values for tabel columns
             try{
@@ -209,8 +157,27 @@ class C_artikel extends CI_Controller{
         }
     }
     
-    public function edit(){
+    public function load_data($index){
+        $data = $this->artikel_model->load_one_index($index);
+        $this->load->helper('html_divider');
+        for($i = 0; $i < count($data); $i++){
+            
+            $isi = $this->db->query('select isiArtikel from isiartikel where idArtikel = '.$data[$i]['idArtikel'].' order by id_isi_artikel')->result_array();
+            
+            $isi_processed = array();
+            
+            foreach($isi as $item_isi){
+                $isi_processed[] = $item_isi['isiArtikel'];
+            }
+            $isi_hasil = htmlJoin($isi_processed);
+            
+            $data[$i]['isiArtikel'] = $isi_hasil;
+        }
+        echo json_encode($data);
+    }
         
+    public function do_edit(){
+        echo "berhasil";
     }
     
     public function delete(){

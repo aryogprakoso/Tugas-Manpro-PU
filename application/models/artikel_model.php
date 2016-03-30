@@ -22,8 +22,7 @@ class artikel_model extends CI_Model{
     
     public function GetData(){
         $data = $this->db->query('select * from artikel');
-        $result = $data->result_array();
-        return $result;
+        return $data->result_array();
     }
     
     public function form_update($data,$where){
@@ -34,6 +33,11 @@ class artikel_model extends CI_Model{
     public function form_delete($data,$where){
         $res = $this->db->delete('artikel', $data, $where);
         return $res;
+    }
+    
+    public function load_one_index($id){
+        $data = $this->db->query('select * from artikel where idArtikel = '.$id);
+        return $data->result_array();
     }
 }
 
