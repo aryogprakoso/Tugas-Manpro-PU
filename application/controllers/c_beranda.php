@@ -18,6 +18,20 @@ class C_beranda extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 
+	var $gallery_path;
+	var $gallery_path_url;
+
+	public function __construct(){
+		parent:: __construct();
+
+		//simpan path gambar
+		$this->gallery_path = realpath(APPATH . '../images');
+		$this->gallery_path_url = base_url() . 'images/';
+
+	}
+	 
+	 
 	public function index()
 	{
 		$this->load->view('v_beranda');
@@ -57,6 +71,9 @@ class C_beranda extends CI_Controller {
         print_r($_POST);
         echo "<pre>";
     }
+    
+
+    
     
     /*echo "<pre>".json_encode($_POST['summernote'],JSON_PRETTY_PRINT)."</pre>";*/
 }
