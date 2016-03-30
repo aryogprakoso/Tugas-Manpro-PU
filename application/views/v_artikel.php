@@ -112,23 +112,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php
         $i = 0;
         foreach($data as $d){
-            setlocale(LC_ALL, 'INDONESIA');
-            $date = $d['waktu'];
-            $date = date_create($date);
-            $date = date_format($date,"l, d F Y");
-            $date = strftime("%A, %d %B %Y", time());
-            echo $date;
-        ?>
-        <br>
-        <?php echo $d['judulArtikel']; ?>
-        <br>
-        <?php echo $d['isiArtikel']; ?>
-        <br>
-        <button type="button" onclick="setEdit(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-edit<?php echo $i; ?>">Edit</button>
-        <button type="button" onclick="setDelete(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-delete<?php echo $i; ?>">Delete</button>
-        <br>
-        <br>
-        <br>
+            ?>
+            <div class="item-artikel">
+                <?php
+                setlocale(LC_ALL, 'INDONESIA');
+                $date = $d['waktu'];
+                $date = date_create($date);
+                $date = date_format($date,"l, d F Y");
+                $date = strftime("%A, %d %B %Y", time());
+                echo $date;
+                ?>
+                <br>
+
+                <?php echo $d['judulArtikel']; ?>
+                <br>
+                <?php echo $d['isiArtikel']; ?>
+                <br>
+                <button type="button" onclick="setEdit(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-edit<?php echo $i; ?>">Edit</button>
+                <button type="button" onclick="setDelete(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-delete<?php echo $i; ?>">Delete</button>
+                <br>
+                <br>
+                <br>
+            </div>
         <?php $i++; } ?>
     </div>
     

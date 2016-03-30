@@ -37,3 +37,24 @@ function setEdit(event,element){
         }
     })
 }
+
+function setDelete(event,element){
+    event.preventDefault();
+    var id = $(element).attr('data-id');
+    $.ajax({
+        url: "c_artikel/delete",
+        type: "POST",
+        data: {idArtikel:id},
+        success: function(data){
+            var status = JSON.parse(data)
+            if(status.status=="success"){
+                var parent = $(element).parents('.item-artikel');
+                console.log(parent);
+                parent.remove();
+            }
+        },
+        error: function(){
+            
+        }
+    })
+}

@@ -38,8 +38,15 @@ class artikel_model extends CI_Model{
         return $res;
     }
     
-    public function form_delete($data,$where){
-        $res = $this->db->delete('artikel', $data, $where);
+    public function form_delete($id){
+        $res = $this->db->where('idArtikel', $id);
+        $res = $this->db->delete('artikel');
+        return $res;
+    }
+    
+    public function isi_delete($id){
+        $res = $this->db->where('idArtikel', $id);
+        $res = $this->db->delete('isiartikel');
         return $res;
     }
     
