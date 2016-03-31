@@ -4049,7 +4049,7 @@
     this.insertImages = function (files) {
       $.each(files, function (idx, file) {
         var filename = file.name;
-        if (options.maximumImageFileSize && options.maximumImageFileSize < file.size) {
+        if (options.maximumImageFileSize && options.maximumImageFileSize < file.size) { /**/
           context.triggerEvent('image.upload.error', lang.image.maximumFileSizeError);
         } else {
           async.readFileAsDataURL(file).then(function (dataURL) {

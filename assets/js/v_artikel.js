@@ -47,9 +47,9 @@ function setDelete(event,element){
         data: {idArtikel:id},
         success: function(data){
             var status = JSON.parse(data)
+                console.log(status);
             if(status.status=="success"){
                 var parent = $(element).parents('.item-artikel');
-                console.log(parent);
                 parent.remove();
             }
         },

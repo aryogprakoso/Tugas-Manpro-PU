@@ -43,87 +43,7 @@ class C_artikel extends CI_Controller{
         else{
             $html = $this->input->post('isiArtikel');
             //start parsing
-            
-            /*
-            $curr_pointer = 0;
-            while(true){
-                $curr_img = strpos($html,'<img',$curr_pointer);
-                $curr_src = strpos($html,'src="data:',$curr_img+1);
-                $curr_close = strpos($html,'>',$curr_img+1);
-                
-                if($curr_img===false){                              //kalo ga nemu
-                    break;
-                }
-                
-                if($curr_src===false){                              //kalo src tidak ada
-                    break;
-                }
-                
-                if($curr_close===false){                            //kalo tag tidak valid
-                    break;
-                }
-                
-                try{
-                    if($curr_close<$curr_src){                          //kalo tag img tidak ada srcnya
-                        throw new \Exception;
-                    }
-                
-                    $curr_src_open = $curr_src + 5;
-                    $curr_src_close = strpos($html,'"',$curr_src_open+1);
-                    
-                    $src_content = substr($html, $curr_src_open, $curr_src_close-$curr_src_open);
-                    
-                    $curr_data_start = $curr_src_open + 5;
-                    $curr_data_end = $curr_src_close;
-                    
-                    $imgdata = substr($html, $curr_data_start, $curr_data_end-$curr_data_start);
-                    list($contentType, $encContent) = explode(';', $imgdata);
-                    
-                    //Cek base64
-                    if (substr($encContent, 0, 6) != 'base64'){
-                        throw new \Exception;
-                    }
-                    
-                    $imgExt = '';
-                    
-                    //Cek image extension
-                    switch($contentType){
-                        case 'image/jpeg':  $imgExt = 'jpg'; break;
-                        case 'image/gif':   $imgExt = 'gif'; break;
-                        case 'image/png':   $imgExt = 'png'; break;
-                        default:            throw new \Exception;
-                    }
-                    
-                    $imgBase64 = substr($encContent, 6);
-                    $imgFilename = strtr(base64_encode(time()), '+/=', '-_,').strtr(base64_encode(rand(0,10000)), '+/=', '-_,');
-                    $imgPath = 'assets/uploads/'.$imgFilename.'.'.$imgExt;
-                    $urlPath = assets().'uploads/'.$imgFilename.'.'.$imgExt;
-                    
-                    //Make file
-                    try{
-                        substr_replace($html, $urlPath, $curr_src_open, $curr_src_open - $curr_src_close);
                         
-                        if (!file_exists($imgPath)){
-                            $imgDecoded = base64_decode($imgBase64);
-                            $fp = fopen($imgPath, 'w');
-                            if (!$fp){
-                                return $matches[0];
-                            }
-                            fwrite($fp, $imgDecoded);
-                            fclose($fp);
-                        }
-                    }catch(\Exception $e){
-                        if($fp!=null){
-                            fclose($fp);
-                        }
-                        throw new \Exception;
-                    }
-                    
-                }catch(\Exception $exception){}
-                $curr_pointer = $curr_close+1;
-            }
-            */            
-            
             $html = preg_replace_callback("/src=\"data:([^\"]+)\"/", function ($matches) {
                  list($contentType, $encContent) = explode(';', $matches[1]);
                  
@@ -234,7 +154,7 @@ class C_artikel extends CI_Controller{
                      return $matches[0]; // Don't understand, return as is
                  }
                  $imgBase64 = substr($encContent, 6);
-                 $imgFilename = base64_encode(time()).base64_encode(rand(0,1000));//md5($imgBase64); // Get unique filename
+                 $imgFilename = rtrim(strtr(base64_encode(time()), '+/', '-_'), '=').rtrim(strtr(base64_encode(rand(0,1000)), '+/', '-_'), '=');
                  $imgExt = '';
                  switch($contentType) {
                      case 'image/jpeg':  $imgExt = 'jpg'; break;
@@ -260,7 +180,6 @@ class C_artikel extends CI_Controller{
                      }
                  }
                 return 'src="'.assets().'uploads/'.$imgFilename.'.'.$imgExt.'"';
-                return "i";
             }, $html);
             
             //Setting values for tabel columns
@@ -279,8 +198,6 @@ class C_artikel extends CI_Controller{
                 
                 //delete isiArtikel dari database
                 //isi ulang
-                $this->db->delete('isiartikel',array('idArtikel' => $id));
-                echo $html;
                 $substring = htmlDivide($html);
                 for($i = 0; $i < count($substring); $i++){
                     $data = array(

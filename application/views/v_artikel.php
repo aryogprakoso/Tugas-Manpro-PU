@@ -98,6 +98,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         ['misc', ['undo', 'redo', 'help']]
                     ],
                     disableDragAndDrop: true,
+                    image: [
+                        ['maximumFileSize',['100kb']] ,
+                        ['maximumFileSizeError', ['Maximum file size exceeded.']]
+                    ]
                 });
             });
         </script>
@@ -107,34 +111,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </form>
     
     <div class="container">
-        <br>
-        <br>
-        <?php
-        $i = 0;
-        foreach($data as $d){
-            ?>
-            <div class="item-artikel">
-                <?php
-                setlocale(LC_ALL, 'INDONESIA');
-                $date = $d['waktu'];
-                $date = date_create($date);
-                $date = date_format($date,"l, d F Y");
-                $date = strftime("%A, %d %B %Y", time());
-                echo $date;
+        <div id="accordion">
+            <?php
+            $i = 0;
+            foreach($data as $d){
                 ?>
-                <br>
-
-                <?php echo $d['judulArtikel']; ?>
-                <br>
-                <?php echo $d['isiArtikel']; ?>
-                <br>
-                <button type="button" onclick="setEdit(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-edit<?php echo $i; ?>">Edit</button>
-                <button type="button" onclick="setDelete(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-delete<?php echo $i; ?>">Delete</button>
-                <br>
-                <br>
-                <br>
-            </div>
-        <?php $i++; } ?>
+                <div class="item-artikel panel">
+                    <?php
+                    setlocale(LC_ALL, 'INDONESIA');
+                    $date = $d['waktu'];
+                    $date = date_create($date);
+                    $date = date_format($date,"l, d F Y");
+                    $date = strftime("%A, %d %B %Y", time());
+                    ?>
+                    <div>
+                        <a data-toggle="collapse" data-parent="#accordion"  href="<?php echo "#collapse".$i ?>">
+                            <?php echo $d['judulArtikel']; ?>
+                        </a>
+                    </div>
+                    <div id="<?php echo "collapse".$i?>" class="collapse">
+                        <?php echo $date; ?>
+                        <?php echo $d['isiArtikel']; ?>
+                        <button type="button" onclick="setEdit(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-edit<?php echo $i; ?>">Edit</button>
+                        <button type="button" onclick="setDelete(event, this)" data-id="<?php echo $d['idArtikel']; ?>" name="btn-delete<?php echo $i; ?>">Delete</button>
+                    </div>
+                </div>
+            <?php $i++; } ?>
+        </div>
     </div>
     
     <!-- FOOTER -->
