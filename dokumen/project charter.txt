@@ -1,0 +1,52 @@
+=====================================================================================
+				Project Charter
+		Website Pendeta Universitas Kristen Duta Wacana
+			FAKULTAS TEKNOLOGI INFORMASI
+			UNIVERSITAS KRISTEN DUTA WACANA
+				YOGYAKARTA
+				  2016
+=================================================================================================================
+A.Project Title		: Project Management Website Pendeta Universitas
+B.Project Start Date 	: 5 Februari 2016
+C.Projected Finish Date	: 6 Mei 2016
+D.Budget Information	:Dalam pengembangan Website Pendeta Universitas Kristen Duta Wacana ini, membutuhkan dana sebesar : Rp 27,005,000.00 (Dua puluh tujuh juta lima ribu rupiah ).
+E.Key Schedule Milestone	:
+	-7 Maret 2016            : Penyelesaian project charter
+	-2 Mei 2016		: Website Release Version.
+	-6 Mei 2016               : Serah Terima Website.
+F.Project Manager		: Aryo Prakoso (085268057961)
+  				  aryobastianprakoso@ti.ukdw.ac.id
+G.Project Objectives	: Tujuan pengembangan Website Pendeta Universitas Kristen Duta Wacana ini adalah sebagai sarana bagi Pendeta Universitas Kristen Duta Wacana 
+untuk menyebarkan informasi/berita yang berkaitan dengan Pendeta Universitas Kristen Duta Wacana kepada pihak eksternal dan internal Universitas Kristen Duta Wacana. 
+H.Main Project Succes Criteria	: Projek ini dapat memenuhi semua kriteria yang telah disepakati oleh pihak unit Pendeta Universitas
+ dan dapat dilaksanakan sesuai dengan waktu yang telah ditentukan.
+I.Approach		: 
+	-Melakukan pertemuan langsung dengan customer (pihak Pendeta Universitas) untuk mendapatkan requirement-requirement yang dibutuhkan.
+	-Meninjau secara internal dokumen dokumen transaksi peminjaman yang ada.
+	-Mengembangkan website dengan terus berkomunikasi dengan pihak Pendeta Universitas Kristen Duta Wacana.
+-	Menyampaikan perkembangan project pembuatan website secara rutin kepada pihak Pendeta Universitas Kristen Duta Wacana.
+J. ROLES AND RESPONSIBILITIES
+____________________________________________________________________________________________________________
+Name						Role				Contact Information	
+____________________________________________________________________________________________________________
+Pdt. Nani Minarni, S.Si, M.Hum		| Customer			| nanida@staff.ukdw.ac.id	
+Galih Widi Handoyo			| Customer Staff		| Galih@staff.ukdw.ac.id	
+Willy Sudiarto Raharjo, S.Kom., M.Cs	| Supervisor			| willysr@staff.ukdw.ac.id	
+Yetli Oslan, S.Kom., M.T.		| Supervisor			| yetli@staff.ukdw.ac.id	
+Danny Sebastian, S.Kom., M.M		| Supervisor			| Danny.sebastian@staff.ukdw.ac.id	
+Aryo Galih Prakoso			| Project Manager		| aryobastianprakoso@ti.ukdw.ac.id	
+Agung P. D. K				| Team Member (Programmer)	| agung.prasetya@ti.ukdw.ac.id 
+Brian Ganang P				| Team Member (Tester)		| brian.ganang@si.ukdw.ac.id 
+Dea Alverina				| Team Member (Programmer)	| dea.alverina@ti.ukdw.ac.id 
+Desy Ady Krisian			| Team Member(Tester)	 	| desy.ady@ti.ukdw.ac.id 
+Elvin Andrean				| Team Member (Programmer)	| elvinandrean@ti.ukdw.ac.id 
+Fransiska Maya Lestari			| Team Member(Tester)		| fransiskamaya@ti.ukdw.ac.id 
+Hendra Ch Weydekamp			| Team Member(Designer)		| hendrachriscandra@ti.ukdw.ac.id 
+Ivan					| Team Member(Humas)		| ivan@si.ukdw.ac.id 
+Nilam Permata Kakansing			| Team Member(Humas)		| nilam.kakansing@ti.ukdw.ac.id
+Sagara Mahardika S			| Team Member (Programmer)	| sagara.mahardika@ti.ukdw.ac.id 
+Sandy Jaya Loebby			| Team Member(Designer)		| sandy.jaya@si.ukdw.ac.id 
+Yonatan Adi Nugroho			| Team Member(Designer)		| yonatan.adi@ti.ukdw.ac.id 
+Yulyanti Radja				| Team Member(Humas)		| Yulyanti.radja@si.ukdw.ac.id	
+
+Comment :
