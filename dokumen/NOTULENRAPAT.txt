@@ -1,0 +1,173 @@
+﻿NOTULEN RAPAT 
+MATA KULIAH MANAJEMEN PROJEK
+KELOMPOK 4 - PENDETA UNIVERSITAS
+______________________________________________________________________________
+
+
+Tanggal         : 30 Januari 2016
+Jam                 : 10.30 - 11.30
+Tempat        : Depan Ruang Pendeta Universitas
+
+
+Telah diselenggarakan Rapat Perdana Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
+Setelah dilakukan pembahasan dan diskusi terhadap materi atau topik, selanjutnya seluruh peserta memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
+1. Rapat rutin akan diubah dari setiap hari sabtu pukul 10.00 WIB menjadi setiap hari Jumat pukul 10.30. 
+2. Divisi humas menyampaikan bahwa dalam proses wawancara dengan pihak Pendeta Universitas tidak perlu membuat surat pengantar. Pelaksanaan wawancara lebih lanjut akan diatur melalui SMS.
+3. Tiap tiap wakil divisi programming serta desain diharapkan dapat mengikuti sesi wawancara dengan pihak Pendeta Universitas agar dapat menanyakan perihal pembuatan website lebih detail.
+4. Pelaksanaan wawancara dengan pihak Pendeta Universitas diharapkan dapat dilakukan pada minggu minggu ini, sehingga pada rapat selanjutnya (tanggal 5 Februari 2016) hasil wawancara dapat dilaporkan oleh divisi Humas.
+5. Adapun beberapa pokok pertanyaan yang akan ditanyakan pada sesi wawancara adalah sebagai berikut :
+   1. Apakah website tersebut memerlukan fungsi login?
+   2. Ada berapa level akses yang diberikan, serta apa saja fungsi per level akses tersebut?
+   3. Apakah fungsi utama dari website tersebut?
+   4. fitur - fitur apa saja yang perlu ada dalam website tersebut?
+   5. Warna ciri apa yang akan diberikan kepada website tersebut?
+   6. konten apa saja yang kira kira akan dimasukkan ke dalam website tersebut?
+1. Pembagian divisi akan di-Fix-kan pada rapat berikutnya (tanggal 5 Februari 2015)
+2. Divisi programmer akan menggunakan Code Ignitier sebagai basis Frameworks dalam pengerjaan website Pendeta Universitas.
+3. Target rapat selanjutnya adalah :
+   1. mendapat hasil wawancara
+   2. setiap anggota harus sudah mendaftar akun Github yang dapat diakses melakuli website Github.com menggunakan email yang sudah didata sebelumnya. Aryo selaku Team Leader akan berperan sebagai Admin dalam projek tersebut.
+=====================================================================
+Tanggal         : 5 Februari 2016
+Jam                 : 10.30 - 11.30
+Tempat        : Depan Ruang PBI
+
+
+
+
+Telah diselenggarakan Rapat Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
+Setelah dilakukan pembahasan dan diskusi terhadap materi atau topik, selanjutnya seluruh peserta memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
+1. pokok pokok hasil wawancara yang telah dilakukan antara lain :
+   1. website dapat diakses oleh siapapun. Informasi konten diambil dari oleh Pendeta Universitas atau unit unit kerohanian lainnya.
+   2. Bisa dibaca oleh kampus atau masyarakat lainnya.
+   3. terdapat login form untuk admin, dari pihak PU meminta volunteer sebagai admin sementara.
+   4. terdapat fitur search untuk mencari konten konten berita..
+   5. jadwal peminjaman ruangan/ sarana prasarana dapat ditampilkan online dan dapat diubah secara berkala.
+   6. warna basic web adalah perpaduan antara ungu dan putih atau ungu dan hitam.
+   7. menggunakan logo UKDW
+   8. dapat posting artikel dan foto
+   9. terdapat artikel tentang sejarah pendeta universitas.
+
+
+1. timeline :
+   1. tanggal 12 Februari, tim desain akan memberikan Mock Up tampilan website.
+   2. tanggal 13-18 tim desain dibantu oleh tim humas akan bertemu dengan pendeta universitas untuk mempresentasikan mock up yang telah dibuat.
+   3. tanggal 19-25 Februari tim desain merevisi desain mock up sesuai dengan saran pendeta universitas.
+   4. tanggal 26 Februari diharapkan desain sudah Fix dan sudah mulai dapat di program.
+
+
+1. diharapkan untuk rapat rapat berikutnya, tiap divisi melaporkan perkembangannya.
+=====================================================================
+Tanggal         : 12 Februari 2016
+Jam                 : 10.30 - 11.30
+Tempat                : Depan Ruang PBI
+
+
+
+
+Telah diselenggarakan Rapat Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
+Setelah dilakukan pembahasan dan diskusi terhadap materi atau topik, selanjutnya seluruh peserta memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
+1. Akan mulai mengaktifkan penguploadan menggunakan github, dan sebagai cadangan menggunakan gdrive bila terdapat ekstensi file yang tidak didukung di github.
+2. Pembelajaran dipandu oleh dea.
+3. Deadline untuk rapat minggu depan adalah pembahasan mock up desain.
+
+
+=====================================================================
+Tanggal         : 19 Februari 2016
+Jam                 : 10.30 - 11.30
+Tempat                : Depan Ruang PBI
+
+
+
+
+Telah diselenggarakan Rapat Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
+Setelah dilakukan pembahasan dan diskusi terhadap materi atau topik, selanjutnya seluruh peserta memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
+1. Hasil wawancara dari tim desain,programmer serta tester kepaa PU UKDW adalah sebagai berikut :
+   1. Spesifikasi peminjaman :
+      1. Ingin dibuat di dalam form table, terdapat keterangan apa yang dipinjam, oleh siapa, dan kapan peminjamannya.
+      2. Website hanya sebatas update data saja, tidak menyediakan work flow dalam proses peminjaman.
+   1. Artikel dapat di posting dan didownload
+   2. Form admin akan dihidden. Pengaksesan melalui penembakan link
+   3. Footer akan ada detai PU
+1. Fitur fitur menurut tingkat prioritasnya
+   1. Login
+   2. Berita
+   3. Peminjaman
+   4. Artikel
+   5. galeri
+1. Proses pembentukan project charter
+=====================================================================
+
+
+Tanggal         : 26 Februari 2016
+Jam                 : 16.00 – 17.30
+Tempat        : Depan PPBA
+        
+Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 7 anggota kelompok yang terdiri dari 1 anggota Program Studi Sistem Informasi dan 6 anggota dari Program Studi Teknik Informatika.
+Setelah dilakukan pembahasan dan diskusi terhadap materi atau topic, selanjutnya peserta rapat memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
+1. Berdasarkan hasil wawancara dengan pihak unit, pihak unit hanya meminta kita membuat website yang menurut kelompok baik.
+2. Pihak unit menginginkan website yang dibuat bisa dikembangkan oleh orang lain.
+3. Tabel peminjaman harus terdiri dari peminjaman rutind an peminjaman tidak rutin.
+4. Mendiskusikan milestone yang telah dibuat.
+5. Gambar Slideshow yang ada pada beranda diatur oleh admin, dimana admin bisa memilih 5 foto yang akan ditampilkan di slideshow
+6. Divisi humas akan bertemu dengan pihak unit untuk meminta data-data yang diperlukan dalam pembuatan website (Form peminjaman untuk membuat basis data dan foto-foto kegiatan dari pihak unit)
+7. Kelompok menyetujui untuk selalu memberi tahu/mengabarkan kepada pihak unit jika ada perkembangan/perubahan dalam proses pembuatan website.
+8. Targer rapat selanjutnya adalah :
+1. Divisi HUMAS sudah memiliki data-data yang dibutuhkan
+2. Progress dari programmer
+3. Mulai membuat laporan dan Project Charter
+4. Divisi desain mempresentasikan tampilan admin.
+=====================================================================
+
+
+Tanggal         : 4 Maret 2016
+Jam                 : 10.00 – 12.00 
+Tempat                : Ruang Gateway (FTI Baru)
+
+
+Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 11 anggota kelompok yang terdiri dari 3 anggota Program Studi Sistem Informasi dan 8 anggota dari Program Studi Teknik Informatika.
+Berikut ini adalah beberapa hal yang telah kami bahas dan diskusikan :
+1. Laporan perkembangan website : pertimbangan untuk menambah pagination dan perbaikan UI.
+2. Dipikirkan untuk pengembangan fitur seperti : pop up gambar, print jadwal
+3. Pembagian penanggungjawab programmer tiap tiap fitur.
+   1. Berita : elvin
+   2. Artikel : dea
+   3. Galeri : agung
+   4. Peminjaman : sagara
+1. Dalam fitur galeri, deskripsi dibatasi,jangan terlalu panjang untuk membedakan galeri dengan artikel/berita.
+2. Pembahasan rancangan basis data oleh sagara
+3. Pembagian penanggungjawab laporan :
+   1. Project roles : aryo
+   2. Risk register : anti
+   3. Cost register : desi
+   4. Milestone, gantt chart, wbs : nilam dan ivan
+   5. Scope statement : sandy
+   6. Project charter : maya
+
+
+
+
+=====================================================================
+
+
+Tanggal         : 11 Maret 2016
+Jam                 : 10.00 – 12.00 
+Tempat        : Ruang Gateway (FTI Baru)
+        
+Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 11 anggota kelompok yang terdiri dari 3 anggota Program Studi Sistem Informasi dan 8 anggota dari Program Studi Teknik Informatika.
+Berikut ini adalah beberapa hal yang telah kami bahas dan diskusikan :
+1. Untuk team Desain memikirkan untuk penggunaan Boostrap
+2. Mendiskusikan laporan yang akan dikumpulkan pada masa TTS :
+* Project Charter        : 90% (Kurang TTD Pak Willy)
+* Milestone                : 100%
+* WBS                        : 100%
+* Risk Register                 : 50% (Tinggal di konsultasikan dan revisi kalau ada)
+* Cost Manajemen        : 90% (Tinggal revisi hasil konsul)
+* Scope                        : 50% (Tinggal di konsultasikan dan revisi kalau ada)
+* Project Role                : 90% (Tinggal revisi hasil konsul)
+* GantChart                : 40% (Masih butuh bantuan dan belum di konsultasikan)
+1. Tim programmer akan mulai bekerja jika fitur LOGIN sudah selesai
+2. Beberapa revisi untuk tim desain (Catatannya sudah ada di Sandy)
+3. Target rapat selanjutnya adalah :
+1. Tanggal 1 April website fix-nya (semoga aja) sudah fix
+2. Melakukan testing dari anggota tim dan unit PU.
