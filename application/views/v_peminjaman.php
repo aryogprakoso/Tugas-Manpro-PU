@@ -132,7 +132,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <table class="table table-bordered">
             <thead>
               <tr>
-                <th class = "text-center">Waktu</th>
+                <th class = "text-center">Tanggal</th>
+                <th class = "text-center">Mulai</th>
+                <th class = "text-center">Selesai</th>
                 <th class = "text-center">Ruang</th>
                 <th class = "text-center">Alat</th>
                 <th class = "text-center">Keterangan</th>
@@ -174,11 +176,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="modal-body">
 
                       <div class="form-group">
-                          <label class="col-sm-2">Waktu:</label>
+                          <label class="col-sm-2">Tanggal:</label>
                           <div class="col-sm-4">
                             <input type="date" id="waktuModal" required="required"/>
                           </div>
-                          <label><small>(Format Tanggal : Bulan/Hari/Tahun)</small></label>
+                          <label><small>(Format Tanggal = Bulan/Hari/Tahun)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Mulai:</label>
+                          <div class="col-sm-4">
+                            <input type="number" id="jamMulai" min="0" max="23" step="1" value="1"/>
+                            <b>:</b>
+                            <input type="number" id="menitMulai" min="0" max="45" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Mulai = Jam:Menit)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Selesai:</label>
+                          <div class="col-sm-4">
+                            <input type="number" id="jamSelesai" min="1" max="24" step="1" value="1"/>
+                            <b>:</b>
+                            <input type="number" id="menitSelesai" min="0" max="60" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Selesai = Jam:Menit)</small></label>
                           <div class="clearfix"></div>
                       </div>
                       <div class="form-group">
