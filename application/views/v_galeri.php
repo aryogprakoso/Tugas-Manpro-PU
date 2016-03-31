@@ -169,12 +169,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <form class="container" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo base_url()."index.php/c_galeri/do_upload"; ?>">
             <h5>Gambar</h5> <input type="file" name="userfile">
+            <span class="text-danger"><?php if (isset($error)) { echo $error; } ?></span>
             <h6>Keterangan Gambar :</h6> 
                 
-            <textarea rows="4" cols="50" name="keteranganGambar" form="usrform">Masukan Keterangan disini...</textarea>
+            <textarea rows="4" cols="50" name="keteranganGambar"></textarea>
             <br>
             <input type="submit" name="submit" value="Submit"/>
         </form>
+        <?php if (isset($success)) { echo $success; } ?>
     </div>
     
     <!-- FOOTER -->
