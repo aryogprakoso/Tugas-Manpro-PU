@@ -194,10 +194,9 @@ class C_artikel extends CI_Controller{
                 if($this->artikel_model->form_update($id,$data)===false){
                     throw new \Exception;
                 }
+                $this->artikel_model->isi_delete($id);
                 $this->load->helper('html_divider');
                 
-                //delete isiArtikel dari database
-                //isi ulang
                 $substring = htmlDivide($html);
                 for($i = 0; $i < count($substring); $i++){
                     $data = array(
