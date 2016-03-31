@@ -13,6 +13,7 @@ class C_galeri extends CI_Controller{
     }
 
     public function do_upload(){
+        //fungsi untuk input gambar ke database
         $keteranganGambar = $this->input->post('keteranganGambar');
         
         $foto = time().$_FILES['userfile']['name'];
@@ -26,22 +27,22 @@ class C_galeri extends CI_Controller{
         $this->load->library('upload',$config);
         $this->upload->initialize($config);
         
-        $id = $this->db->query("SELECT count(`idGaleri`) as `count` FROM `pu`.`galeri`" )->row_array()['count'];
-        
-        if($this->upload->do_upload('userfile')){
-                //Setting values for tabel columns
-                $data = array(
-                    'idGaleri' => $id,
+        if(!$this->upload->do_upload('userfile')){
+                //Jika error
+                $upload_error = array('error' => $this->upload->display_errors());
+                $this->load->view('v_galeri', $upload_error);
+            }
+        else{
+            //jika berhasil
+             $data = array(
+                    'idGaleri' => '',
                     'keteranganGambar' => $this->input->post('keteranganGambar'),
                     'pathGambar' => $foto
                 );
-                //Transfering data to Model
-                $this->m_galeri->form_insert($data);
-                $data['message'] = 'Gambar Berhasil Diupload';
-                redirect('/c_galeri', 'refresh');
-            }
-        else{
-
+                
+                $this->galeri_model->form_insert($data);
+                $data['success'] = 'Gambar Berhasil Diupload';
+                $this->load->view('v_galeri',$data);
             }
     }
 }
