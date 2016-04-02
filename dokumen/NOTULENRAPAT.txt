@@ -1,4 +1,5 @@
-﻿NOTULEN RAPAT 
+﻿aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+NOTULEN RAPAT 
 MATA KULIAH MANAJEMEN PROJEK
 KELOMPOK 4 - PENDETA UNIVERSITAS
 ______________________________________________________________________________
@@ -9,7 +10,8 @@ Jam                 : 10.30 - 11.30
 Tempat        : Depan Ruang Pendeta Universitas
 
 
-Telah diselenggarakan Rapat Perdana Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
+Telah diselenggarakan Rapat Perdana Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek 
+yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
 Setelah dilakukan pembahasan dan diskusi terhadap materi atau topik, selanjutnya seluruh peserta memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
 1. Rapat rutin akan diubah dari setiap hari sabtu pukul 10.00 WIB menjadi setiap hari Jumat pukul 10.30. 
 2. Divisi humas menyampaikan bahwa dalam proses wawancara dengan pihak Pendeta Universitas tidak perlu membuat surat pengantar. Pelaksanaan wawancara lebih lanjut akan diatur melalui SMS.
@@ -35,7 +37,8 @@ Tempat        : Depan Ruang PBI
 
 
 
-Telah diselenggarakan Rapat Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
+Telah diselenggarakan Rapat Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen 
+Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
 Setelah dilakukan pembahasan dan diskusi terhadap materi atau topik, selanjutnya seluruh peserta memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
 1. pokok pokok hasil wawancara yang telah dilakukan antara lain :
    1. website dapat diakses oleh siapapun. Informasi konten diambil dari oleh Pendeta Universitas atau unit unit kerohanian lainnya.
@@ -65,7 +68,8 @@ Tempat                : Depan Ruang PBI
 
 
 
-Telah diselenggarakan Rapat Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
+Telah diselenggarakan Rapat Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen 
+Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
 Setelah dilakukan pembahasan dan diskusi terhadap materi atau topik, selanjutnya seluruh peserta memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
 1. Akan mulai mengaktifkan penguploadan menggunakan github, dan sebagai cadangan menggunakan gdrive bila terdapat ekstensi file yang tidak didukung di github.
 2. Pembelajaran dipandu oleh dea.
@@ -80,7 +84,8 @@ Tempat                : Depan Ruang PBI
 
 
 
-Telah diselenggarakan Rapat Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
+Telah diselenggarakan Rapat Kelompok 4 Mata Kuliah Manajemen Projek yang dihadiri oleh Anggota Kelompok-4 Manajemen Projek 
+yang terdiri dari 4 anggota Program Studi Sistem Informasi dan 10 anggota Program Studi Teknik Informatika.
 Setelah dilakukan pembahasan dan diskusi terhadap materi atau topik, selanjutnya seluruh peserta memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
 1. Hasil wawancara dari tim desain,programmer serta tester kepaa PU UKDW adalah sebagai berikut :
    1. Spesifikasi peminjaman :
@@ -103,14 +108,16 @@ Tanggal         : 26 Februari 2016
 Jam                 : 16.00 – 17.30
 Tempat        : Depan PPBA
         
-Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 7 anggota kelompok yang terdiri dari 1 anggota Program Studi Sistem Informasi dan 6 anggota dari Program Studi Teknik Informatika.
+Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 7 anggota kelompok
+ yang terdiri dari 1 anggota Program Studi Sistem Informasi dan 6 anggota dari Program Studi Teknik Informatika.
 Setelah dilakukan pembahasan dan diskusi terhadap materi atau topic, selanjutnya peserta rapat memutuskan dan dapat menyepakati beberapa hal sebagai berikut :
 1. Berdasarkan hasil wawancara dengan pihak unit, pihak unit hanya meminta kita membuat website yang menurut kelompok baik.
 2. Pihak unit menginginkan website yang dibuat bisa dikembangkan oleh orang lain.
 3. Tabel peminjaman harus terdiri dari peminjaman rutind an peminjaman tidak rutin.
 4. Mendiskusikan milestone yang telah dibuat.
 5. Gambar Slideshow yang ada pada beranda diatur oleh admin, dimana admin bisa memilih 5 foto yang akan ditampilkan di slideshow
-6. Divisi humas akan bertemu dengan pihak unit untuk meminta data-data yang diperlukan dalam pembuatan website (Form peminjaman untuk membuat basis data dan foto-foto kegiatan dari pihak unit)
+6. Divisi humas akan bertemu dengan pihak unit untuk meminta data-data yang diperlukan dalam pembuatan website 
+(Form peminjaman untuk membuat basis data dan foto-foto kegiatan dari pihak unit)
 7. Kelompok menyetujui untuk selalu memberi tahu/mengabarkan kepada pihak unit jika ada perkembangan/perubahan dalam proses pembuatan website.
 8. Targer rapat selanjutnya adalah :
 1. Divisi HUMAS sudah memiliki data-data yang dibutuhkan
@@ -125,7 +132,8 @@ Jam                 : 10.00 – 12.00
 Tempat                : Ruang Gateway (FTI Baru)
 
 
-Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 11 anggota kelompok yang terdiri dari 3 anggota Program Studi Sistem Informasi dan 8 anggota dari Program Studi Teknik Informatika.
+Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 11 anggota 
+kelompok yang terdiri dari 3 anggota Program Studi Sistem Informasi dan 8 anggota dari Program Studi Teknik Informatika.
 Berikut ini adalah beberapa hal yang telah kami bahas dan diskusikan :
 1. Laporan perkembangan website : pertimbangan untuk menambah pagination dan perbaikan UI.
 2. Dipikirkan untuk pengembangan fitur seperti : pop up gambar, print jadwal
@@ -154,7 +162,8 @@ Tanggal         : 11 Maret 2016
 Jam                 : 10.00 – 12.00 
 Tempat        : Ruang Gateway (FTI Baru)
         
-Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 11 anggota kelompok yang terdiri dari 3 anggota Program Studi Sistem Informasi dan 8 anggota dari Program Studi Teknik Informatika.
+Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 11 anggota kelompok yang terdiri
+ dari 3 anggota Program Studi Sistem Informasi dan 8 anggota dari Program Studi Teknik Informatika.
 Berikut ini adalah beberapa hal yang telah kami bahas dan diskusikan :
 1. Untuk team Desain memikirkan untuk penggunaan Boostrap
 2. Mendiskusikan laporan yang akan dikumpulkan pada masa TTS :
