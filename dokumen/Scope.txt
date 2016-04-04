@@ -1,0 +1,48 @@
+Project Scope Management
+“Website Pendeta Universitas”
+
+A.	Scope Management Approach
+Pada proyek pembuatan website Unit Pendeta Universitas, scope management merupakan tanggung jawab Project Manajer. Scope pada proyek website Unit Pendeta Universitas ini didefinisikan dengan menuliskan secara runtut mulai dari deskripsi scope proyek website Jurusan Sistem Informasi & Teknik Informasi, ITS, Project Constraint, Product Acceptance Criteria, Product Requirments and Characteristic dan deliverables yang disesuaikan pula dengan Work Breakdown Structure (WBS). Project Manager dan Stakeholder akan menetapkan dan menyetujui dokumen ini yang didalamnya terdapat prosedur untuk mengetahui batasan atau ruang lingkup proyek.
+Permintaan atau usulan perubahan terhadap ruang lingkup projek dapat di lakukan oleh Project Manager, Stakeholder dan Tim Proyek. Semua permintaan atau usulan perubahan terhadap ruang lingkup proyek akan diserahkan kepada Project Manager yang kemudian akan melakukan evaluasi terhadap perubahan ruang lingkup yang diminta atau diusulkan. Setelah dievaluasi, usulan perubahan ruang lingkup akan dikirimkan kepada stakeholder terkait untuk meminta persetujuan. Setelah disetujui, Project Manager akan memperbarui semua dokumen proyek dan mengkomunikasikan perubahan ruang lungkup yang di minta untuk semua stakeholder dan Tim Proyek.
+
+B.	Project Scope Statement
+	Penjelasan scope dari proyek Website yang terdiri dari 5 area yaitu :
+1.	Product Scope Description
+Proyek ini adalah sebuah proyek pembuatan website guna mendukung informasi yang akan di sampaikan Unit Pendeta Universitas di Universitas Kristen Duta Wacana.
+
+
+
+2.	Project Constraint
+Batasan Proyek pembuatan website Unit Pendeta Universitas adalah :
+•	Waktu pengerjaan proyek ini adalah 1 Semester, terhitung sejak tanggal 28 Februari 2016 hingga 6 Mei 2016.
+•	Anggaran dana pembuatan proyek website Unit Pendeta Universitas adalah Rp 27,005,000.00 (Dua puluh tujuh juta lima ribu rupiah ).
+•	Memaksimalkan resource sumber daya Tim Proyek yang telah ada sehingga tidak terjadi outsource.
+•	Perubahan biaya, waktu pengerjaan adalah hal-hal yang berkaitan akan dibicarakan lagi dengan pihak yang terkait.
+
+3.	Product Acceptance Criteria
+Kriteria penerimaan proyek oleh Stakeholder Proyek pembuatan website Unti Pendeta Universitas ini adalah :
+•	Informasi pada Website bisa tersampaikan baik pada pengunjung Website.
+•	Website bisa di akses 24 jam.
+4.	Product Requirments and Characteristics
+Website Unit Pendeta Universitas harus memenuhi semua requirement yang ada di Requirment Tracebility Matrix, selain itu ada hal yang perlu di perhatikan :
+•	Membangun website berbasis CMS ( Content Management System).
+•	Content yang terdapat dalam website Unit Pendeta Universitas antara lain adalah :
+o	Beranda
+o	Tentang PU
+o	Peminjaman
+o	Artikel 
+o	Galeri
+•	Website ini dapat ditindak lanjut pada server (yang mendukung php) sehingga dapat diakses oleh masyarakat.
+•	Website bersifat Multiplatform.
+5.	Deliverables
+Deliverables yang akan diserahkan oleh tim proyek kepada pihak stakeholder adalah :
+1.	Dokumen Project Charter sebagai kesepakatan formal pada awal proyek antara Developer Proyek dan Stakeholder Proyek.
+2.	Dokumen analisa kebutuhan fungsional dan non fungsional proyek website Unit Pendeta Universitas.
+3.	Dokumen Management Plan dari beberapa Knowledge area yaitu :
+o	Project Integration Management Plan
+o	Scope Management Plan
+o	Time Management Plan
+o	Quality Management Plan
+o	Human Resouce Management Plan
+4.	Laporan Final.
+5.	Produk akhir proyek berupa Website Unit Pendeta Universitas.
