@@ -11,13 +11,3 @@ preparation :
 
 __________________________________________________________________________________________
 
-General Test Scenario
-1. semua field inputan yang WAJIB diisi, harus ditandai dengan simbol (*)
-2. error message harus ditampilkan di tempat yang dapat mudah dilihat oleh user.
-3. semua error message harus ditampilkan dengan style CSS yang sama.
-4. semua general confirmation message(selain error message) harus ditampilkan dengan style CSS
-yang berbeda dengan error message.
-5. bila terdapat tooltips, kalimat yang digunakan harus pendek dan dapat mudah dipahami.
-6. fungsi delete pada record manapun, harus menanyakan konfirmasi ulang.
-7. opsi select/deselect all record harus ada bila website mensupport fungsi add/delete/update record.
-8. 
