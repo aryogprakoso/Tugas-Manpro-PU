@@ -1,0 +1,30 @@
+=============================================================================================================
+						Cost Estimation
+				Website Pendeta Universitas Kristen Duta Wacana
+					FAKULTAS TEKNOLOGI INFORMASI
+		      		       UNIVERSITAS KRISTEN DUTA WACANA
+						   YOGYAKARTA
+						     2016
+=============================================================================================================
+			      |	       |      |           |              |		     |		    |
+			      | Jumlah | Hari | Cost/hari |   Subtotal   | WBS Level 2 Total |  % of Total  |
+WBS Items		      |	       |      |           |              |		     |		    |
+1.Project Management	      |	       |      |           |              |   Rp 23.050.000   |    85.35%    |
+  Project Manager	      |    1   |  20  | Rp 125.000| Rp 2.500.000 |		     |		    |
+  Programmer		      |    4   |  45  | Rp  65.000| Rp11.700.000 |		     |		    |
+  Web Designer		      |    3   |  20  | Rp  60.000| Rp 3.600.000 |		     |		    |
+  Humas			      |    3   |  15  | Rp  50.000| Rp 2.250.000 |		     |		    |
+  Tester		      |    3   |  20  | Rp  50.000| Rp 3.000.000 |		     |		    |
+			      |        |      |           |              |		     |		    |
+2.Pembuatan Website	      |        |      |           |              |   Rp    600.000   |     2.22%    |
+  2.1 Konsumsi Rapat	      |        |  10  | Rp  25.000| Rp   250.000 |		     |		    |
+  2.2 Insentif Komunikasi     |    14  |      | Rp  25.000| Rp   350.000 |		     |		    |
+			      |        |      |           |              |		     |		    |
+3.Training		      |        |      |           |              |   Rp    900.000   |     3.33%    |
+  3.1 Biaya Trainer	      |    3   |  3   | Rp  75.000| Rp   675.000 |		     |		    |
+  3.2 Transportasi	      |    3   |  3   | Rp  25.000| Rp   225.000 |		     |		    |
+			      |	       |      |           |              |                   |		    |
+4.Dana Cadangan (10%)	      |	       |      |           |              |   Rp  2.455.000   |      10%     |
+			      |	       |      |           |              |		     |		    |
+Total Project Cost Estimate   |	       |      |           |              |   Rp 27.005.000   |		    |
+_____________________________________________________________________________________________________________
