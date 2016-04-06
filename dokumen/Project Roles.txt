@@ -1,0 +1,214 @@
+Project Roles
+
+1. Customer
+
+­ Project Roles :        Project  Sponsor/Customer  adalah  badan/instansi/perseorangan  yang 
+
+mengutus  badan/instansi/perseorangan  lain  untuk mengerjakan sebuah  project. 
+
+Project  Sponsor/Customer  terlibat  dari  awal  project,  termasuk  menentukan 
+
+project dalam hubungannya dengan Project Manager. ­ Job Description :
+
+1) Memberikan  requirement­requirement  yang  berguna  bagi  pengembangan 
+
+project.
+
+2) Memiliki wewenang mutlak atas jalannya project.
+
+3) Menyetujui dan memberikan anggaran yang telah disepakati sebelumnya.
+
+2. Project Supervisor
+
+­ Project Roles :        Kedudukan Project Supervisor
+
+Dalam  struktur  organisasi  yang  berlaku  umum,  jenjang  hierarki 
+
+supervisor  berada  di  bawah manajer  madya  dan  di  atas  karyawan  pelaksana. 
+
+Supervisor adalah orang yang berhubungan langsung dengan manajer. Namun 
+
+dalam konteks tanggung jawab, supervisor mempunyai tugas yang tidak kalah 
+
+berat.  Dalam  banyak  kasus, supervisor  memiliki  tugas  yang strategis  karena 
+
+langsung  terjun  di  lapangan  melaksanakan  semua  rencana  dari  manajer. 
+
+Supervisor memiliki bawahan yang dalam struktur organisasi disebut karyawan 
+
+non  manajerial  atau staf.  Dalam  beberapa  industri  ada  pula supervisor  yang 
+
+tidak mempunyai staf. ­ Job Description :
+
+1. Mengatur kerjanya para bawahannya (team project)
+
+2. Membuat Job Deskriptions untuk Bawahanya
+
+3. Bertanggung jawab atas hasil kerja team project
+
+4. Memberi motivasi kerja kepada team project Bawahanya
+
+5. Membuat Jadwal Kegiatan Kerja untuk team project
+
+3. Project Manager
+
+­ Project Roles :  
+
+Project  Manager  bertanggungjawab  dalam  memfasilitasi,  mengatur, 
+
+mengontrol,  mengembangkan  serta  menjadi  penghubung  antara  Project 
+
+Sponsor/Customer dengan Project Team.
+
+Project Manager harus memastikan bahwa project yang dijalankan tepat 
+
+waktu, sesuai dengan anggaran dan dapat memenuhi standar kualitas yang telah 
+
+disepakati sebelumnya oleh Project Sponsor/Customer.
+
+Project  Manager  juga  bertanggungjawab  untuk  mengelola, 
+
+mengalokasikan serta memanfaatkan sumber  daya  yang  ada  dengan  cara  yang 
+
+efisien serta menjaga keutuhan tim.
+
+    
+
+­ Job Description :
+
+1) Mengelola serta memimpin Project Team.
+
+2) Mengelola  koordinasi  dengan  mitra  dan/atau  orang  orang  yang  terlibat 
+
+dalam pengerjaan project.
+
+3) Mengembangkan serta  memelihara  rencana  project secara  terperinci, serta 
+
+menjalankannya sejalan dengan rencana project yang telah dibuat.
+
+4) Menyelesaikan  atau  mengelola  permasalahan  permasalahan  yang  terjadi 
+
+dalam project sehingga dapat menghambat kinerja tim.
+
+5) Memantau setiap perkembangan project.
+
+6) Memberikan status laporan rutin kepada mitra dan/atau sponsor yang terlibat 
+
+di dalam project.
+
+7) Mengidentifikasi  serta  memimpin  jalannya  pelatihan  kepada  customer 
+
+terhadap project bila diperlukan.
+
+8) Mengevaluasi project yang telah dilakukan.
+
+9) Menutup project bila project telah dinyatakan selesai.
+
+4. Programmer
+
+­ Project Roles 
+
+Profesi programmer  adalah profesi yang paling sering terdengar, karena 
+
+profesi  ini  sudah  ada  sejak  diciptakannya  komputer  itu  sendiri.  Profesional 
+
+dalam  bidang software  development  dan  consulting  umumnya  pernah  meniti 
+
+karir sebagai seorang programmer. Keahlian dalam algoritma dan penguasaan 
+
+terhadap salah satu  atau  beberapa  bahasa  memprograman  mutlak  diperlukan 
+
+oleh seorang programmer. Programer adalah profesi inti dan tulang punggung 
+
+dalam  software  development  karena  tidak  akan  terwujud  sebuah  software 
+
+aplikasi tanpa adanya programmer, sedangkan tanpa didukung profesi lainnya, 
+
+dengan cakupan terbatas. ­ Job Description
+
+1) Membangun/mengembangkan  software  terutama  pada  tahap  construction 
+
+2) Mengimplementasikan  requiremant  dan  desain  proses  bisnis  ke  komputer 
+
+3) Melakukan testing terhadap software bila diperlukan
+
+seorang  programmer  dapat membuat sebuah  aplikasi  yang  berguna walaupun 
+
+dengan melakukan coding dengan bahasa pemprograman yang ditentukan
+
+dengan menggunakan algoritma /logika dan bahasa pemprograman
+5. Desainer
+
+­ Project Roles
+
+Tugas  pertama  web  designer  adalah  membuat  rancangan  layout  website, 
+
+rancangan layout ini bermacam­macam, ada yang sekedar membuat wireframe 
+
+dengan  coret­coret  di  kertas  atau  dengan  tools  untuk  membuat  wireframe 
+
+lainya seperti balsamiq atau Mockingbird, ada yang cukup membayangkan di 
+
+otak dan langsung membuatnya di photoshop, ada yang langsung di browser.
+
+­ Job Description
+
+1) Merancang layout  secara visual
+
+2) Konversi layout visual ke CSS dan HTML
+
+3) Membuat susunan markup (HTML)
+
+4) Mempercantik markup dengan CSS
+
+5) Memberi efek tambahan yang di perlukkan
+
+6) Memastikan kode sudah benar (Validation)
+
+7) Revisi atau update (Verison Control)
+
+6. Humas
+
+­ Project Roles
+
+saling mengerti, menghindari kesalah pahaman dan membangun citra positif. ­ Job Descriptiom
+
+1) Membuat kesan baik dan positif
+
+2) Memberi  penerangan,  pengertian  dan  informasi  kepada  lembaga  terkait  dan 
+
+3) Menciotakkan ketertarikan
+
+4) Menciptakan simpatik.
+
+7. Tester
+
+­ Project Roles
+
+Humas  adalah  sebuah  seni  berkomunikasi  dengan  publik  untuk  membangun 
+
+kepada Tim
+
+Tester Website Tester merupakan salah satu  posisi  yang menjadi ‘musuh’  para 
+
+developer.  Tugas  utama  dari  seorang  Website  tester  adalah  melakukan 
+
+pengecekan  atau  testing  terhadap  error  atau  bug  di  dalam sebuah  website  atau 
+
+program. Dengan kata lain, keberhasilan seorang website  tester adalah kegagalan 
+
+bagi  developer,  demikian  juga sebaliknya.  Namun,  pada  dasarnya  keberhasilan 
+
+website  tester ataupun keberhasilan developer memiliki tujuan yang sama, yaitu 
+
+untuk membuat sebuah website bebas dari bug (meskipun sebenarnya tidak  ada 
+
+aplikasi yang bisa benar­benar bebas dari bug).
+
+­ Job Description
+
+1. Mengecek apakah website fitur­fiturnya sudah bekerja semua
+
+2. Mengidentifikasi apakah website mempunyai bug
+
+3. Melakukan pengecekan apakah website mengalami eror
