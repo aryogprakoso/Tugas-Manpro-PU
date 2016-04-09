@@ -180,3 +180,31 @@ Berikut ini adalah beberapa hal yang telah kami bahas dan diskusikan :
 3. Target rapat selanjutnya adalah :
 1. Tanggal 1 April website fix-nya (semoga aja) sudah fix
 2. Melakukan testing dari anggota tim dan unit PU.
+
+Tanggal         : 1 April 2016
+Jam             : 10.00 – 12.00 
+Tempat        : Ruang Assembly (FTI UKDW)
+        
+Telah diselenggarakan rapat kelompok 4, Mata Kuliah Manajemen Projek yang dihadiri oleh 13 anggota kelompok yang terdiri dari 3 anggota Program Studi Sistem Informasi dan 9 anggota dari Program Studi Teknik Informatika.
+Berikut ini adalah beberapa hal yang telah kami bahas dan diskusikan :
+1. laporan dari divisi programmer :
+	a. Fungsi Peminjaman
+		- fungsi add pada peminjaman telah selesai dikerjakan. namun untuk error handling belum dikerjakan
+		- batas peminjaman telah disepakati hanya pada hari senin-jumat hingga jam 8 malam hari.
+		- untuk hari sabtu dan minggu tidak dapat dipinjam.
+	b. Fungsi galeri
+		- upload gambar telah dikerjakan, namun belum dapat ditampilkan.
+		- untuk delete dan edit gambar juga belum dapat dikerjakan.
+	c. Fungsi artikel
+		- fungsi add edit telah selesai dikerjakan.
+		- ada pembatasan size foto yang dapat diunggah, karena akan membuat website menjadi lola.
+	d. fungsi berita 
+		- belum dikerjakan.
+2 laporan dari divisi desain
+	- desain telah selesai dikerjakan semuanya. hanya akan ada beberapa perubahan kecil.
+3. deadline
+	- tanggal 4 April desain telah Fix dikerjakan, dan diserahkan kepada tim programmer.
+	- tanggal 11 Website telah Fix dikerjakan.
+	- tanggal 12 website sudah bisa masuk ke dalam alpha testing selama seminggu.
+	- tanggal 18 website akan diserahkan kepada PU untuk ditesting dan akan ada saran perbaikan.
+4. rapat berikutnya pada tanggal 15. jam 10.00WIB ruang menyusul.
