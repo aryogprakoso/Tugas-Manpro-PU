@@ -24,6 +24,17 @@ class berita_model extends CI_Model{
         $data = $this->db->query('select * from berita');
         return $data->result_array();
     }
+     public function get_search(){
+        $match = $this->input->post('search');
+        if($match != null){
+            
+             $this->db->like('judulberita', $match);
+             $data = $this->db->get('berita');
+            return $data->result_array();
+
+        }
+           }
+
     
     public function form_update($id,$data){
         $res = $this->db->where('idBerita', $id);
