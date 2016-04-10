@@ -8,8 +8,26 @@ class C_beranda extends CI_Controller{
     }
     
     public function index(){
-        $data = $this->berita_model->GetData();
-        
+        $data  = $this->berita_model->GetData();
+        $data2 = $this->berita_model->get_search();
+
+        if($data2 != null){
+                    $this->load->helper('html_divider');
+            for($i = 0; $i < count($data2); $i++){
+                $isi2 = $this->db->query('select isiBerita from isiberita where idBerita = '.$data2[$i]['idBerita'])->result_array();
+            
+            $isi_processed = array();
+            
+            foreach($isi2 as $item_isi){
+                $isi_processed[] = $item_isi['isiBerita'];
+            }
+            $isi_hasil = htmlJoin($isi_processed);
+            
+            $data2[$i]['isiBerita'] = $isi_hasil;
+            }
+             $this->load->view('v_beranda2', array('data2' => $data2));    
+             
+        }else{
         $this->load->helper('html_divider');
         for($i = 0; $i < count($data); $i++){
             
@@ -25,7 +43,9 @@ class C_beranda extends CI_Controller{
             $data[$i]['isiBerita'] = $isi_hasil;
         }
         
-     	$this->load->view('v_beranda', array('data' => $data));
+        $this->load->view('v_beranda', array('data2' => $data));    
+        }
+        
     }
     
     public function do_upload(){
