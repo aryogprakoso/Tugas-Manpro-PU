@@ -21,7 +21,7 @@ class artikel_model extends CI_Model{
     }
     
     public function GetData(){
-        $data = $this->db->query('select * from artikel');
+        $data = $this->db->query('select * from artikel order by idArtikel desc');
         return $data->result_array();
     }
     
@@ -32,9 +32,8 @@ class artikel_model extends CI_Model{
     }
     
     public function isi_update($id,$data){
-        $res = $this->db->insert('isiartikel', $data);
         $res = $this->db->where('idArtikel', $id);
-        $res = $this->db->update('isiartikel', $data);
+        $res = $this->db->insert('isiartikel', $data);
         return $res;
     }
     

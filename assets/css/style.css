@@ -1,0 +1,507 @@
+/* HEADER */
+
+html{
+    overflow-y: scroll;
+}
+
+body{
+    padding-top: 70px;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.modal-open{
+    padding-right: 0px;
+}
+
+*{
+    font-family: 'Open Sans';
+    word-wrap: break-word;
+}
+
+nav{
+	background: purple;
+}
+
+.navbar{
+    transition: all 0.5s ease;
+    border-radius: 0px;
+}
+
+.navbar-toggle .icon-bar{
+    background: white;
+}
+
+header *{
+	color: white;
+}
+
+.nav > li > a{
+    color: white;
+}
+
+.nav > li > a:hover{
+    transition: all 0.5s ease;
+    background: whitesmoke;
+    color: purple;
+}
+
+.navbar.stick{
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.85;
+}
+
+.navbar-nav > .active > a{
+    background: white;
+    color: purple;
+}
+
+.glyphicon{
+    text-align: right;
+    color: purple;
+}
+
+.point{    
+    cursor: pointer;
+}
+
+.point:hover{
+    color: black;
+}
+
+.exit{
+    margin-bottom: 1em;
+}
+
+.login-box{
+    margin-top: 25vh;
+    border-radius: 10px;
+    padding: 1em 2em 2em 2em;
+    width: 25em;
+    display: inline-block;
+    background: white;
+}
+
+.btn{
+    transition: all 0.5s ease;
+    background: purple;
+    color: white;
+    border: 1px solid purple;
+}
+
+.btn:hover{
+    transition: all 0.5s ease;
+    background: white;
+    color: purple;
+    border: 1px solid purple;
+}
+
+.error-message{
+    color: red;
+}
+
+/* CONTENT */
+
+.hidden{
+    display: none;
+}
+
+.no-list{
+    display: none;
+}
+
+.artikel-big-list img,
+.artikel-small-list img{
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.artikel-small-list .margin-top-3em{
+    margin-top: 0px;
+}
+
+.artikel-small-list .paragraph{
+    font-size: 12px;
+    display: none;
+}
+
+.artikel-small-list .date{
+    display: none;
+}
+
+.artikel-small-list .judulArtikel h1{
+    font-size: 16px;
+    text-align: left;
+    margin: 0;
+}
+
+.judulArtikel a{
+    text-decoration: none;
+}
+
+.artikel-small-list .buttoncontainer{
+    display: none;
+}
+
+.artikel-small-page{
+    display: none;
+}
+
+.artikel-small-page.active{
+    display: block;
+}
+
+.wrap-content *{
+    -webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.5s; /* Firefox < 16 */
+        -ms-animation: fadein 0.5s; /* Internet Explorer */
+         -o-animation: fadein 0.5s; /* Opera < 12.1 */
+            animation: fadein 0.5s;
+}
+
+@keyframes fadein{
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.wrap-content{
+    min-height: 70vh;
+}
+
+.pagination > .active > a, .pagination > .active > a:active, .pagination > .active > a:focus{
+    background: purple;
+    color: white;
+    border: 1px solid purple;
+}
+
+.pagination > .active > a:hover{
+    background: purple;
+    color: white;
+    border: 1px solid purple;
+}
+
+.pagination > li > a{
+    color: purple;
+}
+
+.pagination > li > a:hover{
+    background: purple;
+    color: white;
+    border: 1px solid purple;
+}
+
+.item > img{
+    height: auto;
+    margin: 0;
+}
+
+.carousel-inner{
+    max-height: 400px;
+    height: auto;
+    margin: 0;
+}
+
+.margin-top-5em{
+    margin-top: 5em;
+}
+
+.margin-top-2em{
+    margin-top: 2em;
+}
+
+.margin-top-3em{
+    margin-top: 3em;
+}
+
+.margin-top-1em{
+    margin-top: 1em;
+}
+
+.font-bold{
+    font-weight: bold;
+}
+
+.italic{
+    font-style: italic;
+    color: gray;
+}
+
+.color-gray{
+    color: dimgray;
+}
+
+.size-12px{
+    font-size: 12px;
+}
+
+a{
+    color: black;
+}
+
+a:hover{
+    color: purple;
+}
+
+.link{
+    color: blue;
+}
+
+.link:hover{
+    color: purple;
+}
+
+.line{
+    margin-top: 10px;
+}
+
+.icon-glyphicon:before{
+    font-size: 20px;
+    margin-right: 1em;
+}
+
+.paragraph{
+    text-align: justify;
+}
+
+.justify{
+    text-align: justify;
+}
+
+.nav.tentangPU>li>a:hover{
+    transition: all 0.5s ease;
+    color: white;
+    background: purple;
+    text-decoration: none;
+}
+
+.div-thumbnail{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sidebar{
+    background: white;
+    padding-top:50px;
+    position: relative;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 755px){
+    .sidebar{
+        display: none;
+    }
+}
+
+.tentangPU li a{
+    color: purple;
+}
+
+#pejabat{
+    padding-top: 60px;
+}
+
+#kontak, #google-maps{
+    padding-top: 2em;
+}
+
+#sejarah{
+    padding-top: 50px;
+}
+
+.no-bullet{
+    list-style-type: none;
+}
+
+.offset{
+    position: relative;
+    top: -40px;
+}
+
+ul.nav-pills{
+    top: 8em;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+    background: purple;
+    color: white;
+}
+
+.font-size-17px{
+    font-size: 17px;
+}
+
+.font-size-12px{
+    font-size: 12px;
+}
+
+.height-content{
+    min-height: 314px;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.staff-name{
+    border-bottom: 1px solid rgba(124,124,124,0.3);
+    margin-bottom: 0.5em;
+}
+
+.tambah-form, .edit-form{
+    max-width: 95%;
+    margin-top: 3vh;
+    border-radius: 10px;
+    padding: 1em 3em 2em 3em;
+    width: 70em;
+    display: inline-block;
+    background: white;
+}
+
+.delete-form{
+    max-width: 95%;
+    margin-top: 25vh;
+    border-radius: 10px;
+    padding: 1em 2em 2em 2em;
+    width: 40em;
+    display: inline-block;
+    background: white;
+}
+
+.galeri{
+    max-width: 95%;
+    margin-top: 5vh;
+    border-radius: 10px;
+    padding: 1em 2em 2em 2em;
+    width: 60em;
+    display: inline-block;
+    background: white;
+}
+
+.tambah-foto{
+    max-width: 95%;
+    margin-top: 20vh;
+    border-radius: 10px;
+    padding: 1em 3em 2em 3em;
+    width: 40em;
+    display: inline-block;
+    background: white;
+}
+
+.delete-foto{
+    max-width: 80%;
+    margin-top: 10vh;
+    border-radius: 10px;
+    padding: 1em 3em 2em 3em;
+    width: 40em;
+    display: inline-block;
+    background: white;
+}
+
+#tentang{
+    padding-top: 70px;
+    height: 500px;
+}
+
+/* SEARCH */
+
+.white{
+    color: white;
+}
+
+.search-input{
+    font-size: 3rem;
+    font-weight: bold;
+    background: none;
+    color: black;
+    box-shadow: none !important;
+    border: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding: 0;
+    width: 70%;
+}
+
+input[type='search']{
+    -webkit-appearance: none;
+    outline: 0;
+}
+
+.padding-0em-3em{
+    padding: 0em 3em;
+}
+
+/* SUMMERNOTE */
+
+.note-toolbar > .note-btn-group > .btn{
+    background: white;
+    color: purple;
+}
+
+.note-toolbar > .note-btn-group > .btn:hover{
+    background: lightgray;
+    color: purple;
+}
+
+.note-toolbar > .note-btn-group > .btn-group > .btn{
+    background: white;
+    color: purple;
+}
+
+.note-toolbar > .note-btn-group > .btn-group > .btn:hover{
+    background: lightgray;
+    color: purple;
+}
+
+/* FOOTER */
+
+.footer{
+    padding-top: 2em;
+    margin: 0;
+    margin-top: 50px;
+    border-radius: 0;
+    transition: margin 0s;
+}
+
+.footer-title{
+    color: lightgray;
+}
+
+.footer-title:hover{
+    color: dimgray;
+    text-decoration: none;
+    transition: all 0.5s ease;
+}
+
+.footer-isi{
+    color: white;
+    font-size: 13px;
+}
+
+.footer-cipta{
+    font-size: 11px;
+}
+
+/* MAP */
+
+#map{
+    width: 100%;
+    height: 400px;
+}
+
+/* MODAL */
+
+body.modal-open-noscroll{
+    padding-right: 0!important;
+    overflow: hidden;
+}
+
+.modal-open-noscroll .navbar-fixed-top, .modal-open .navbar-fixed-bottom{
+    padding-right: 0!important;
+}
