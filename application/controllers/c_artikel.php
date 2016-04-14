@@ -57,6 +57,10 @@ class C_artikel extends CI_Controller{
     }
     
     public function do_upload(){
+        if(!$this->session->userdata('username')){
+            redirect('/c_artikel', 'refresh');
+            return;
+        }
         $this->load->helper('assets_helper');
         $this->load->helper('date');
         $judulArtikel = $this->input->post('judulArtikel');
@@ -159,6 +163,10 @@ class C_artikel extends CI_Controller{
     }
         
     public function do_edit(){
+        if(!$this->session->userdata('username')){
+            redirect('/c_artikel', 'refresh');
+            return;
+        }
         $this->load->helper('assets_helper');
         $this->load->helper('date');
         $judulArtikel = $this->input->post('judulArtikel');
@@ -245,6 +253,11 @@ class C_artikel extends CI_Controller{
     }
     
     public function delete(){
+        if(!$this->session->userdata('username')){
+            $status = new stdClass();
+            $status->status = "success";
+            echo json_encode($status);
+        }
         $id = $this->input->post('idArtikel');
         $this->artikel_model->form_delete($id);
         $this->artikel_model->isi_delete($id);

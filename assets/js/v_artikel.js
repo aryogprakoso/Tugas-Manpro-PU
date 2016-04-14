@@ -156,8 +156,10 @@ function confirmDelete(event, element){
 var globalArtikel = [];
 var globalArtikelNumber = 0;
 var globalPageNumber = 1;
+var isLoggedIn = false;
 
 function loadArtikel(){
+    isLoggedIn = $('#repo>.isloggedin').html().trim()=="1";
     $.ajax({
         url: "c_artikel/getlist",
         type: "GET",
@@ -257,27 +259,50 @@ function createArtikelPage(){
 
 function createArtikelDiv(artikel,number){
     var container = $('<div class="margin-top-3em"></div>');
-    //judul
+    
+    //menampilkan button edit dan delete artikel
+    
+    if(isLoggedIn){
+        var buttoncontainer = $('<div class="text-right buttoncontainer"></div>');
+        var buttonedit = $('<a id="edit" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo" onclick="setEdit(event, this)" data-id="'+globalArtikel[number].idArtikel+'"><span class="glyphicon glyphicon-edit point icon-glyphicon"></sp`an></a>');
+        var buttondelete = $('<a id="delete" data-toggle="modal" data-target="#deleteform" data-whatever="@mdo" onclick="setDelete(event, this)" data-number="'+number+'" data-id="'+globalArtikel[number].idArtikel+'"><span class="glyphicon glyphicon-trash point icon-glyphicon"></span></a>');
+            buttoncontainer.append(buttonedit)
+            buttoncontainer.append(buttondelete)
+        container.append(buttoncontainer)
+    }
+    
+    //menampilkan judul artikel 
     container.append($('<span class="judulArtikel text-center"><h1>'+artikel.judulArtikel+'</h3></span>'));
-    var date = new Date(artikel.waktu);
+    
+    //menampilkan tanggal pembuatan artikel
+    var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum$#39;at', 'Sabtu'];
+    var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    
+    
+    var dateObj = new Date(artikel.waktu);
+    
+    var tanggal = dateObj.getDate();
+    var _hari = dateObj.getDay();
+    var _bulan = dateObj.getMonth();
+    var _tahun = dateObj.getYear();
+    
+    var hari = hari[_hari];
+    var bulan = bulan[_bulan];
+    var tahun = (_tahun<1000) ? _tahun + 1900 : _tahun;
+    
+    var date = hari + ', ' + tanggal + ' ' + bulan + ' ' + tahun;
+    //var date = new Date(artikel.waktu);
     container.append($('<span class="text-center date"><h5 class="italic">'+date+'</h5></span>')) ;
     container.append($('<br>'));
     
-    var paragraph = $('<p class="paragraph"></p>');
+    //menampilkan isi artikel
+    var paragraph = $('<p class=""></p>');
         paragraph.html(artikel.isiArtikel);
     
     var paragraphspan = $('<span></span>');
         paragraphspan.html(paragraph);
     
     container.append(paragraphspan);
-    
-    var buttoncontainer = $('<div class="text-right buttoncontainer"></div>');
-    var buttonedit = $('<a id="edit" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo" onclick="setEdit(event, this)" data-id="'+globalArtikel[number].idArtikel+'"><span class="glyphicon glyphicon-edit point icon-glyphicon"></sp`an></a>');
-    var buttondelete = $('<a id="delete" data-toggle="modal" data-target="#deleteform" data-whatever="@mdo" onclick="setDelete(event, this)" data-number="'+number+'" data-id="'+globalArtikel[number].idArtikel+'"><span class="glyphicon glyphicon-trash point icon-glyphicon"></span></a>');
-        buttoncontainer.append(buttonedit)
-        buttoncontainer.append(buttondelete)
-        
-    container.append(buttoncontainer)
     
     return container;
 }
