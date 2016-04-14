@@ -9,5 +9,34 @@ preparation :
 4. skenario sebaiknya di test dengan berbagai macam perangkat dan jenis layar (e.g LCD,CRT,notebook, Tablet, dan mobile phone)
 5. skenario sebaiknya di test dari berbagai macam platform OS yang umum (e.g Windows, Mac, Linux)
 
-__________________________________________________________________________________________
+_________________________________________________________________________________________
+General Test Scenario
+1. semua field inputan yang WAJIB diisi, harus ditandai dengan simbol (*)
+2. error message harus ditampilkan di tempat yang dapat mudah dilihat oleh user.
+3. semua error message harus ditampilkan dengan style CSS yang sama.
+4. semua general confirmation message(selain error message) harus ditampilkan dengan style CSS
+yang berbeda dengan error message.
+5. bila terdapat tooltips, kalimat yang digunakan harus pendek dan dapat mudah dipahami.
+6. fungsi delete pada record manapun, harus menanyakan konfirmasi ulang.
+7. opsi select/deselect all record harus ada bila website mensupport fungsi add/delete/update record.
+8. input field harus di check untuk max field value. bila input lebih besar daripada max limit, sistem harus menolak memasukkannya ke dalam database
+9. check semua input field untuk special character (mencegah terjadinya sql injection).
+10. check semua text di dalam halaman web untuk mencari kesalahan ketik.
+11. check field inputan numeric dengan memasukkan string ke dalamnya (vice versa). 
+seharusnya terdapat peringatan untuk itu.
+12. check inputan numeric negatif.
+13. check fungsionalitas semua button yang ada di website.
+14. user seharusnya tidak dapat memasukkan inputan dua kali dengan mengklik tombol submit 2x secara cepat.
 
+_____________________________________________________________________________________________
+GUI dan Usability Test Scenario
+1. semua field dalam halaman web harus rapi.
+2. numeric value harus rata kanan.
+3. font size, style, dan warna untuk headline, text deskripsi, label, grid dan lain lain harus 
+sama untuk setiap page.
+4. field yang di disable harus terlihat dengan jelas.
+5.  user tidak dapat mengetik di tipe drop down select list.
+6. bila terdapat error message saat mengisi sebuah form, isian form yang telah diisi tidak boleh hilang
+kecuali password. sehingga user tidak perlu menuliskan dari awal lagi.
+7. default radio option harus telah diisi sebelumnya saat page load.'
+8. 
