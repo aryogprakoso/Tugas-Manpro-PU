@@ -21,6 +21,12 @@ body{
     word-wrap: break-word;
 }
 
+.logo-img{
+    height: 50px;
+    vertical-align: middle;
+    vertical-align: text-middle;
+}
+
 nav{
 	background: purple;
 }

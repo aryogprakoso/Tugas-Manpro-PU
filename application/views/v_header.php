@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="http://www.ukdw.ac.id/"><img src='<?php echo assets()."image/logo.png"; ?>' style="max-width:200px"></a>
+                    <div class="logo-img"><a href="http://www.ukdw.ac.id/" style="display: inline-block"><img src='<?php echo assets()."image/logo.png"; ?>' style="max-width:200px"></a></div>
                 </div>
                 
                 <!-- Collect the nav links, forms, and other content for toggling -->

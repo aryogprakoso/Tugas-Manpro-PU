@@ -1,154 +1,10 @@
-<?php
-$this->load->helper('assets_helper');
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+$this->load->view('v_header', array('nav_beranda'=>"active"));
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Pendeta Universitas Kristen Duta Wacana</title>
-    <link href='<?php echo assets()."bootstrap/css/bootstrap.css" ?>' rel="stylesheet" type="text/css"/>
-	<link href='<?php echo assets()."css/beranda.css" ?>' rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src='<?php echo assets()."jquery-2.2.1.js"; ?>'></script>
-    <script type="text/javascript" src='<?php echo assets()."bootstrap/js/bootstrap.js"; ?>'></script>
-    
-    
-    <!-- MOBILE -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-</head>
-<body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse purple btn-border nav-font">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav nav">
-                    <li class="active"><a>Beranda</a></li>
-                    <li><a href="http://localhost/pendeta_universitas/index.php/c_artikel">Artikel</a></li>
-                    <li><a href="<?php echo site_url('c_peminjaman/index') ;?>">Peminjaman</a></li>
-                    <li><a href="http://localhost/pendeta_universitas/index.php/c_galeri">Galeri</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tentang Pendeta Universitas <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_sejarah">Sejarah Pendeta Universitas</a></li>
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_visi">Visi dan Misi</a></li>
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_tugas">Tugas Pokok dan Program Pendeta Universitas</a></li>
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_layanan">Layanan Unit</a></li>
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_pejabat">Pejabat dan Staff</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <!--
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    </button>
-                </form>
-                -->
-                <?php
-                    if(!$this->session->userdata('username'))
-                    {
-                ?>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In</a>
-                        <div class="dropdown-menu purple" style="padding: 15px; padding-bottom: 0px;">
-                            <form action="<?php echo site_url('c_beranda/do_login');?>" method="post" accept-charset="UTF-8">
-                                <div class="text-center font-black">
-                                    <input style="margin-bottom: 15px" type="text" name="username" placeholder="Username"/>
-                                    <br>
-                                    <input style="margin-bottom: 15px" type="password" name="password" placeholder="Password"/>
-                                    <br>
-                                    <input class="btn btn-primary" style="clear: left; width: 45%; height: 32px; font-size: 13px; margin-bottom:10px;" type="submit" name="submit" value="Sign In"/>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-                <?php
-                    }
-                    else
-                    {
-                        echo $this->session->userdata('username');
-                ?>
-                <a href="<?php echo site_url('c_beranda/do_logout') ;?>">Logout</a>
-                <?php
-                    }
-                ?>
-            </div>
-        </div>
-    </nav>
-    
-    <div class="container">
-        <div class="row">
-            <!-- LOGO UKDW -->
-            <div class="col-md-6">
-                <a href="http://www.ukdw.ac.id/">
-                    <img src='<?php echo assets()."image/logo.png"; ?>'>
-                </a>
-            </div>
-            <!-- TANGGAL DAN JAM -->
-            <div class="col-md-6 text-right font-bold font-size-18px">
-                <div>
-                    <script type='text/javascript'>
-                        var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-                        var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
-                        var date = new Date();
-                        var day = date.getDate();
-                        var month = date.getMonth();
-                        var thisDay = date.getDay(),
-                            thisDay = myDays[thisDay];
-                        var yy = date.getYear();
-                        var year = (yy < 1000) ? yy + 1900 : yy;
-                        document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
-                    </script>
-                </div>
-                <div id="clock">
-                    <script type="text/javascript">
-                        function showTime() {
-                            var a_p = "";
-                            var today = new Date();
-                            var curr_hour = today.getHours();
-                            var curr_minute = today.getMinutes();
-                            var curr_second = today.getSeconds();
-                            curr_hour = checkTime(curr_hour);
-                            curr_minute = checkTime(curr_minute);
-                            curr_second = checkTime(curr_second);
-                            document.getElementById('clock').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
-                        }
-                        function checkTime(i) {
-                            if (i < 10) {
-                                i = "0" + i;
-                            }
-                            return i;
-                        }
-                        setInterval(showTime, 500);
-                    </script>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- MARQUEE -->
-    <div class="container padding-top-35px">
-        <marquee direction="left" scrollamount="4"><h3>SELAMAT DATANG DI WEBSITE PENDETA UNIVERSITAS KRISTEN DUTA WACANA</h3></marquee>
-    </div>
-    
+
+<div class="wrap">
     <!-- IMAGE SLIDE SHOW -->
-    <div id="myCarousel" class="carousel slide container" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide container margin-top-3em" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -159,110 +15,147 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner container" role="listbox">
-            <div class="item active container display-img">
+            <div class="item active container display-img text-center">
                 <img src='<?php echo assets()."image/1.jpg"; ?>' alt="1">
             </div>
 
             <div class="item container display-img">
                 <img src='<?php echo assets()."image/2.jpg"; ?>' alt="1">
             </div>
-            
+
             <div class="item container display-img">
                 <img src='<?php echo assets()."image/3.jpg"; ?>' alt="1">
             </div>
-            
+
             <div class="item container display-img">
                 <img src='<?php echo assets()."image/4.jpg"; ?>' alt="1">
             </div>
         </div>
-        
-        <!-- Left and right controls 
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>-->
-</div>
-    
-    <div class="container padding-top-35px">
+    </div>
+
+    <div class="container margin-top-2em">
+        <button type="button" class="btn margin-top-2em" id="tambah-berita" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo">Tambah Berita</button>
+    </div>
+
+    <!-- FORM TAMBAH BERITA -->
+    <div class="modal fade text-center" id="tambahform" role="dialog">
+        <div class="tambah-form">
+            <div class="exit text-right">
+                <a id="tambah" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo"><span class="glyphicon glyphicon-remove point"></span></a>
+            </div>
+            <form class="form-horizontal" enctype="multipart/form-data" id="form" accept-charset="utf-8" method="post" action="<?php echo base_url()."index.php/c_berita/do_upload"; ?>">
+                <input type="hidden" name="idBerita" id="idBerita"><label class="control-label"><h3 class="font-bold">TAMBAH BERITA</h3></label>
+                <div class="text-left form-group">
+                    <label class="control-label">Judul</label>
+                    <input type="text" class="form-control" placeholder="Judul Berita" name="judulBerita" id="judulBerita">
+                </div>
+                <div class="text-left form-group">
+                    <label class="control-label">Isi</label>
+                    <textarea id="summernote" name="isiBerita"></textarea>
+                    <script>
+                        $(document).ready(function() {
+                            $('#summernote').summernote({
+                                height: 173,
+                                minHeight: 173,
+                                maxHeight: 500,
+                                focus: true,
+                                toolbar: [
+                                    // [groupName, [list of button]]
+                                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                                    ['fontsize', ['fontsize']],
+                                    ['color', ['color']],
+                                    ['para', ['style', 'ul', 'ol', 'paragraph']],
+                                    ['height', ['height']],
+                                    ['table', ['table']],
+                                    ['insert', ['picture', 'link', 'hr']],
+                                    ['misc', ['undo', 'redo', 'help']]
+                                ],
+                                disableDragAndDrop: true,
+                                image: [
+                                    ['maximumFileSize',['100kb']] ,
+                                    ['maximumFileSizeError', ['Maximum file size exceeded.']]
+                                ]
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <label class="error-message">[Error Message]</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <button type="submit" class="btn btn-default">Simpan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container margin-top-2em">
         <div class="row">
-            <div class="col-sm-9">
-                <h2 class="font-bold">Berita Pendeta Universitas</h2>
-                <hr class="line-bold">
+            <div class="col-sm-8">
+                <h2>Berita Terbaru</h2>
+                <hr class="line">
                 <div>
-                    <p>Tanggal</p>
-                    <h3 class="font-bold">Lorem ipsum dolor sit amet</h3>
-                    <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">Baca Selengkapnya >></a>
-                    </p>
-                </div>
-                <div class="padding-top-35px">
-                    <p>Tanggal</p>
-                    <h3 class="font-bold">Lorem ipsum dolor sit amet</h3>
-                    <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">Baca Selengkapnya >></a>
-                    </p>
-                </div>
-                <div class="padding-top-35px">
-                    <p>Tanggal</p>
-                    <h3 class="font-bold">Lorem ipsum dolor sit amet</h3>
-                    <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">Baca Selengkapnya >></a>
-                    </p>
+                    <span class="text-center"><h1 class="font-bold"><a href="http://localhost/pendeta_universitass/index.php/c_berita">Hello World!</a></h1></span>
+                    <span class="text-center"><h5 class="italic">Selasa, 5 April 2016</h5></span>
+                    <br>
+                    <span><p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="http://localhost/pendeta_universitass/index.php/c_berita" class="link">Baca Selengkapnya >></a>
+                    </p></span>
+                    <!--
+                    <div class="text-right">
+                        <a id="edit" data-toggle="modal" data-target="#editform" data-whatever="@mdo"><span class="glyphicon glyphicon-edit point icon-glyphicon"></span></a>
+                        <a id="delete" data-toggle="modal" data-target="#deleteform" data-whatever="@mdo"><span class="glyphicon glyphicon-trash point icon-glyphicon"></span></a>
+                    </div>
+                    -->
                 </div>
             </div>
-            
+
             <!-- LIST BERITA -->
-            <div class="col-sm-3">
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
+            <div class="col-sm-4">
+                <h3>List Berita</h3>
+                <hr class="line">
+                <div class="margin-top-2em">
+                    <span class="text-center"><h4 class="font-bold"><a href="#">Hello World!</a></h3></span>
+                    <span class="text-center"><h6 class="italic">Selasa, 5 April 2016</h5></span>
+                    <span><p class="paragraph size-12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#" class="link">Baca Selengkapnya >></a>
+                    </p></span>
                 </div>
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
+                <div class="margin-top-2em">
+                    <span class="text-center"><h4 class="font-bold"><a href="#">Hello World!</a></h3></span>
+                    <span class="text-center"><h6 class="italic">Selasa, 5 April 2016</h5></span>
+                    <span><p class="paragraph size-12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#" class="link">Baca Selengkapnya >></a>
+                    </p></span>
                 </div>
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
+                <div class="margin-top-2em">
+                    <span class="text-center"><h4 class="font-bold"><a href="#">Hello World!</a></h3></span>
+                    <span class="text-center"><h6 class="italic">Selasa, 5 April 2016</h5></span>
+                    <span><p class="paragraph size-12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#" class="link">Baca Selengkapnya >></a>
+                    </p></span>
                 </div>
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
-                </div>
-                <div>
-                    <p class="padding-top-35px">Tanggal</p>
-                    <a href="#" class="font-size-16px font-bold">Lorem ipsum dolor sit amet</a>
-                </div>
-                <div>
-                    <nav>
-                        <ul class="pagination">
-                            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="text-center">
+                    <ul class="pagination">
+                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- FOOTER -->
-    <nav class="navbar navbar-static-bottom purple btn-border font-white footer">
-        <div class="container">
-            <p class="font-size-16px font-bold">PENDETA UNIVERSITAS</p>
-            <p class="font-size-16px font-bold">Universitas Kristen Duta Wacana</p>
-            <p>Jl. Dr. Wahidim Sudirohusodo 5-25 <br>Yogyakarta (55224) Indonesia. <br>Tel: +62 274 563929, Ext 104</p>
-            <p class="text-right font-size-12px">Hak Cipta @ Pendeta Universitas Kristen Duta Wacana 2016.</p>
-        </div>
-    </nav>
-</body>
-</html>
+</div>
+
+<?php 
+$this->load->view('v_footer');
+?>
