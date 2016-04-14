@@ -1,0 +1,4 @@
+#waktuModal::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    display: none;
+}
