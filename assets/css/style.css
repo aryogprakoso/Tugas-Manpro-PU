@@ -8,6 +8,8 @@ body{
     padding-top: 70px;
     transition: all 0.5s ease;
     position: relative;
+    background-image: url("../image/background.jpg");
+    background-attachment: fixed;
 }
 
 .modal-open{
@@ -295,7 +297,7 @@ a:hover{
 }
 
 .sidebar{
-    background: white;
+    background: none;
     padding-top:50px;
     position: relative;
     overflow-y: auto;
@@ -465,6 +467,34 @@ input[type='search']{
 .note-toolbar > .note-btn-group > .btn-group > .btn:hover{
     background: lightgray;
     color: purple;
+}
+
+/* GO TO TOP */
+
+.go-top{
+    position: fixed;
+    bottom: 18em;
+    right: 2em;
+    text-decoration: none;
+    background-color: purple;
+    font-size: 12px;
+    padding: 10px;
+    display: none;
+    margin: 0;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.go-top:hover{
+    transition: all 0.5s ease;
+    background-color: #8e44ad;
+    text-decoration: none;
+    color: purple;
+}
+
+.go-top .glyphicon{
+    color: #fafafa;
 }
 
 /* FOOTER */

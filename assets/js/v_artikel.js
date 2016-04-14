@@ -264,7 +264,7 @@ function createArtikelDiv(artikel,number){
     
     if(isLoggedIn){
         var buttoncontainer = $('<div class="text-right buttoncontainer"></div>');
-        var buttonedit = $('<a id="edit" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo" onclick="setEdit(event, this)" data-id="'+globalArtikel[number].idArtikel+'"><span class="glyphicon glyphicon-edit point icon-glyphicon"></sp`an></a>');
+        var buttonedit = $('<a id="edit" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo" onclick="setEdit(event, this)" data-id="'+globalArtikel[number].idArtikel+'"><span class="glyphicon glyphicon-edit point icon-glyphicon"></span></a>');
         var buttondelete = $('<a id="delete" data-toggle="modal" data-target="#deleteform" data-whatever="@mdo" onclick="setDelete(event, this)" data-number="'+number+'" data-id="'+globalArtikel[number].idArtikel+'"><span class="glyphicon glyphicon-trash point icon-glyphicon"></span></a>');
             buttoncontainer.append(buttonedit)
             buttoncontainer.append(buttondelete)
