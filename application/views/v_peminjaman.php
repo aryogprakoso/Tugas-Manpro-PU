@@ -8,12 +8,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Pendeta Universitas Kristen Duta Wacana</title>
     <link href='<?php echo assets()."bootstrap/css/bootstrap.css" ?>' rel="stylesheet" type="text/css"/>
-	<link href='<?php echo assets()."css/beranda.css" ?>' rel="stylesheet" type="text/css"/>
+    <link href='<?php echo assets()."css/beranda.css" ?>' rel="stylesheet" type="text/css"/>
+	<link href='<?php echo assets()."css/peminjaman.css" ?>' rel="stylesheet" type="text/css"/>
+    <link href='<?php echo assets()."jquery-ui/jquery-ui.css" ?>' rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src='<?php echo assets()."jquery-2.2.1.js"; ?>'></script>
+    <script type="text/javascript" src='<?php echo assets()."jquery-ui/jquery-ui.js"; ?>'></script>
     <script type="text/javascript" src='<?php echo assets()."bootstrap/js/bootstrap.js"; ?>'></script>
     <script type="text/javascript" src='<?php echo assets()."js/v_peminjaman.js"; ?>'></script>
-    <link href='<?php echo assets()."summernote/dist/summernote.css" ?>' rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src='<?php echo assets()."summernote/dist/summernote.js"; ?>'></script>
     
     <!-- MOBILE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -118,26 +119,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     
-    <h2 class="text-center">Jadwal Peminjaman Ruang dan Alat</h2>
+    <h2 class="text-center">Jadwal Pemakaian Ruangan</h2>
     
     <!-- Input Tanggal -->
     <div class="text-center">
-        <label>Pilih Tanggal Peminjaman</label>
-        <input type="month" id="waktu"/>
+        <label>Bulan</label>
+        <input type="month" id="waktuSearch" required="required"/>
     </div>
     
-    <div class="row">a</div>
+    <div class="row" id="jarak">a</div>
+    
+    <div class="container">
+        <div class="text-center alert alert-success" id="info"></div>
+    </div>
     
     <!-- Table -->
     <div class = "container table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th class = "text-center">Waktu</th>
+                <th class = "text-center">Tanggal</th>
+                <th class = "text-center">Mulai</th>
+                <th class = "text-center">Selesai</th>
                 <th class = "text-center">Ruang</th>
                 <th class = "text-center">Alat</th>
-                <th class = "text-center">Keterangan</th>
                 <th class = "text-center">Penanggung Jawab</th>
+                <th class = "text-center">Keterangan</th>
+                <?php
+                if($this->session->userdata('username'))
+                {
+                ?>
+                    <th class = "text-center">Action</th>
+                <?php
+                }
+                ?>
               </tr>
             </thead>
             <tbody class="text-center" id="tableBody"></tbody>
@@ -147,70 +162,212 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         if($this->session->userdata('username'))
         {
     ?>
-    <!-- Button -->
+    <!-- Button Tambah Peminjaman -->
     <div class="container">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Tambah Data</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalTambahPeminjaman" id="modalTambahData">Tambah Data</button>
     </div>
     <?php
         }
     ?>
     
-    <!-- Modal -->
-    <form action="<?php echo site_url('c_peminjaman/tambah_data');?>" method="post" accept-charset="UTF-8" role="form">
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <button type="button" class="close" 
-                           data-dismiss="modal">
-                               <span aria-hidden="true">&times;</span>
-                               <span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            Modal title
-                        </h4>
+    <!-- Modal Tambah Peminjaman -->
+    <div class="modal fade" id="modalTambahPeminjaman" tabindex="-1" role="dialog" aria-labelledby="judulTambah" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                       data-dismiss="modal">
+                           <span aria-hidden="true">&times;</span>
+                           <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-center" id="judulTambah">
+                        Tambah Data Peminjaman
+                    </h4>
                     </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body">
+                <!-- Modal Body -->
+                <div class="modal-body">
 
+                      <div class="form-group">
+                          <label class="col-sm-2">Tanggal:</label>
+                          <div class="col-sm-5">
+                            <input type="text" class="text-center" id="waktuModalTambah"/>
+                          </div>
+                          <label><small>(Format Tanggal = Hari-Bulan-Tahun)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Mulai:</label>
+                          <div class="col-sm-4">
+                            <input class="text-center" type="number" id="jamMulaiTambah" min="0" max="23" step="1" value="0"/>
+                            <b>:</b>
+                            <input class="text-center" type="number" id="menitMulaiTambah" min="0" max="45" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Mulai = Jam:Menit)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Selesai:</label>
+                          <div class="col-sm-4">
+                            <input class="text-center" type="number" id="jamSelesaiTambah" min="0" max="23" step="1" value="0"/>
+                            <b>:</b>
+                            <input class="text-center" type="number" id="menitSelesaiTambah" min="0" max="45" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Selesai = Jam:Menit)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Ruang:</label>
+                          <div class="col-sm-5">
+                                <label class="radio-inline tambah"><input type="radio" name="ruang" value="Kapel Atas">Kapel Atas</label>
+                                <label class="radio-inline tambah"><input type="radio" name="ruang" value="Kapel Bawah">Kapel Bawah</label>
+                          </div>
+                          <label><small>(Pilih Salah Satu Ruang)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Alat:</label>
+                          <div class="col-sm-8">
+                                <label class="checkbox-inline tambah"><input type="checkbox" value="Alat Musik">Alat Musik</label>
+                                <label class="checkbox-inline tambah"><input type="checkbox" value="Alat Peribadatan">Alat Peribadatan</label>
+                                <label class="checkbox-inline tambah"><input type="checkbox" value="Alat Elektronik">Alat Elektronik</label>
+                          </div>
+                          <label><small>(Boleh Kosong)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-5">Keterangan: <small>(Sisa </small><small id="sisaHurufTambah"></small><small> Huruf)</small></label>
+                          <textarea class="form-control" rows="3" id="keteranganTambah" maxlength="200"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-4">Penanggung Jawab:</label>
+                          <select id="selectPJTambah"></select>
+                      </div>
+                </div>
 
-                          <div class="form-group">
-                              <label class="col-sm-2">Waktu:</label>
-                              <input type="text" class="form-control" name="waktu"/>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-2">Ruang:</label>
-                              <label class="radio-inline"><input type="radio" name="ruang" value="Kapel Atas">Kapel Atas</label>
-                              <label class="radio-inline"><input type="radio" name="ruang" value="Kapel Bawah">Kapel Bawah</label>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-2">Alat:</label>
-                              <label class="checkbox-inline"><input type="checkbox" name="alat[]" value="Alat Musik">Alat Musik</label>
-                              <label class="checkbox-inline"><input type="checkbox" name="alat[]" value="Alat Peribadatan">Alat Peribadatan</label>
-                              <label class="checkbox-inline"><input type="checkbox" name="alat[]" value="Alat Elektronik">Alat Elektronik</label>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-3">Keterangan:</label>
-                              <textarea class="form-control" rows="3" id="comment"></textarea>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-4">Penanggung Jawab:</label>
-                              <input type="text" class="form-control" name="penanggungJawab"/>
-                          </div>
-
-                    </div>
-
-                    <!-- Modal Footer -->
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" name="submit"> Tambah Data </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
-                    </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="submitTambahPeminjaman" data-dismiss="modal"> Tambah Data </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+    
+    <!-- Modal Hapus Peminjaman -->
+    <div class="modal fade" id="modalHapusPeminjaman" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-center">Hapus Data Peminjaman</h4>
+          </div>
+          <div class="modal-body text-center">
+            <p>Apakah anda Yakin untuk menghapus Data Peminjaman dengan</p>
+            <p><b id="keteranganTanggalHapusPeminjaman"></b></p>
+            <p><b id="keteranganMulaiHapusPeminjaman"></b></p>
+            <p><b id="keteranganSelesaiHapusPeminjaman"></b></p>
+            <p><b id="keteranganRuangHapusPeminjaman"></b></p>
+            <p><b id="keteranganAlatHapusPeminjaman"></b></p>
+            <p><b id="keteranganPJHapusPeminjaman"></b></p>
+            <p><b id="keteranganHapusPeminjaman"></b></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="submitHapusPeminjaman" data-dismiss="modal">Hapus</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <!-- Modal Edit Peminjaman -->
+    <div class="modal fade" id="modalEditPeminjaman" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                       data-dismiss="modal">
+                           <span aria-hidden="true">&times;</span>
+                           <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-center" id="judulEdit">
+                        Edit Data Peminjaman
+                    </h4>
+                    </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                      <div class="form-group">
+                          <label class="col-sm-2">Tanggal:</label>
+                          <div class="col-sm-5">
+                            <input type="text" class="text-center" id="waktuModalEdit"/>
+                          </div>
+                          <label><small>(Format Tanggal = Hari-Bulan-Tahun)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Mulai:</label>
+                          <div class="col-sm-4">
+                            <input class="text-center" type="number" id="jamMulaiEdit" min="0" max="23" step="1" value="0"/>
+                            <b>:</b>
+                            <input class="text-center" type="number" id="menitMulaiEdit" min="0" max="45" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Mulai = Jam:Menit)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Selesai:</label>
+                          <div class="col-sm-4">
+                            <input class="text-center" type="number" id="jamSelesaiEdit" min="0" max="23" step="1" value="0"/>
+                            <b>:</b>
+                            <input class="text-center" type="number" id="menitSelesaiEdit" min="0" max="45" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Selesai = Jam:Menit)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Ruang:</label>
+                          <div class="col-sm-5">
+                                <label class="radio-inline edit"><input type="radio" name="ruang" value="Kapel Atas">Kapel Atas</label>
+                                <label class="radio-inline edit"><input type="radio" name="ruang" value="Kapel Bawah">Kapel Bawah</label>
+                          </div>
+                          <label><small>(Pilih Salah Satu Ruang)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Alat:</label>
+                          <div class="col-sm-8">
+                                <label class="checkbox-inline edit"><input type="checkbox" value="Alat Musik">Alat Musik</label>
+                                <label class="checkbox-inline edit"><input type="checkbox" value="Alat Peribadatan">Alat Peribadatan</label>
+                                <label class="checkbox-inline edit"><input type="checkbox" value="Alat Elektronik">Alat Elektronik</label>
+                          </div>
+                          <label><small>(Boleh Kosong)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-5">Keterangan: <small>(Sisa </small><small id="sisaHurufEdit"></small><small> Huruf)</small></label>
+                          <textarea class="form-control" rows="3" id="keteranganEdit" maxlength="200"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-4">Penanggung Jawab:</label>
+                          <select id="selectPJEdit"></select>
+                      </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="submitEditPeminjaman" data-dismiss="modal"> Edit Data </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- FOOTER -->
     <nav class="navbar navbar-static-bottom purple btn-border font-white footer">
