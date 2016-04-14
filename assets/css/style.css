@@ -541,7 +541,7 @@ input[type='search']{
 
 /* MODAL */
 
-body.modal-open-noscroll{
+body.modal-open-noscroll, body#modalTambahPeminjaman>.modal-dialog{
     padding-right: 0!important;
     overflow: hidden;
 }
