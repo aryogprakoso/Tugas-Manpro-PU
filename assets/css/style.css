@@ -185,6 +185,7 @@ div#repo{
 
 .wrap-content{
     min-height: 70vh;
+    
 }
 
 .pagination > .active > a, .pagination > .active > a:active, .pagination > .active > a:focus{

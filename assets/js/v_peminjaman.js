@@ -219,7 +219,7 @@ $(document).ready(function()
             if(index != bykCheck-1)
                 alatPeminjaman = alatPeminjaman + ",";
         });
-        
+        console.log("asdasda");
         $.ajax({
             type     : 'POST',
             url      : 'http://localhost/pendeta_universitas/index.php/c_peminjaman/tambah_peminjaman',

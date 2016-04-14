@@ -2,122 +2,267 @@
 $this->load->helper('assets_helper');
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Pendeta Universitas Kristen Duta Wacana</title>
-    <link href='<?php echo assets()."bootstrap/css/bootstrap.css" ?>' rel="stylesheet" type="text/css"/>
-    <link href='<?php echo assets()."css/beranda.css" ?>' rel="stylesheet" type="text/css"/>
-	<link href='<?php echo assets()."css/peminjaman.css" ?>' rel="stylesheet" type="text/css"/>
-    <link href='<?php echo assets()."jquery-ui/jquery-ui.css" ?>' rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src='<?php echo assets()."jquery-2.2.1.js"; ?>'></script>
-    <script type="text/javascript" src='<?php echo assets()."jquery-ui/jquery-ui.js"; ?>'></script>
-    <script type="text/javascript" src='<?php echo assets()."bootstrap/js/bootstrap.js"; ?>'></script>
-    <script type="text/javascript" src='<?php echo assets()."js/v_peminjaman.js"; ?>'></script>
+<?php 
+$this->load->view('v_header', array('nav_peminjaman'=>"active"));
+?>
+
+<script type="text/javascript" src='<?php echo assets()."js/v_peminjaman.js"; ?>'></script>
+
+<div class="wrap-content">
+    <h2 class="text-center">Jadwal Pemakaian Ruangan</h2>
     
-    <!-- MOBILE -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-</head>
-<body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse purple btn-border nav-font">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav nav">
-                    <li><a href="<?php echo site_url('c_beranda/index') ;?>">Beranda</a></li>
-                    <li><a href="http://localhost/pendeta_universitas/index.php/c_artikel">Artikel</a></li>
-                    <li class="active"><a href="http://localhost/pendeta_universitas/index.php/c_peminjaman">Peminjaman</a></li>
-                    <li><a href="http://localhost/pendeta_universitas/index.php/c_galeri">Galeri</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tentang Pendeta Universitas <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_sejarah">Sejarah Pendeta Universitas</a></li>
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_visi">Visi dan Misi</a></li>
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_tugas">Tugas Pokok dan Program Pendeta Universitas</a></li>
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_layanan">Layanan Unit</a></li>
-                            <li><a href="http://localhost/pendeta_universitas/index.php/c_pejabat">Pejabat dan Staff</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <!--
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    </button>
-                </form>
-                -->
-                
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Sign In</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Input Tanggal -->
+    <div class="text-center">
+        <label>Bulan</label>
+        <input type="month" id="waktuSearch" required="required"/>
+    </div>
+    
+    <div class="row" id="jarak">a</div>
     
     <div class="container">
-        <div class="row">
-            <!-- LOGO UKDW -->
-            <div class="col-md-6">
-                <a href="http://www.ukdw.ac.id/">
-                    <img src='<?php echo assets()."image/logo.png"; ?>'>
-                </a>
-            </div>
-            <!-- TANGGAL DAN JAM -->
-            <div class="col-md-6 text-right font-bold font-size-18px">
-                <div>
-                    <script type='text/javascript'>
-                        var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-                        var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
-                        var date = new Date();
-                        var day = date.getDate();
-                        var month = date.getMonth();
-                        var thisDay = date.getDay(),
-                            thisDay = myDays[thisDay];
-                        var yy = date.getYear();
-                        var year = (yy < 1000) ? yy + 1900 : yy;
-                        document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
-                    </script>
+        <div class="text-center alert alert-success" id="info"></div>
+    </div>
+    
+    <!-- Table -->
+    <div class = "container table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th class = "text-center">Tanggal</th>
+                <th class = "text-center">Mulai</th>
+                <th class = "text-center">Selesai</th>
+                <th class = "text-center">Ruang</th>
+                <th class = "text-center">Alat</th>
+                <th class = "text-center">Penanggung Jawab</th>
+                <th class = "text-center">Keterangan</th>
+                <?php
+                if($this->session->userdata('username'))
+                {
+                ?>
+                    <th class = "text-center">Action</th>
+                <?php
+                }
+                ?>
+              </tr>
+            </thead>
+            <tbody class="text-center" id="tableBody"></tbody>
+        </table>
+    </div>
+    <?php
+        if($this->session->userdata('username'))
+        {
+    ?>
+    <!-- Button Tambah Peminjaman -->
+    <div class="container">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalTambahPeminjaman" id="modalTambahData">Tambah Data</button>
+    </div>
+    <?php
+        }
+    ?>
+    
+    <!-- Modal Tambah Peminjaman -->
+    <div class="modal fade" id="modalTambahPeminjaman" tabindex="-1" role="dialog" aria-labelledby="judulTambah" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                       data-dismiss="modal">
+                           <span aria-hidden="true">&times;</span>
+                           <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-center" id="judulTambah">
+                        Tambah Data Peminjaman
+                    </h4>
+                    </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                      <div class="form-group">
+                          <label class="col-sm-2">Tanggal:</label>
+                          <div class="col-sm-5">
+                            <input type="text" class="text-center" id="waktuModalTambah"/>
+                          </div>
+                          <label><small>(Format Tanggal = Hari-Bulan-Tahun)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Mulai:</label>
+                          <div class="col-sm-4">
+                            <input class="text-center" type="number" id="jamMulaiTambah" min="0" max="23" step="1" value="0"/>
+                            <b>:</b>
+                            <input class="text-center" type="number" id="menitMulaiTambah" min="0" max="45" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Mulai = Jam:Menit)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Selesai:</label>
+                          <div class="col-sm-4">
+                            <input class="text-center" type="number" id="jamSelesaiTambah" min="0" max="23" step="1" value="0"/>
+                            <b>:</b>
+                            <input class="text-center" type="number" id="menitSelesaiTambah" min="0" max="45" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Selesai = Jam:Menit)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Ruang:</label>
+                          <div class="col-sm-5">
+                                <label class="radio-inline tambah"><input type="radio" name="ruang" value="Kapel Atas">Kapel Atas</label>
+                                <label class="radio-inline tambah"><input type="radio" name="ruang" value="Kapel Bawah">Kapel Bawah</label>
+                          </div>
+                          <label><small>(Pilih Salah Satu Ruang)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Alat:</label>
+                          <div class="col-sm-8">
+                                <label class="checkbox-inline tambah"><input type="checkbox" value="Alat Musik">Alat Musik</label>
+                                <label class="checkbox-inline tambah"><input type="checkbox" value="Alat Peribadatan">Alat Peribadatan</label>
+                                <label class="checkbox-inline tambah"><input type="checkbox" value="Alat Elektronik">Alat Elektronik</label>
+                          </div>
+                          <label><small>(Boleh Kosong)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-5">Keterangan: <small>(Sisa </small><small id="sisaHurufTambah"></small><small> Huruf)</small></label>
+                          <textarea class="form-control" rows="3" id="keteranganTambah" maxlength="200"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-4">Penanggung Jawab:</label>
+                          <select id="selectPJTambah"></select>
+                      </div>
                 </div>
-                <div id="clock">
-                    <script type="text/javascript">
-                        function showTime() {
-                            var a_p = "";
-                            var today = new Date();
-                            var curr_hour = today.getHours();
-                            var curr_minute = today.getMinutes();
-                            var curr_second = today.getSeconds();
-                            curr_hour = checkTime(curr_hour);
-                            curr_minute = checkTime(curr_minute);
-                            curr_second = checkTime(curr_second);
-                            document.getElementById('clock').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
-                        }
-                        function checkTime(i) {
-                            if (i < 10) {
-                                i = "0" + i;
-                            }
-                            return i;
-                        }
-                        setInterval(showTime, 500);
-                    </script>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="submitTambahPeminjaman" data-dismiss="modal"> Tambah Data </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- Modal Hapus Peminjaman -->
+    <div class="modal fade" id="modalHapusPeminjaman" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-center">Hapus Data Peminjaman</h4>
+          </div>
+          <div class="modal-body text-center">
+            <p>Apakah anda Yakin untuk menghapus Data Peminjaman dengan</p>
+            <p><b id="keteranganTanggalHapusPeminjaman"></b></p>
+            <p><b id="keteranganMulaiHapusPeminjaman"></b></p>
+            <p><b id="keteranganSelesaiHapusPeminjaman"></b></p>
+            <p><b id="keteranganRuangHapusPeminjaman"></b></p>
+            <p><b id="keteranganAlatHapusPeminjaman"></b></p>
+            <p><b id="keteranganPJHapusPeminjaman"></b></p>
+            <p><b id="keteranganHapusPeminjaman"></b></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="submitHapusPeminjaman" data-dismiss="modal">Hapus</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <!-- Modal Edit Peminjaman -->
+    <div class="modal fade" id="modalEditPeminjaman" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                       data-dismiss="modal">
+                           <span aria-hidden="true">&times;</span>
+                           <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title text-center" id="judulEdit">
+                        Edit Data Peminjaman
+                    </h4>
+                    </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                      <div class="form-group">
+                          <label class="col-sm-2">Tanggal:</label>
+                          <div class="col-sm-5">
+                            <input type="text" class="text-center" id="waktuModalEdit"/>
+                          </div>
+                          <label><small>(Format Tanggal = Hari-Bulan-Tahun)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Mulai:</label>
+                          <div class="col-sm-4">
+                            <input class="text-center" type="number" id="jamMulaiEdit" min="0" max="23" step="1" value="0"/>
+                            <b>:</b>
+                            <input class="text-center" type="number" id="menitMulaiEdit" min="0" max="45" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Mulai = Jam:Menit)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Selesai:</label>
+                          <div class="col-sm-4">
+                            <input class="text-center" type="number" id="jamSelesaiEdit" min="0" max="23" step="1" value="0"/>
+                            <b>:</b>
+                            <input class="text-center" type="number" id="menitSelesaiEdit" min="0" max="45" step="15" value="0"/>
+                          </div>
+                          <label><small>(Format Selesai = Jam:Menit)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Ruang:</label>
+                          <div class="col-sm-5">
+                                <label class="radio-inline edit"><input type="radio" name="ruang" value="Kapel Atas">Kapel Atas</label>
+                                <label class="radio-inline edit"><input type="radio" name="ruang" value="Kapel Bawah">Kapel Bawah</label>
+                          </div>
+                          <label><small>(Pilih Salah Satu Ruang)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2">Alat:</label>
+                          <div class="col-sm-8">
+                                <label class="checkbox-inline edit"><input type="checkbox" value="Alat Musik">Alat Musik</label>
+                                <label class="checkbox-inline edit"><input type="checkbox" value="Alat Peribadatan">Alat Peribadatan</label>
+                                <label class="checkbox-inline edit"><input type="checkbox" value="Alat Elektronik">Alat Elektronik</label>
+                          </div>
+                          <label><small>(Boleh Kosong)</small></label>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-5">Keterangan: <small>(Sisa </small><small id="sisaHurufEdit"></small><small> Huruf)</small></label>
+                          <textarea class="form-control" rows="3" id="keteranganEdit" maxlength="200"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-4">Penanggung Jawab:</label>
+                          <select id="selectPJEdit"></select>
+                      </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="submitEditPeminjaman" data-dismiss="modal"> Edit Data </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php 
+$this->load->view('v_footer');
+?>
     
     <h2 class="text-center">Jadwal Pemakaian Ruangan</h2>
     
