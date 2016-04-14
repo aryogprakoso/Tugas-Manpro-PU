@@ -15,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link href='<?php echo assets()."css/style.css" ?>' rel="stylesheet" type="text/css"/>
     <link href='<?php echo assets()."css/font.css" ?>' rel="stylesheet" type="text/css"/>
 	<link href='<?php echo assets()."css/styleGambarSlider.css" ?>' rel="stylesheet" type="text/css"/>
+    <link href='<?php echo assets()."jquery-ui/jquery-ui.css" ?>' rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src='<?php echo assets()."jquery-2.2.1.js"; ?>'></script>
     <script type="text/javascript" src='<?php echo assets()."jquery-ui/jquery-ui.js"; ?>'></script>
     <script type="text/javascript" src='<?php echo assets()."bootstrap/js/bootstrap.js"; ?>'></script>
