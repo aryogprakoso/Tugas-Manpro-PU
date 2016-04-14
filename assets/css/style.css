@@ -102,7 +102,15 @@ header *{
     color: red;
 }
 
+.navbar-nav > li >.display-name:hover{
+    background: purple;
+    color: white;
+}
+
 /* CONTENT */
+div#repo{
+    display: none;
+}
 
 .hidden{
     display: none;
