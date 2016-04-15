@@ -28,7 +28,7 @@ class Galeri_model extends CI_Model{
         return $res;
     }
     
-    ublic function gambar_delete($idGaleri){
+    public function gambar_delete($idGaleri){
         $data = $this->db->get_where('galeri', array('idGaleri' => $idGaleri));
         $data = $data->result_array();
         $this->load->helper('assets_helper');
