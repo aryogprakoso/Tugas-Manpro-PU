@@ -2,6 +2,12 @@
 $this->load->view('v_header', array('nav_kontak'=>"active"));
 ?>
 
+<!--script
+src="http://maps.googleapis.com/maps/api/js">
+</script-->
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpkPhlTVeGOb7lAVUnG2a_K_bQP_Wp3qA&callback=initMap"></script>
+
 <div class="container height-content wrap-content">
     <div class="row">
         <div class="col-xs-6 col-sm-3">
@@ -46,6 +52,7 @@ $this->load->view('v_header', array('nav_kontak'=>"active"));
                 <div id="map" class="img-thumbnail"></div>
                 <script>
                     var myCenter=new google.maps.LatLng(-7.786050,-110.378365);
+                    var marker;
                     function initMap(){
                         var mapProp = {
                             center:myCenter,
@@ -57,12 +64,13 @@ $this->load->view('v_header', array('nav_kontak'=>"active"));
 
                         var marker=new google.maps.Marker({
                             position:myCenter,
+                            animation:google.maps.Animation.BOUNCE
                         });
 
                         marker.setMap(map);
                     }
 
-                    google.maps.event.addDomListener(window, 'load', initialize);
+                    google.maps.event.addDomListener(window, 'load', initMap);
                 </script>
             </div>
         </div>
