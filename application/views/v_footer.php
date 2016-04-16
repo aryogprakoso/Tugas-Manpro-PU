@@ -1,7 +1,7 @@
     <nav class="navbar navbar-static-bottom footer">
         <div class="container">
             <div class="row">
-                <div class="col-xs-4 col-sm-3">
+                <div class="col-xs-6 col-sm-4">
                     <div class="footer-title">
                         Pendeta Universitas <br>Universitas Kristen Duta Wacana 
                     </div>

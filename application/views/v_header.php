@@ -23,9 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
 	<link href='<?php echo assets()."summernote/dist/summernote.css" ?>' rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src='<?php echo assets()."summernote/dist/summernote.js"; ?>'></script>
-        
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpkPhlTVeGOb7lAVUnG2a_K_bQP_Wp3qA&callback=initMap" async defer></script>
-    
+
     <!-- MOBILE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -50,10 +48,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class='<?php if(isset($nav_beranda)){echo $nav_beranda;} ?>'><a href="http://localhost/pendeta_universitas/index.php/c_beranda">BERANDA</a></li>
+                        <li class='<?php if(isset($nav_tentang)){echo $nav_tentang;} ?>'><a href="http://localhost/pendeta_universitas/index.php/c_tentang">TENTANG</a></li>
                         <li class='<?php if(isset($nav_artikel)){echo $nav_artikel;} ?>'><a href="http://localhost/pendeta_universitas/index.php/c_artikel">ARTIKEL</a></li>
                         <li class='<?php if(isset($nav_galeri)){echo $nav_galeri;} ?>'><a href="http://localhost/pendeta_universitas/index.php/c_galeri">GALERI</a></li>
                         <li class='<?php if(isset($nav_peminjaman)){echo $nav_peminjaman;} ?>'><a href="http://localhost/pendeta_universitas/index.php/c_peminjaman">PEMINJAMAN</a></li>
-                        <li class='<?php if(isset($nav_tentang)){echo $nav_tentang;} ?>'><a href="http://localhost/pendeta_universitas/index.php/c_tentang">TENTANG</a></li>
                         <li class='<?php if(isset($nav_kontak)){echo $nav_kontak;} ?>'><a href="http://localhost/pendeta_universitas/index.php/c_kontak">KONTAK</a></li>
                         <li class='<?php if(isset($nav_pencarian)){echo $nav_pencarian;} ?>'><a href="http://localhost/pendeta_universitas/index.php/c_pencarian">PENCARIAN</a></li>
                     </ul>

@@ -6,7 +6,7 @@ $this->load->view('v_header', array('nav_kontak'=>"active"));
 src="http://maps.googleapis.com/maps/api/js">
 </script-->
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpkPhlTVeGOb7lAVUnG2a_K_bQP_Wp3qA&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpkPhlTVeGOb7lAVUnG2a_K_bQP_Wp3qA"></script>
 
 <div class="container height-content wrap-content">
     <div class="row">
@@ -51,23 +51,23 @@ src="http://maps.googleapis.com/maps/api/js">
                 <hr class="line">
                 <div id="map" class="img-thumbnail"></div>
                 <script>
-                    var myCenter=new google.maps.LatLng(-7.786050,-110.378365);
+                    var myCenter=new google.maps.LatLng(-7.786025, 110.378399); 
                     var marker;
                     function initMap(){
                         var mapProp = {
                             center:myCenter,
-                            zoom:5,
+                            zoom:17,
                             mapTypeId:google.maps.MapTypeId.ROADMAP
                         };
 
                         var map=new google.maps.Map(document.getElementById("map"),mapProp);
-
-                        var marker=new google.maps.Marker({
-                            position:myCenter,
-                            animation:google.maps.Animation.BOUNCE
+                        marker = new google.maps.Marker({
+                            map: map,
+                            draggable: true,
+                            animation: google.maps.Animation.DROP,
+                            position: {lat: -7.786025, lng: 110.378399}
                         });
-
-                        marker.setMap(map);
+                        marker.setAnimation(google.maps.Animation.BOUNCE);
                     }
 
                     google.maps.event.addDomListener(window, 'load', initMap);
