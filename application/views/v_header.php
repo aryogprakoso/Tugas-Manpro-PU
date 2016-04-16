@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             {
                         ?>  
                             <li>
-                                <a class="display-name"><?php echo $this->session->userdata('username'); ?></a>
+                                <a class="display-name point" id="profile" data-toggle="modal" data-target="#profileform" data-whatever="@mdo"><?php echo $this->session->userdata('username'); ?></a>
                             </li>
                             <li>
                                 <a href="<?php echo site_url('c_beranda/do_logout') ;?>" class="text-center">LOGOUT</a>
@@ -98,13 +98,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group">
                     <label for="inputUsername3" class="col-sm-5 control-label">Username</label>
                     <div class="col-sm-7">
-                        <input type="text" name="username" class="form-control" id="inputUsername3" placeholder="Username">
+                        <input type="text" name="username" class="form-control" id="inputUsername3" placeholder="Username" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-5 control-label">Password</label>
                     <div class="col-sm-7">
-                        <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password"required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <label class="error-message">[Error Message]</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-12">
+                        <button type="submit" class="btn btn-default">Sign in</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- FORM PROFILE -->
+    <div class="modal fade text-center" id="profileform" role="dialog">
+        <div class="profile-box">
+            <div class="exit text-right">
+                <a id="profile" data-toggle="modal" data-target="#profileform" data-whatever="@mdo"><span class="glyphicon glyphicon-remove point"></span></a>
+            </div>
+
+            <form class="form-horizontal" action="" method="post">
+                <div class="form-group">
+                    <label for="inputUsername3" class="col-sm-5 control-label">Username</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="username" class="form-control" id="inputUsername3" placeholder="Username" value="<?php echo $this->session->userdata('username'); ?>" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-5 control-label">Password Lama</label>
+                    <div class="col-sm-7">
+                        <input type="password" name="passwordLama" class="form-control" id="inputPassword3" placeholder="Password Lama" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-5 control-label">Password Baru</label>
+                    <div class="col-sm-7">
+                        <input type="password" name="passwordBaru" class="form-control" id="inputPassword3" placeholder="Password Baru" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-5 control-label">Confirm Password Baru</label>
+                    <div class="col-sm-7">
+                        <input type="password" name="passwordBaruConfirm" class="form-control" id="inputPassword3" placeholder="Confirm Password Baru" required>
                     </div>
                 </div>
                 <div class="form-group">

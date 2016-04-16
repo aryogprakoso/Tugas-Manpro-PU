@@ -22,6 +22,7 @@ body{
 }
 
 .logo-img{
+    padding-top: 5px;
     height: 50px;
     vertical-align: middle;
     vertical-align: text-middle;
@@ -45,6 +46,7 @@ header *{
 }
 
 .nav > li > a{
+    transition: all 0.5s ease;
     color: white;
 }
 
@@ -92,6 +94,15 @@ header *{
     background: white;
 }
 
+.profile-box{
+    margin-top: 25vh;
+    border-radius: 10px;
+    padding: 1em 2em 2em 2em;
+    width: 40em;
+    display: inline-block;
+    background: white;
+}
+
 .btn{
     transition: all 0.5s ease;
     background: purple;
@@ -112,7 +123,11 @@ header *{
 
 .navbar-nav > li >.display-name:hover{
     background: purple;
-    color: white;
+    color: #8e44ad;
+}
+
+.navbar-nav > li >.display-name{
+    transition: all 0.5s ease;
 }
 
 /* CONTENT */
@@ -129,44 +144,54 @@ div#repo{
 }
 
 .artikel-big-list img,
-.artikel-small-list img{
+.artikel-small-list img, 
+.berita-big-list img, 
+.berita-small-list img{
     max-width: 100%;
     width: auto;
     height: auto;
 }
 
-.artikel-small-list .margin-top-3em{
+.artikel-small-list .margin-top-3em, 
+.berita-small-list .margin-top-3em{
     margin-top: 0px;
 }
 
-.artikel-small-list .paragraph{
+.artikel-small-list .paragraph, 
+.berita-small-list .paragraph{
     font-size: 12px;
     display: none;
 }
 
-.artikel-small-list .date{
+.artikel-small-list .date, 
+.berita-small-list .date{
     display: none;
 }
 
-.artikel-small-list .judulArtikel h1{
+.artikel-small-list .judulArtikel h1,
+.berita-small-list .judulBerita h1{
     font-size: 16px;
     text-align: left;
     margin: 0;
 }
 
-.judulArtikel a{
+.judulArtikel a,
+.judulBerita a{
     text-decoration: none;
 }
 
-.artikel-small-list .buttoncontainer{
+.artikel-small-list .buttoncontainer,
+.berita-small-list .buttoncontainer{
     display: none;
 }
 
-.artikel-small-page{
+.artikel-small-page,
+.berita-small-page{
     display: none;
 }
 
-.artikel-small-page.active{
+.artikel-small-page.active,
+.berita-small-page.active{
     display: block;
 }
 
@@ -359,7 +384,7 @@ ul.nav-pills{
 }
 
 .height-content{
-    min-height: 314px;
+    min-height: 350px;
 }
 
 .form-horizontal .form-group {
@@ -422,9 +447,12 @@ ul.nav-pills{
     background: white;
 }
 
-#tentang{
-    padding-top: 70px;
-    height: 500px;
+.div-img-galeri{
+    background-image: url('');
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: center;
+    height: 100px;
 }
 
 /* SEARCH */
@@ -515,17 +543,12 @@ input[type='search']{
 }
 
 .footer-title{
-    color: lightgray;
-}
-
-.footer-title:hover{
-    color: dimgray;
-    text-decoration: none;
-    transition: all 0.5s ease;
+    font-size: 15px;
+    color: white;
 }
 
 .footer-isi{
-    color: white;
+    color: lightgray;
     font-size: 13px;
 }
 
@@ -541,8 +564,6 @@ input[type='search']{
 }
 
 /* MODAL */
-
-
 
 body.modal-open-noscroll, body#modalTambahPeminjaman>.modal-dialog{
     padding-right: 0!important;

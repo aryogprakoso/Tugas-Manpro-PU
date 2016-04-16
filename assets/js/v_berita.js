@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#tambah-berita').click(function(){
         $('.tambah-form .control-label h3').html('TAMBAH BERITA');
-        $('#form').attr('action','c_berita/do_upload');
+        $('#form').attr('action','c_beranda/do_upload');
         $('#judulBerita').val("");
         $('#summernote').text('')
         $('#summernote').summernote('code','',{
@@ -125,20 +125,20 @@ function setDelete(event,element){
     var number = $(element).attr('data-number');
     deleteID = id;
     console.log(globalBerita[id])
-    $('.delete-judul-artikel').html("berita: "+globalBerita[number].judulBerita);
+    $('.delete-judul-berita').html("berita: "+globalBerita[number].judulBerita);
     
 }
 
 function confirmDelete(event, element){
     event.preventDefault();
     $.ajax({
-        url: "c_berita/delete",
+        url: "c_beranda/delete",
         type: "POST",
         data: {idBerita:deleteID},
         success: function(data){
             var status = JSON.parse(data)
             if(status.status=="success"){
-                loadArtikel();
+                loadBerita();
                 $(element).parents('.modal').modal("hide");
             }
             data = JSON.parse(data)
@@ -153,21 +153,21 @@ function confirmDelete(event, element){
     })
 }
 
-var globalArtikel = [];
-var globalArtikelNumber = 0;
+var globalBerita = [];
+var globalBeritaNumber = 0;
 var globalPageNumber = 1;
 var isLoggedIn = false;
 
-function loadArtikel(){
+function loadBerita(){
     isLoggedIn = $('#repo>.isloggedin').html().trim()=="1";
     $.ajax({
-        url: "c_artikel/getlist",
+        url: "c_beranda/getlist",
         type: "GET",
         success: function(data){
             data = JSON.parse(data);
-            globalArtikel = data.artikel;
+            globalBerita = data.berita;
             if(data.status == "success"){
-                populateArtikel()
+                populateBerita()
             }
             else if(data.status == "error"){
                 //kasii div bwt error message
@@ -181,57 +181,57 @@ function loadArtikel(){
     })
 }
 
-function populateArtikel(){
-    //isi artikel big list
+function populateBerita(){
+    //isi berita big list
     
-    var bigList = $(".artikel-big-list .list");
+    var bigList = $(".berita-big-list .list");
     bigList.html("");
-    if(globalArtikel.length>0 && globalArtikel.length <= globalArtikelNumber){
-        globalArtikelNumber = 0;
+    if(globalBerita.length>0 && globalBerita.length <= globalBeritaNumber){
+        globalBeritaNumber = 0;
     }
-    if(globalArtikel.length>globalArtikelNumber){
-        bigList.append(createArtikelDiv(globalArtikel[globalArtikelNumber],globalArtikelNumber));
+    if(globalBerita.length>globalBeritaNumber){
+        bigList.append(createBeritaDiv(globalBerita[globalBeritaNumber],globalBeritaNumber));
     }
-    //isi artikel small list
-    var artikelPerPage = 10;
-    var smallList = $(".artikel-small-list .list");
+    //isi berita small list
+    var beritaPerPage = 10;
+    var smallList = $(".berital-small-list .list");
     smallList.html("")
     var pagenumber = 1;
     var pagecontent = 0;
-    var currentpage = createArtikelPage();
+    var currentpage = createBeritaPage();
     currentpage.attr('data-pagenumber',pagenumber);
     
-    var maxpage = globalArtikel.length / artikelPerPage + 1;
+    var maxpage = globalBerita.length / beritaPerPage + 1;
     if(globalPageNumber > maxpage){
         globalPageNumber = 1;
     }
     
-    for(var i = 0; i<globalArtikel.length; i++){
-        if(pagecontent>=artikelPerPage){
+    for(var i = 0; i<globalBerita.length; i++){
+        if(pagecontent>=beritaPerPage){
             smallList.append(currentpage);
-            currentpage = createArtikelPage();
+            currentpage = createBeritaPage();
             pagecontent = 0;
             currentpage.attr('data-pagenumber',pagenumber);
             pagenumber++;
         }
-        currentpage.append(createListDiv(globalArtikel[i],i));
+        currentpage.append(createListDiv(globalBerita[i],i));
         pagecontent++;
     }
     smallList.append(currentpage);
     currentpage.attr('data-pagenumber',pagenumber);
     pagenumber++;
     
-    var paginationbullet = $('.artikel-small-list').find('ul.pagination');
+    var paginationbullet = $('.berita-small-list').find('ul.pagination');
     paginationbullet.html("");
     if(pagecontent!=0){
         $('.no-list').hide();
         $('.pagination').show();
         for(var i = 1; i< pagenumber; i++){
             if(i==globalPageNumber){
-                paginationbullet.append($('<li class="active"><a href="#" onclick="artikelSwitchPage(event,this)" data-pagenumber="'+i+'">'+i+'</a></li>'));
+                paginationbullet.append($('<li class="active"><a href="#" onclick="beritaSwitchPage(event,this)" data-pagenumber="'+i+'">'+i+'</a></li>'));
             }
             else{
-                paginationbullet.append($('<li><a href="#" onclick="artikelSwitchPage(event,this)" data-pagenumber="'+i+'">'+i+'</a></li>'));
+                paginationbullet.append($('<li><a href="#" onclick="beritaSwitchPage(event,this)" data-pagenumber="'+i+'">'+i+'</a></li>'));
             }
         }
         $("a[data-pagenumber="+globalPageNumber+"]").click()
@@ -242,44 +242,44 @@ function populateArtikel(){
     }
 }
 
-function artikelSwitchPage(event,element){
+function beritaSwitchPage(event,element){
     event.preventDefault();
     var pagenumber = $(element).attr('data-pagenumber');
     globalPageNumber = pagenumber;
-    $('.artikel-small-list ul.pagination li').removeClass('active');
-    $(".artikel-small-list .list .artikel-small-page").removeClass('active');
+    $('.berita-small-list ul.pagination li').removeClass('active');
+    $(".berita-small-list .list .berita-small-page").removeClass('active');
     $(element).parents('li').addClass('active');
-    $(".artikel-small-list .list .artikel-small-page[data-pagenumber='"+pagenumber+"']").addClass('active');
+    $(".berita-small-list .list .berita-small-page[data-pagenumber='"+pagenumber+"']").addClass('active');
     
 }
 
-function createArtikelPage(){
-    return $('<div class="artikel-small-page"></div>')
+function createBeritaPage(){
+    return $('<div class="berita-small-page"></div>')
 }
 
-function createArtikelDiv(artikel,number){
+function createBeritaDiv(berita,number){
     var container = $('<div class="margin-top-3em"></div>');
     
-    //menampilkan button edit dan delete artikel
+    //menampilkan button edit dan delete berita
     
     if(isLoggedIn){
         var buttoncontainer = $('<div class="text-right buttoncontainer"></div>');
-        var buttonedit = $('<a id="edit" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo" onclick="setEdit(event, this)" data-id="'+globalArtikel[number].idArtikel+'"><span class="glyphicon glyphicon-edit point icon-glyphicon"></span></a>');
-        var buttondelete = $('<a id="delete" data-toggle="modal" data-target="#deleteform" data-whatever="@mdo" onclick="setDelete(event, this)" data-number="'+number+'" data-id="'+globalArtikel[number].idArtikel+'"><span class="glyphicon glyphicon-trash point icon-glyphicon"></span></a>');
+        var buttonedit = $('<a id="edit" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo" onclick="setEdit(event, this)" data-id="'+globalBerita[number].idBerita+'"><span class="glyphicon glyphicon-edit point icon-glyphicon"></span></a>');
+        var buttondelete = $('<a id="delete" data-toggle="modal" data-target="#deleteform" data-whatever="@mdo" onclick="setDelete(event, this)" data-number="'+number+'" data-id="'+globalBerita[number].idBerita+'"><span class="glyphicon glyphicon-trash point icon-glyphicon"></span></a>');
             buttoncontainer.append(buttonedit)
             buttoncontainer.append(buttondelete)
         container.append(buttoncontainer)
     }
     
-    //menampilkan judul artikel 
-    container.append($('<span class="judulArtikel text-center"><h1>'+artikel.judulArtikel+'</h3></span>'));
+    //menampilkan judul berita
+    container.append($('<span class="judulBerita text-center"><h1>'+berita.judulBerita+'</h3></span>'));
     
-    //menampilkan tanggal pembuatan artikel
-    var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum$#39;at', 'Sabtu'];
+    //menampilkan tanggal pembuatan berita
+    var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
     var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
     
     
-    var dateObj = new Date(artikel.waktu);
+    var dateObj = new Date(berita.waktu);
     
     var tanggal = dateObj.getDate();
     var _hari = dateObj.getDay();
@@ -291,13 +291,13 @@ function createArtikelDiv(artikel,number){
     var tahun = (_tahun<1000) ? _tahun + 1900 : _tahun;
     
     var date = hari + ', ' + tanggal + ' ' + bulan + ' ' + tahun;
-    //var date = new Date(artikel.waktu);
+    //var date = new Date(berita.waktu);
     container.append($('<span class="text-center date"><h5 class="italic">'+date+'</h5></span>')) ;
     container.append($('<br>'));
     
-    //menampilkan isi artikel
+    //menampilkan isi berita
     var paragraph = $('<p class=""></p>');
-        paragraph.html(artikel.isiArtikel);
+        paragraph.html(berita.isiBerita);
     
     var paragraphspan = $('<span></span>');
         paragraphspan.html(paragraph);
@@ -307,23 +307,23 @@ function createArtikelDiv(artikel,number){
     return container;
 }
 
-function createListDiv(artikel,number){
+function createListDiv(berita,number){
     var container = $('<div class="margin-top-3em"></div>');
     //judul
-    container.append($('<span class="judulArtikel text-center"><h1><a href="#" onclick="switchArtikel(event,this)" data-number="'+number+'">'+artikel.judulArtikel+'</a></h3></span>'));
-    var date = new Date(artikel.waktu);
+    container.append($('<span class="judulBerita text-center"><h1><a href="#" onclick="switchBerita(event,this)" data-number="'+number+'">'+berita.judulBerita+'</a></h3></span>'));
+    var date = new Date(berita.waktu);
     container.append($('<span class="text-center date"><h5 class="italic">'+date+'</h5></span>')) ;
     container.append($('<br>'));
     
     return container;
 }
 
-function switchArtikel(event,element){
+function switchBerita(event,element){
     event.preventDefault();
     var number = $(element).attr('data-number')
-    if(number==globalArtikelNumber){
+    if(number==globalBeritaNumber){
         return;
     }
-    globalArtikelNumber = number;
-    populateArtikel();
+    globalBeritaNumber = number;
+    populateBerita();
 }

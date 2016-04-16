@@ -21,20 +21,9 @@ class berita_model extends CI_Model{
     }
     
     public function GetData(){
-        $data = $this->db->query('select * from berita');
+        $data = $this->db->query('select * from berita order by idBerita desc');
         return $data->result_array();
     }
-     public function get_search(){
-        $match = $this->input->post('search');
-        if($match != null){
-            
-             $this->db->like('judulberita', $match);
-             $data = $this->db->get('berita');
-            return $data->result_array();
-
-        }
-           }
-
     
     public function form_update($id,$data){
         $res = $this->db->where('idBerita', $id);
@@ -43,9 +32,8 @@ class berita_model extends CI_Model{
     }
     
     public function isi_update($id,$data){
-        $res = $this->db->insert('isiberita', $data);
         $res = $this->db->where('idBerita', $id);
-        $res = $this->db->update('isiberita', $data);
+        $res = $this->db->insert('isiberita', $data);
         return $res;
     }
     
