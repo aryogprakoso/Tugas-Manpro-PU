@@ -64,10 +64,9 @@ src="http://maps.googleapis.com/maps/api/js">
                         marker = new google.maps.Marker({
                             map: map,
                             draggable: true,
-                            animation: google.maps.Animation.DROP,
+                            animation: google.maps.Animation.BOUNCE,
                             position: {lat: -7.786025, lng: 110.378399}
                         });
-                        marker.setAnimation(google.maps.Animation.BOUNCE);
                     }
 
                     google.maps.event.addDomListener(window, 'load', initMap);

@@ -27,6 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- MOBILE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <link rel="icon" href='<?php echo assets()."image/ukdw.png" ?>'>
 </head>
 
 <body class="">
