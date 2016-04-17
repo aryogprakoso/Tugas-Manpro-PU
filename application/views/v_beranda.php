@@ -17,21 +17,17 @@ $this->load->view('v_header', array('nav_beranda'=>"active"));
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner container" role="listbox">
-            <div class="item active container display-img text-center">
-                <img src='<?php echo assets()."image/1.jpg"; ?>' alt="1">
-            </div>
-
-            <div class="item container display-img">
-                <img src='<?php echo assets()."image/2.jpg"; ?>' alt="1">
-            </div>
-
-            <div class="item container display-img">
-                <img src='<?php echo assets()."image/3.jpg"; ?>' alt="1">
-            </div>
-
-            <div class="item container display-img">
-                <img src='<?php echo assets()."image/4.jpg"; ?>' alt="1">
-            </div>
+            <?php $i = 1; ?>
+            <?php foreach ($imgslider as $image): ?>
+                <?php $item_class = ($i == 1) ? 'item active' : 'item'; ?>
+                <div class="<?php echo $item_class; ?>">
+                      <a href="#">
+                                <img src="<?php echo base_url('assets/uploads/'. $image['pathGambar']); ?>" 
+                                    alt=""  class="img-responsive" style="height:400px; width:100%" />
+                      </a>
+                </div>
+            <?php $i++; ?>
+            <?php endforeach; ?> 
         </div>
     </div>
 
