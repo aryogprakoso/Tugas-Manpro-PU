@@ -4,11 +4,15 @@ class C_beranda extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->helper(array('form', 'url'));
+        $this->load->helper('assets_helper');
         $this->load->model('berita_model');
     }
     
     public function index(){
         $data = $this->berita_model->GetData();
+        
+        //untuk mengakses gambar slider
+        $imgslider = $this->galeri_model->get_images_slider();
         
         $this->load->helper('html_divider');
         for($i = 0; $i < count($data); $i++){
@@ -25,7 +29,7 @@ class C_beranda extends CI_Controller{
             $data[$i]['isiBerita'] = $isi_hasil;
         }
         
-     	$this->load->view('v_beranda', array('data' => $data));
+     	$this->load->view('v_beranda', array('data' => $data, 'imgslider' => $imgslider));
     }
     
     public function getlist(){
