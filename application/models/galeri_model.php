@@ -5,16 +5,19 @@ class Galeri_model extends CI_Model{
         parent::__construct();
     }
     
+    //menload database
     function galeri_model(){
         parent::Model();
         $this->load->database();
     }
     
+    //memasukan image ke database
     public function form_insert($data){
         $res = $this->db->insert('galeri', $data);
         return $res;
     }
     
+    //mengambil semua data pada tabel galeri secara descending
     public function getalldata(){
         $this->db->select('*');
         $this->db->from('galeri');
@@ -23,11 +26,13 @@ class Galeri_model extends CI_Model{
         return $query->result_array();
     }
     
-    public function form_update($data,$where){
-        $res = $this->db->update('galeri', $data, $where);
-        return $res;
+    //mengakses 4 gambar terakhir sebagai image slider di beranda
+    public function get_images_slider(){
+        $query = $this->db->query("SELECT * FROM galeri ORDER BY idGaleri DESC limit 4");
+        return $query->result_array();
     }
     
+    //mendelete path gambar
     public function gambar_delete($idGaleri){
         $data = $this->db->get_where('galeri', array('idGaleri' => $idGaleri));
         $data = $data->result_array();
@@ -88,6 +93,7 @@ class Galeri_model extends CI_Model{
         return $res;
     }
 
+    //mendelete gambar dengan id tertentu pada database
     public function delete($idGaleri)
     {
       try {
