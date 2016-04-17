@@ -6,7 +6,7 @@ class C_pencarian extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('form', 'url'));
         $this->load->model('model_baca');
-        $this->load->model('berita_model');
+        $this->load->model('search_model');
       
     }
 	public function index(){
