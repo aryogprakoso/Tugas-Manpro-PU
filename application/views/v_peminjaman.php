@@ -62,7 +62,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
     
     <!-- Modal Tambah Peminjaman -->
     <div class="modal fade" id="modalTambahPeminjaman" tabindex="-1" role="dialog" aria-labelledby="judulTambah" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog tambah-peminjaman">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
@@ -150,7 +150,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
       <div class="modal-dialog">
 
         <!-- Modal content-->
-        <div class="modal-content">
+        <div class="modal-content hapus-peminjaman">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title text-center">Hapus Data Peminjaman</h4>
@@ -176,12 +176,11 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
     
     <!-- Modal Edit Peminjaman -->
     <div class="modal fade" id="modalEditPeminjaman" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog edit-peminjaman">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <button type="button" class="close" 
-                       data-dismiss="modal">
+                    <button type="button" class="close" data-dismiss="modal">
                            <span aria-hidden="true">&times;</span>
                            <span class="sr-only">Close</span>
                     </button>
