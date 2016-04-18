@@ -10,8 +10,8 @@ class C_pencarian extends CI_Controller {
       
     }
 	public function index(){
-		$data2 = $this->berita_model->get_search();
-        $test = $this->berita_model->get_search2();
+		$data2 = $this->search_model->get_search();
+        $test = $this->search_model->get_search2();
 		if(($data2 || $test) != null){
                     $this->load->helper('html_divider');
             for($i = 0; $i < count($data2); $i++){
