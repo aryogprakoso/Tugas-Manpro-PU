@@ -413,7 +413,7 @@ ul.nav-pills{
 }
 
 .height-content{
-    min-height: 350px;
+    min-height: 400px;
 }
 
 .form-horizontal .form-group {
@@ -596,6 +596,14 @@ input[type='search']{
 
 .padding-0em-3em{
     padding: 0em 3em;
+}
+
+.item-artikel{
+    margin-bottom: 10px;
+}
+
+.search-judul{
+    font-size: 20px;
 }
 
 /* SUMMERNOTE */

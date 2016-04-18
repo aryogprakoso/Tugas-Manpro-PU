@@ -2,13 +2,13 @@
 $this->load->view('v_header', array('nav_pencarian'=>"active"));
 ?>
 
-<div class="container margin-top-2em height-content">
+<div class="container margin-top-2em height-content wrap-content">
     <div class="text-center">
      <form class="container" enctype="multipart/form-data" id="form" accept-charset="utf-8" method="post" action="<?php echo base_url()."index.php/c_pencarian/"; ?>">
-        <input type="text" name="search" id="search" required="true" value="" placeholder="Cari..." class="search-input">
+        <input type="text" name="search" id="search" required="true" value="" placeholder="Cari judul..." class="search-input">
         <br/>
         <br/>
-        <input type="submit" name="submit" value="Submit"/>
+        <input type="submit" name="submit" value="Cari" class="btn btn-default" style="width:100px;"/>
     </form>
     </div>
     <div class="row margin-top-2em">
@@ -21,7 +21,7 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
             $i = 0;
             foreach($data2 as $d){
                 ?>
-                <div class="item-artikel panel">
+                <div class="item-artikel">
                     <?php
                     setlocale(LC_ALL, 'INDONESIA');
                     $date = $d['waktu'];
@@ -36,7 +36,7 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
                         $er2 = str_replace("%20","",$er2);
                       
                      ?>
-                    <div>
+                    <div class="search-judul">
                         <a href="<?php echo base_url()."index.php/c_pencarian/selanjutnya2/"; echo $er2;  ?>">
                             <?php echo $d['judulBerita']; ?>
                         </a>
@@ -55,7 +55,7 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
             $i = 0;
             foreach($test as $d){
                 ?>
-                <div class="item-artikel panel">
+                <div class="item-artikel">
                     <?php
                     setlocale(LC_ALL, 'INDONESIA');
                     $date = $d['waktu'];
@@ -63,7 +63,7 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
                     $date = date_format($date,"l, d F Y");
                     $date = strftime("%A, %d %B %Y", time());
                     ?>
-                    <div>
+                    <div class="search-judul">
                     <?php 
                         $er = $d['idArtikel'];
                        
@@ -77,11 +77,31 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
                   
                 </div>
             <?php $i++; } ?>
-                
-               
             </div>
         </div>
     </div>
+    
+    <a href="#" class="go-top text-center" style="display: none;"><span class="glyphicon glyphicon-chevron-up point" style="font-size: 25px"></span></a>
+
+    <script>
+        $(document).ready(function() {
+            // Show or hide the sticky footer button
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 300) {
+                    $('.go-top').fadeIn(500);
+                } else {
+                    $('.go-top').fadeOut(300);
+                }
+            });
+
+            // Animate the scroll to top
+            $('.go-top').click(function(event) {
+                event.preventDefault();
+
+                $('html, body').animate({scrollTop: 0}, 300);
+            })
+        });
+    </script>
 </div>
 
 <?php 

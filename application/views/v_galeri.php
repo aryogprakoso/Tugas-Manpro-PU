@@ -64,7 +64,7 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
             <br><br><label id="labeldelete" class="control-label"></label><br>
         </div>
         <div class="col-sm-offset-0 col-sm-12">
-            <a id="btndelete" class="btn" onclick="return confirm('Gambar akan dihapus?');">Hapus</a>            
+            <a id="btndelete" class="btn">Hapus</a>            
         </div>
     </div>
 </div>
@@ -93,7 +93,7 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
             <div class="galeri-thumb col-md-3 col-sm-4 col-xs-6">
                 <div data-toggle="modal" class="div-img-galeri galeriview" data-target="#galeri" data-whatever="@mdo">
                     <div class="photo" style="background-image: url('<?php echo base_url('assets/uploads/'. $row['pathGambar']);?>')"></div>
-					<img src="<?php echo base_url('assets/uploads/'. $row['pathGambar']) ?>" class="img-thumbnail point">
+                    <img src="<?php echo base_url('assets/uploads/'. $row['pathGambar']) ?>" class="img-thumbnail point">
                     <label class="labeltemp" style="display:none"><?php echo $row['keteranganGambar']; ?></label>
                     <div class="col-sm-offset-0 col-sm-12">
                         <a class="btn" style="display:none" href="<?php echo site_url("c_galeri/delete/".$row['idGaleri']);?>"></a>
