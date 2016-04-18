@@ -20,11 +20,8 @@ $this->load->view('v_header', array('nav_beranda'=>"active"));
             <?php $i = 1; ?>
             <?php foreach ($imgslider as $image): ?>
                 <?php $item_class = ($i == 1) ? 'item active' : 'item'; ?>
-                <div class="<?php echo $item_class; ?>">
-                      <a href="#">
-                                <img src="<?php echo base_url('assets/uploads/'. $image['pathGambar']); ?>" 
-                                    alt=""  class="img-responsive" style="height:400px; width:100%" />
-                      </a>
+                <div class="<?php echo $item_class; ?> text-center">
+                      <img src="<?php echo base_url('assets/uploads/'. $image['pathGambar']); ?>" alt=""  class="img-responsive" style="max-height: 400px; width: auto; display:inline-block;" />
                 </div>
             <?php $i++; ?>
             <?php endforeach; ?> 

@@ -11,7 +11,7 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         <div class="exit text-right">
             <a id="galeri" data-toggle="modal" data-target="#galeri" data-whatever="@mdo" ><span class="glyphicon glyphicon-remove point"></span></a>
         </div>
-        <div class="text-left">
+        <div class="text-center">
             <img id="imagebesar"  class="img-thumbnail">
             <label id="labelbesar" class="control-label"></label>
         </div>
@@ -59,9 +59,9 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         <div class="text-center">
             <label class="control-label"><h4 class="font-bold">HAPUS FOTO</h4></label>
         </div>
-        <div class="text-left"> 
+        <div class="text-center"> 
             <img id="imagedelete"  class="img-thumbnail">
-            <label id="labeldelete" class="control-label"></label>  
+            <br><br><label id="labeldelete" class="control-label"></label><br>
         </div>
         <div class="col-sm-offset-0 col-sm-12">
             <a id="btndelete" class="btn" onclick="return confirm('Gambar akan dihapus?');">Hapus</a>            
@@ -81,8 +81,7 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         }
     ?>
 
-<div class="container margin-top-3em text-center">
-    <div class="row margin-top-2em">
+<div class="container margin-top-3em text-center galeri-thumb-container height-content">
             <?php
                 $foto=0;
                 $maxrow=4;
@@ -91,9 +90,10 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
                     if($foto<$maxrow){
             ?>
 
-            <div class="col-md-3" > 
-                <div data-toggle="modal" class="galeriview" data-target="#galeri" data-whatever="@mdo">
-                    <img src="<?php echo base_url('assets/uploads/'. $row['pathGambar']) ?>" class="img-thumbnail point">
+            <div class="galeri-thumb col-md-3 col-sm-4 col-xs-6">
+                <div data-toggle="modal" class="div-img-galeri galeriview" data-target="#galeri" data-whatever="@mdo">
+                    <div class="photo" style="background-image: url('<?php echo base_url('assets/uploads/'. $row['pathGambar']);?>')"></div>
+					<img src="<?php echo base_url('assets/uploads/'. $row['pathGambar']) ?>" class="img-thumbnail point">
                     <label class="labeltemp" style="display:none"><?php echo $row['keteranganGambar']; ?></label>
                     <div class="col-sm-offset-0 col-sm-12">
                         <a class="btn" style="display:none" href="<?php echo site_url("c_galeri/delete/".$row['idGaleri']);?>"></a>
@@ -118,20 +118,21 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
                     else{
             ?>
             
-            <div class="col-md-3">
-                <div data-toggle="modal" class="galeriview" data-target="#galeri" data-whatever="@mdo">
-                    <img src="<?php echo base_url('assets/uploads/'. $row['pathGambar']) ?>"  class="img-thumbnail point"> 
+            <div class="galeri-thumb col-md-3 col-sm-4 col-xs-6">
+                <div data-toggle="modal" class="div-img-galeri galeriview" data-target="#galeri" data-whatever="@mdo">
+                    <div class="photo" style="background-image: url('<?php echo base_url('assets/uploads/'. $row['pathGambar']);?>')"></div>
+                    <img src="<?php echo base_url('assets/uploads/'. $row['pathGambar']) ?>" class="img-thumbnail point">
                     <label class="labeltemp" style="display:none"><?php echo $row['keteranganGambar']; ?></label>
                     <div class="col-sm-offset-0 col-sm-12">
-                        <a  class="btn" style="display:none" href="<?php echo site_url("c_galeri/delete/".$row['idGaleri']);?>"></a>
+                        <a class="btn" style="display:none" href="<?php echo site_url("c_galeri/delete/".$row['idGaleri']);?>"></a>
                     </div>
                 </div>
                     <?php
                         if($this->session->userdata('username'))
                         {
                     ?>
-                <div class="text-right">
-                    <a class="deleteview" data-toggle="modal" data-target="#deletefoto" data-whatever="@mdo"><span class="glyphicon glyphicon-trash point icon-glyphicon"></span></a>        
+                <div class="text-right">    
+                    <a class="deleteview" data-toggle="modal" data-target="#deletefoto" data-whatever="@mdo"><span class="glyphicon glyphicon-trash point icon-glyphicon"></span></a>
                 </div>
                     <?php
                         }
@@ -143,7 +144,6 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
             }
         }
         ?>
-    </div>
 </div>
         
 
@@ -168,7 +168,6 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
             </li>
         </ul>
     </div>
-</div>
 
 <?php 
 $this->load->view('v_footer');

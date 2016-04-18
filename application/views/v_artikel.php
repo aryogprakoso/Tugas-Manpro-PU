@@ -5,10 +5,53 @@ $this->load->view('v_header', array('nav_artikel'=>"active"));
 <script type="text/javascript" src='<?php echo assets()."js/v_artikel.js"; ?>'></script>
 
 <div class="wrap-content">
+    
+    <div id="global-notification">
+        <?php
+            $success = $this->session->flashdata('success');
+            $error = $this->session->flashdata('error');
+
+            if($success != null){
+                if(count($success)>0){
+        ?>
+        <div class="alert alert-success text-center" role="alert">
+            <ul>
+            <?php
+                foreach($success as $value){
+                    echo "<li>".$value."</li>";
+                }
+            ?>
+            </ul>
+        </div>
+        <?php
+                }
+            }
+        ?>
+        <?php
+            if($error != null){
+                if(count($error)>0){
+        ?>
+
+        <div class="alert alert-danger text-center" role="alert">
+            <ul>
+            <?php
+                foreach($error as $value){
+                    echo "<li>".$value."</li>";
+                }
+            ?>
+            </ul>
+        </div>
+        <?php
+                }
+            }
+        ?>
+    </div>
+    
     <?php
         if($this->session->userdata('username'))
         {
     ?>
+    
     <div class="container">
         <button type="button" class="btn margin-top-2em" id="tambah-artikel" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo">Tambah Artikel</button>
     </div>

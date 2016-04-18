@@ -6814,7 +6814,7 @@
       dialogsInBody: false,
       dialogsFade: false,
 
-      maximumImageFileSize: null,
+      maximumImageFileSize: '2092399',
 
       callbacks: {
         onInit: null,

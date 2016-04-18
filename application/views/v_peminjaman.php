@@ -9,7 +9,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
 <script type="text/javascript" src='<?php echo assets()."js/v_peminjaman.js"; ?>'></script>
 
 <div class="wrap-content height-content">
-    <h2 class="text-center">Jadwal Pemakaian Ruangan</h2>
+    <h2 class="text-center margin-top-2em">Jadwal Pemakaian Ruangan</h2>
     
     <!-- Input Tanggal -->
     <div class="text-center">

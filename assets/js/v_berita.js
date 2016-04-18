@@ -65,7 +65,7 @@ $(document).ready(function() {
             ['maximumFileSize',['100kb']] ,
             ['maximumFileSizeError', ['Maximum file size exceeded.']]
         ]
-    });
+    })
 });
 
 function setEdit(event,element){
@@ -112,7 +112,7 @@ function setEdit(event,element){
                 });
             }
         },
-        error: function(){
+        error: function(e){
             
         }
     })
@@ -174,7 +174,7 @@ function loadBerita(){
                 console.log(data.message());
             }
         },
-        error: function(){
+        error: function(e){
             
         }
         
@@ -194,7 +194,7 @@ function populateBerita(){
     }
     //isi berita small list
     var beritaPerPage = 10;
-    var smallList = $(".berital-small-list .list");
+    var smallList = $(".berita-small-list .list");
     smallList.html("")
     var pagenumber = 1;
     var pagecontent = 0;

@@ -57,6 +57,8 @@ class C_artikel extends CI_Controller{
     }
     
     public function do_upload(){
+        $error = array();
+        $success = array();
         if(!$this->session->userdata('username')){
             redirect('/c_artikel', 'refresh');
             return;
@@ -64,6 +66,13 @@ class C_artikel extends CI_Controller{
         $this->load->helper('assets_helper');
         $this->load->helper('date');
         $judulArtikel = $this->input->post('judulArtikel');
+        
+        if($judulArtikel == null || trim($judulArtikel)==''){
+            $this->session->set_flashdata('success',$success);
+            $this->session->set_flashdata('error',$error);
+            return;
+        }
+        
         $isiArtikel = $this->input->post('isiArtikel');
         
         $id = $this->db->query("SELECT max(`idArtikel`) as `count` FROM `pu`.`artikel`" )->row_array()['count']+1;
@@ -131,10 +140,13 @@ class C_artikel extends CI_Controller{
                 }
             }
             $this->db->trans_complete();
-
+            $success[] = "Artikel berhasil ditambahkan";
         }catch(\Exception $e){
             $this->db->trans_rollback();
+            $error[] = "Gagal menambahkan artikel";
         }
+        $this->session->set_flashdata('success',$success);
+        $this->session->set_flashdata('error',$error);
         redirect('/c_artikel', 'refresh');
     }
     
@@ -163,6 +175,8 @@ class C_artikel extends CI_Controller{
     }
         
     public function do_edit(){
+        $error = array();
+        $success = array();
         if(!$this->session->userdata('username')){
             redirect('/c_artikel', 'refresh');
             return;
@@ -244,10 +258,14 @@ class C_artikel extends CI_Controller{
                     }
                 }
                 $this->db->trans_complete();
+                $success[] = "Artikel berhasil diedit";
                 
             }catch(\Exception $e){
                 $this->db->trans_rollback();
+                $error[] = "Gagal mengedit artikel";
             }
+            $this->session->set_flashdata('success',$success);
+            $this->session->set_flashdata('error',$error);
             redirect('/c_artikel', 'refresh');
         }
     }
