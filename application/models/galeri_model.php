@@ -18,12 +18,26 @@ class Galeri_model extends CI_Model{
     }
     
     //mengambil semua data pada tabel galeri secara descending
-    public function getalldata(){
+    public function getalldata($limit = -1)
+    {
         $this->db->select('*');
         $this->db->from('galeri');
         $this->db->order_by('idGaleri', 'DESC');
-        $query = $this->db->get();
+        if($limit<0)
+        {
+            $query = $this->db->get();
+        }
+        else
+        {
+            $offset = ($this->uri->segment(3)-1)*$limit;
+            $query = $this->db->limit($limit, $offset)->get();
+        }
         return $query->result_array();
+    }
+    
+    //menghitung total gambar di database(digunakan untuk pagination)
+    public function count(){
+        return $this->db->count_all_results('galeri');
     }
     
     //mengakses 4 gambar terakhir sebagai image slider di beranda
