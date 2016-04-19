@@ -3,16 +3,57 @@
 class C_galeri extends CI_Controller{
     public function __construct(){
         parent::__construct();
-	        $this->load->helper(array('form', 'url'));
-	        $this->load->model('galeri_model');
+	    $this->load->helper(array('form', 'url'));
+	    $this->load->model('galeri_model');
             $this->load->library('pagination');
     }
-
+    
+    private $limit = 12;
+	
     public function index(){
-        $data = $this->galeri_model->getalldata();
-        $this->load->view('v_galeri', array('data' => $data));
+        redirect('/c_galeri/page/1');
     }
+    
+    //untuk menload seluruh image dengan Pagination
+    public function page($pageno){
+        if($pageno<1)
+        {
+            redirect();
+            return;
+        }
+        
+        $data = $this->galeri_model->getalldata($this->limit);
+        $total_rows = $this->galeri_model->count();
 
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'index.php/c_galeri';
+        $config['use_page_numbers']= TRUE;
+    
+        $maxpage = floor($total_rows/$this->limit);
+        $maxpage += $total_rows%$this->limit>0 ? 1 : 0;
+        $maxpage += $maxpage < 1 ? 1 : 0;
+        
+        $pagination = "<ul class='pagination paginations'>";
+        for($i=1; $i<=$maxpage; $i++)
+        {
+            $pagination .= "<li";
+            if($i == $pageno)
+            {
+                $pagination .= " class='active'";
+            }
+            $pagination .= ">";
+            $pagination .= "<a href='".$i."'>";
+            $pagination .= $i;
+            $pagination .= "</a>";
+            $pagination .= "</li>";
+        }
+        $pagination .= "</ul>";
+
+        $this->load->view('v_galeri', compact('data', 'pageno', 'pagination'));
+    }
+    
     public function do_upload(){
         //fungsi untuk input gambar ke database
         $keteranganGambar = $this->input->post('keteranganGambar');
@@ -24,7 +65,7 @@ class C_galeri extends CI_Controller{
         $config['max_size']='5000';
         $config['max_width']='10000';
         $config['max_height']='10000';
-        $config['remove_spaces'] = TRUE;
+        $config['remove_spaces'] = FALSE;
         $this->load->library('upload',$config);
         $this->upload->initialize($config);
         
@@ -47,6 +88,7 @@ class C_galeri extends CI_Controller{
             }
     }
     
+    //untuk mendelete gambar dengan id tertentu
     public function delete($idGaleri)
     {
       $this->galeri_model->delete($idGaleri);
