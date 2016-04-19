@@ -29,7 +29,8 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
             <label class="control-label"><h3 class="font-bold">UPLOAD FOTO</h3></label>
             <div class="text-left form-group">
                 <label class="control-label">Deskripsi Foto</label>
-                <input type="text" class="form-control" placeholder="Deskripsi Foto" name="keteranganGambar" id="deskripsiFoto">
+                <input type="text" class="form-control" placeholder="Deskripsi Foto" name="keteranganGambar" id="deskripsiFoto" maxlength="200">
+                <center><label class="control-label"><small>(Sisa </small><small id="sisaHurufTambah"></small><small> Huruf)</small></label></center>
             </div>
             <div class="text-left form-group">
                 <label class="control-label">Pilih Foto</label>
@@ -73,6 +74,7 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         if($this->session->userdata('username'))
         {
     ?>
+    
 <!-- VIEW ALL FOTO -->
 <div class="container">
     <button type="button" class="btn margin-top-2em" id="tambahfoto" data-toggle="modal" data-target="#tambahfoto" data-whatever="@mdo">UPLOAD FOTO</button>
@@ -81,7 +83,8 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         }
     ?>
 
-<div class="container margin-top-3em text-center galeri-thumb-container height-content">
+<div class="container margin-top-3em text-center galeri-thumb-container height-content wrap-content">
+            <?php $offset = $this->uri->segment(3,0) +1; ?>
             <?php
                 $foto=0;
                 $maxrow=4;
@@ -113,7 +116,6 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
                     
             <?php 
                 $foto+=1;
-
                 }
                     else{
             ?>
@@ -139,34 +141,18 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
                     ?>
             </div>
         
-        <?php
-            $foto=1;        
+        <?php  
+             $foto=1;        
             }
         }
         ?>
 </div>
-        
+    
 
     <div class="text-center margin-top-5em">
-        <ul class="pagination"> 
-            <li class="prev"><a href="#" aria-label="Previous"><span aria-hidden="true">&larr;</span></a></li>
-            <li class="page"><a class= "current" href="#">1 <span class="sr-only">&nbsp;</span></a></li>
-            <li class="page"><a href="#">2</a></li>
-            <li class="page"><a href="#">3</a></li>
-            <li class="page"><a href="#">4</a></li>
-            <li class="page"><a href="#">5</a></li>
-            <li class="next">
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&rarr;</span>
-                </a>
-    <!-- Show pagination links -->
-    <?php 
-        // foreach ($links as $link) {
-        //     echo "<li>". $link."</li>";
-        // } 
-    ?>
-            </li>
-        </ul>
+            <?php 
+                echo $pagination; 
+            ?>
     </div>
 
 <?php 
