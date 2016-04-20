@@ -74,7 +74,7 @@ function setEdit(event,element){
     $('.tambah-form .control-label h3').html('EDIT BERITA');
     
     $.ajax({
-        url: "c_berita/load_data/"+id,
+        url: "c_beranda/load_data/"+id,
         success: function(data){
             data = JSON.parse(data)
             if(data.length == 0){
