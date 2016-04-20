@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a id="login" data-toggle="modal" data-target="#loginform" data-whatever="@mdo"><span class="glyphicon glyphicon-remove point"></span></a>
             </div>
 
-            <form class="form-horizontal" action="c_beranda/do_login" method="post">
+            <form class="form-horizontal" action="<?php echo base_url()."index.php/";?>c_beranda/do_login" method="post">
                 <div class="form-group">
                     <label for="inputUsername3" class="col-sm-5 control-label">Username</label>
                     <div class="col-sm-7">
