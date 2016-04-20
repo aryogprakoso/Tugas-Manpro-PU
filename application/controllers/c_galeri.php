@@ -18,7 +18,7 @@ class C_galeri extends CI_Controller{
     public function page($pageno){
         if($pageno<1)
         {
-            redirect();
+            redirect('/c_galeri/page/1');
             return;
         }
         
@@ -109,8 +109,7 @@ class C_galeri extends CI_Controller{
       //$this->session->set_flashdata('message','Gambar telah Dihapus..');
       redirect('c_galeri');
     }
-
-
-    // Set array for PAGINATION LIBRARY, and show view data according to page.
+    
+    
 }
 ?>
