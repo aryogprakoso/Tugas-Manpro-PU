@@ -149,20 +149,11 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         }
         ?>
 </div>
-    
-<<<<<<< HEAD
-    
-     
-
-    <div class="text-center margin-top-5em">
-            <?php echo $pagination; ?>
-=======
 
     <div class="text-center margin-top-5em">
             <?php 
                 echo $pagination; 
             ?>
->>>>>>> de2851e7b346e3b800cb15be18853b2aba5ff581
     </div>
 
 <?php 
