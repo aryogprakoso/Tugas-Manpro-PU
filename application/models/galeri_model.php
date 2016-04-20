@@ -42,7 +42,11 @@ class Galeri_model extends CI_Model{
     
     //mengakses 4 gambar terakhir sebagai image slider di beranda
     public function get_images_slider(){
-        $query = $this->db->query("SELECT * FROM galeri ORDER BY idGaleri DESC limit 4");
+        $this->db->select('*');
+        $this->db->from('galeri');
+        $this->db->order_by('idGaleri', 'DESC');
+        $this->db->limit(4);
+        $query = $this->db->get();
         return $query->result_array();
     }
     
@@ -106,6 +110,7 @@ class Galeri_model extends CI_Model{
         $res = $this->db->delete('galeri',array('idGaleri' => $idGaleri));
         return $res;
     }
+    
     //mendelete gambar dengan id tertentu pada database
     public function delete($idGaleri)
     {
@@ -118,26 +123,6 @@ class Galeri_model extends CI_Model{
       //catch exception
       catch(Exception $e) {
           }
-    }
-
-
-    // Count all record of table "galeri" in database.
-    public function record_count() {
-        return $this->db->count_all("galeri");
-    }
-
-    public function fetch_data($limit, $id) {
-        $this->db->limit($limit);
-        $this->db->where('idGaleri', $id);
-        $query = $this->db->get("galeri");
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $row) {
-                $data[] = $row;
-        }
-
-        return $data;
-        }
-    return false;
     }
 
 }
