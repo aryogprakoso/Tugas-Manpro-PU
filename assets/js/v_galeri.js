@@ -21,3 +21,17 @@ $(document).ready(function()
             $('#btndelete').attr('href',btndlt) 
         })
     })
+
+$(document).on("click", "#tambahfoto", function(){
+     $("#sisaHurufTambah").html("200");
+ });
+
+$(document).on("keyup", "#deskripsiFoto", function(){
+        $sisa = 200 - $("#deskripsiFoto").val().length;
+        $("#sisaHurufTambah").html($sisa);
+});
+    
+$(document).on("keydown", "#deskripsiFoto", function(){
+        $sisa = 200 - $("#deskripsiFoto").val().length;
+        $("#sisaHurufTambah").html($sisa);
+});

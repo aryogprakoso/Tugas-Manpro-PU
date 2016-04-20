@@ -29,7 +29,8 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
             <label class="control-label"><h3 class="font-bold">UPLOAD FOTO</h3></label>
             <div class="text-left form-group">
                 <label class="control-label">Deskripsi Foto</label>
-                <input type="text" class="form-control" placeholder="Deskripsi Foto" name="keteranganGambar" id="deskripsiFoto">
+                <input type="text" class="form-control" placeholder="Deskripsi Foto" name="keteranganGambar" id="deskripsiFoto" maxlength="200">
+                <center><label class="control-label"><small>(Sisa </small><small id="sisaHurufTambah"></small><small> Huruf)</small></label></center>
             </div>
             <div class="text-left form-group">
                 <label class="control-label">Pilih Foto</label>
@@ -73,6 +74,7 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         if($this->session->userdata('username'))
         {
     ?>
+    
 <!-- VIEW ALL FOTO -->
 <div class="container">
     <button type="button" class="btn margin-top-2em" id="tambahfoto" data-toggle="modal" data-target="#tambahfoto" data-whatever="@mdo">UPLOAD FOTO</button>
@@ -148,11 +150,19 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         ?>
 </div>
     
+<<<<<<< HEAD
     
      
 
     <div class="text-center margin-top-5em">
             <?php echo $pagination; ?>
+=======
+
+    <div class="text-center margin-top-5em">
+            <?php 
+                echo $pagination; 
+            ?>
+>>>>>>> de2851e7b346e3b800cb15be18853b2aba5ff581
     </div>
 
 <?php 

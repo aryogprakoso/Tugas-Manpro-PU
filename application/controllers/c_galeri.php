@@ -1,6 +1,7 @@
 <?php if(! defined('BASEPATH')) exit ('No direct script access allowed');
 
 class C_galeri extends CI_Controller{
+<<<<<<< HEAD
 	     public function __construct(){
 	        parent::__construct();
 	        $this->load->helper(array('form', 'url'));
@@ -68,10 +69,61 @@ class C_galeri extends CI_Controller{
         // $config['last_tag_close'] = '</li>';
     }
     
+=======
+    public function __construct(){
+        parent::__construct();
+	    $this->load->helper(array('form', 'url'));
+	    $this->load->model('galeri_model');
+            $this->load->library('pagination');
+    }
+    
+    private $limit = 12;
+	
+>>>>>>> de2851e7b346e3b800cb15be18853b2aba5ff581
     public function index(){
         redirect('/c_galeri/page/1');
     }
+    
+    //untuk menload seluruh image dengan Pagination
+    public function page($pageno){
+        if($pageno<1)
+        {
+            redirect();
+            return;
+        }
+        
+        $data = $this->galeri_model->getalldata($this->limit);
+        $total_rows = $this->galeri_model->count();
 
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = 3;
+        $config['base_url'] = base_url().'index.php/c_galeri';
+        $config['use_page_numbers']= TRUE;
+    
+        $maxpage = floor($total_rows/$this->limit);
+        $maxpage += $total_rows%$this->limit>0 ? 1 : 0;
+        $maxpage += $maxpage < 1 ? 1 : 0;
+        
+        $pagination = "<ul class='pagination paginations'>";
+        for($i=1; $i<=$maxpage; $i++)
+        {
+            $pagination .= "<li";
+            if($i == $pageno)
+            {
+                $pagination .= " class='active'";
+            }
+            $pagination .= ">";
+            $pagination .= "<a href='".$i."'>";
+            $pagination .= $i;
+            $pagination .= "</a>";
+            $pagination .= "</li>";
+        }
+        $pagination .= "</ul>";
+
+        $this->load->view('v_galeri', compact('data', 'pageno', 'pagination'));
+    }
+    
     public function do_upload(){
         $this->load->helper('date');
         $keteranganGambar = $this->input->post('keteranganGambar');
@@ -107,8 +159,13 @@ class C_galeri extends CI_Controller{
                 redirect('c_galeri',$data);//$this->load->view('v_galeri',$data);
             }
     }
+<<<<<<< HEAD
 
                 
+=======
+    
+    //untuk mendelete gambar dengan id tertentu
+>>>>>>> de2851e7b346e3b800cb15be18853b2aba5ff581
     public function delete($idGaleri)
     {
       $this->load->helper('date');
