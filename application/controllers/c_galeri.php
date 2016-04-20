@@ -1,12 +1,12 @@
 <?php if(! defined('BASEPATH')) exit ('No direct script access allowed');
 
 class C_galeri extends CI_Controller{
-	     public function __construct(){
+	public function __construct(){
 	        parent::__construct();
 	        $this->load->helper(array('form', 'url'));
 	        $this->load->model('galeri_model');
-            $this->load->library('pagination');
-	    }
+            	$this->load->library('pagination');
+	}
 
     private $limit = 12;
     
@@ -59,6 +59,8 @@ class C_galeri extends CI_Controller{
         $keteranganGambar = $this->input->post('keteranganGambar');
         
         $foto = time().$_FILES['userfile']['name'];
+        //menghilangkan special karakter pada file_name
+        $foto = preg_replace("/[^a-zA-Z0-9.]/", "", $foto);
         $config['file_name']=$foto;
         $config['upload_path']= './assets/uploads';
         $config['allowed_types']='gif|jpeg|png|jpg|bmp';
@@ -68,13 +70,13 @@ class C_galeri extends CI_Controller{
         $config['remove_spaces'] = FALSE;
         $this->load->library('upload',$config);
         $this->upload->initialize($config);
-        //$id = $this->db->query("SELECT  ('idGaleri') FROM 'galeri'");
-        //("SELECT count(`idGaleri`) as `count` FROM `pu`.`galeri`" )->row_array()['count']
+   
+   
         if(!$this->upload->do_upload('userfile')){
             
             $upload_error = array('error' => $this->upload->display_errors());
             redirect('c_galeri', $upload_error);
-         //   $this->load->view('v_galeri', $upload_error);
+
                 
             }
         else{
@@ -86,7 +88,7 @@ class C_galeri extends CI_Controller{
                 
                 $this->galeri_model->form_insert($data);
                 $data['success'] = 'Gambar Berhasil Diupload';
-                redirect('c_galeri',$data);//$this->load->view('v_galeri',$data);
+                redirect('c_galeri',$data);
             }
     }
     
@@ -105,8 +107,7 @@ class C_galeri extends CI_Controller{
       } else {
         echo 'Could not delete '.$filename.', file does not exist';
       }
-      //$this->galeri_model->gambar_delete($idGaleri);
-      //$this->session->set_flashdata('message','Gambar telah Dihapus..');
+      
       redirect('c_galeri');
     }
     
