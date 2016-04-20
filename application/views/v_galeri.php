@@ -81,12 +81,14 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         }
     ?>
 
-<div class="container margin-top-3em text-center galeri-thumb-container height-content">
+<div class="container margin-top-3em text-center galeri-thumb-container height-content wrap-content">
+            <?php $offset = $this->uri->segment(3,0) +1; ?>
             <?php
                 $foto=0;
                 $maxrow=4;
                 foreach($data as $row) 
                 {
+                    // if($foto % $maxrow != 0){
                     if($foto<$maxrow){
             ?>
 
@@ -113,8 +115,8 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
                     
             <?php 
                 $foto+=1;
-
                 }
+                    // else if($foto % $maxrow == 0){
                     else{
             ?>
             
@@ -139,34 +141,18 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
                     ?>
             </div>
         
-        <?php
-            $foto=1;        
+        <?php  
+             $foto=1;        
             }
         }
         ?>
 </div>
-        
+    
+    
+     
 
     <div class="text-center margin-top-5em">
-        <ul class="pagination"> 
-            <li class="prev"><a href="#" aria-label="Previous"><span aria-hidden="true">&larr;</span></a></li>
-            <li class="page"><a class= "current" href="#">1 <span class="sr-only">&nbsp;</span></a></li>
-            <li class="page"><a href="#">2</a></li>
-            <li class="page"><a href="#">3</a></li>
-            <li class="page"><a href="#">4</a></li>
-            <li class="page"><a href="#">5</a></li>
-            <li class="next">
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&rarr;</span>
-                </a>
-    <!-- Show pagination links -->
-    <?php 
-        // foreach ($links as $link) {
-        //     echo "<li>". $link."</li>";
-        // } 
-    ?>
-            </li>
-        </ul>
+            <?php echo $pagination; ?>
     </div>
 
 <?php 

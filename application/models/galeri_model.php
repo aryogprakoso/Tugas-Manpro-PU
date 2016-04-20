@@ -1,6 +1,6 @@
 <?php if(! defined('BASEPATH')) exit ('No direct script access allowed');
-
 class Galeri_model extends CI_Model{
+
     function __construct(){
         parent::__construct();
     }
@@ -18,12 +18,22 @@ class Galeri_model extends CI_Model{
     }
     
     //mengambil semua data pada tabel galeri secara descending
-    public function getalldata(){
+    public function getalldata($limit = -1){
+        
         $this->db->select('*');
         $this->db->from('galeri');
         $this->db->order_by('idGaleri', 'DESC');
-        $query = $this->db->get();
+        if($limit<0){
+            $query = $this->db->get();
+        }else{
+            $offset = ($this->uri->segment(3)-1)*$limit;
+            $query = $this->db->limit($limit, $offset)->get();
+        }
         return $query->result_array();
+    }
+    
+    public function count(){
+        return $this->db->count_all_results('galeri');
     }
     
     //mengakses 4 gambar terakhir sebagai image slider di beranda
@@ -92,7 +102,6 @@ class Galeri_model extends CI_Model{
         $res = $this->db->delete('galeri',array('idGaleri' => $idGaleri));
         return $res;
     }
-
     //mendelete gambar dengan id tertentu pada database
     public function delete($idGaleri)
     {
@@ -102,12 +111,32 @@ class Galeri_model extends CI_Model{
         unlink($imagepath . $pathGambar);
          return true;
       }
-
       //catch exception
       catch(Exception $e) {
-        echo $e->getMessage();
-      }
+          }
     }
-}
 
+
+    // Count all record of table "galeri" in database.
+    public function record_count() {
+        return $this->db->count_all("galeri");
+    }
+
+    public function fetch_data($limit, $id) {
+        $this->db->limit($limit);
+        $this->db->where('idGaleri', $id);
+        $query = $this->db->get("galeri");
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+        }
+
+        return $data;
+        }
+    return false;
+    }
+
+}
 ?>
+
+

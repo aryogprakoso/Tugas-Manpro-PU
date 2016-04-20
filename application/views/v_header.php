@@ -121,14 +121,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     
-    <!-- FORM PROFILE -->
+    <!-- FORM EDIT PASSWORD -->
     <div class="modal fade text-center" id="profileform" role="dialog">
         <div class="profile-box">
             <div class="exit text-right">
                 <a id="profile" data-toggle="modal" data-target="#profileform" data-whatever="@mdo"><span class="glyphicon glyphicon-remove point"></span></a>
             </div>
 
-            <form class="form-horizontal" action="" method="post">
+            <form class="form-horizontal" action="" method="post" >
                 <div class="form-group">
                     <label for="inputUsername3" class="col-sm-5 control-label">Username</label>
                     <div class="col-sm-7">
@@ -144,13 +144,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-5 control-label">Password Baru</label>
                     <div class="col-sm-7">
-                        <input type="password" name="passwordBaru" class="form-control" id="inputPassword3" placeholder="Password Baru" required>
+                        <input type="password" name="passwordBaru" class="form-control" id="password1" placeholder="Password Baru" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-5 control-label">Confirm Password Baru</label>
                     <div class="col-sm-7">
-                        <input type="password" name="passwordBaruConfirm" class="form-control" id="inputPassword3" placeholder="Confirm Password Baru" required>
+                        <input type="password" name="passwordBaruConfirm" class="form-control" id="password2" placeholder="Confirm Password Baru" required>
                     </div>
                 </div>
                 <div class="form-group">
