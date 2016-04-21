@@ -80,7 +80,7 @@ function setEdit(event,element){
             if(data.length == 0){
                 console.log("gagal");
             }else{
-                $('#form').attr('action','c_berita/do_edit');
+                $('#form').attr('action','c_beranda/do_edit');
                 $('#idBerita').val(data[0].idBerita);
                 $('#judulBerita').val(data[0].judulBerita);
                 $('#summernote').summernote('code',data[0].isiBerita,{

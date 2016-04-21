@@ -98,7 +98,7 @@ $this->load->view('v_header', array('nav_beranda'=>"active"));
         <div class="exit text-right">
             <a id="tambah" data-toggle="modal" data-target="#tambahform" data-whatever="@mdo"><span class="glyphicon glyphicon-remove point"></span></a>
         </div>
-        <form class="form-horizontal" enctype="multipart/form-data" id="form" accept-charset="utf-8" method="post" action="<?php echo base_url()."index.php/c_berita/do_upload"; ?>">
+        <form class="form-horizontal" enctype="multipart/form-data" id="form" accept-charset="utf-8" method="post" action="<?php echo base_url()."index.php/c_beranda/do_upload"; ?>">
             <input type="hidden" name="idBerita" id="idBerita"><label class="control-label"><h3 class="font-bold">TAMBAH BERITA</h3></label>
             <div class="text-left form-group">
                 <label class="control-label">Judul</label>
