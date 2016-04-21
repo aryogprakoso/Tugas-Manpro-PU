@@ -5,6 +5,48 @@ $this->load->view('v_header', array('nav_beranda'=>"active"));
 <script type="text/javascript" src='<?php echo assets()."js/v_berita.js"; ?>'></script>
 
 <div class="wrap-content">
+    
+    <div id="global-notification">
+        <?php
+            $success = $this->session->flashdata('success');
+            $error = $this->session->flashdata('error');
+
+            if($success != null){
+                if(count($success)>0){
+        ?>
+        <div class="container alert alert-success text-center" role="alert">
+            <ul>
+            <?php
+                foreach($success as $value){
+                    echo "<li>".$value."</li>";
+                }
+            ?>
+            </ul>
+        </div>
+        <?php
+                }
+            }
+        ?>
+        <?php
+            if($error != null){
+                if(count($error)>0){
+        ?>
+
+        <div class="container alert alert-danger text-center" role="alert">
+            <ul>
+            <?php
+                foreach($error as $value){
+                    echo "<li>".$value."</li>";
+                }
+            ?>
+            </ul>
+        </div>
+        <?php
+                }
+            }
+        ?>
+    </div>
+    
     <!-- IMAGE SLIDE SHOW -->
     <div id="myCarousel" class="carousel slide container margin-top-3em" data-ride="carousel">
         <!-- Indicators -->
@@ -102,7 +144,7 @@ $this->load->view('v_header', array('nav_beranda'=>"active"));
             <input type="hidden" name="idBerita" id="idBerita"><label class="control-label"><h3 class="font-bold">TAMBAH BERITA</h3></label>
             <div class="text-left form-group">
                 <label class="control-label">Judul</label>
-                <input type="text" class="form-control" placeholder="Judul Berita" name="judulBerita" id="judulBerita" required>
+                <input type="text" class="form-control" placeholder="Judul Berita" name="judulBerita" id="judulBerita" required maxlength="50">
             </div>
             <div class="text-left form-group">
                 <label class="control-label">Isi</label>

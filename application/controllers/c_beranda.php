@@ -61,6 +61,8 @@ class C_beranda extends CI_Controller{
     }
     
     public function do_upload(){
+        $error = array();
+        $success = array();
         if(!$this->session->userdata('username')){
             redirect('/c_beranda', 'refresh');
             return;
@@ -135,10 +137,13 @@ class C_beranda extends CI_Controller{
                 }
             }
             $this->db->trans_complete();
-
+            $success[] = "Berita berhasil ditambahkan";
         }catch(\Exception $e){
             $this->db->trans_rollback();
+            $error[] = "Gagal menambahkan berita";
         }
+        $this->session->set_flashdata('success',$success);
+        $this->session->set_flashdata('error',$error);
         redirect('/c_beranda', 'refresh');
     }
     
@@ -167,6 +172,8 @@ class C_beranda extends CI_Controller{
     }
         
     public function do_edit(){
+        $error = array();
+        $success = array();
         if(!$this->session->userdata('username')){
             redirect('/c_beranda', 'refresh');
             return;
@@ -178,7 +185,6 @@ class C_beranda extends CI_Controller{
         
         $id = $this->input->post('idBerita');
         
-        //error handling belum benar
         if($judulBerita == NULL || $isiBerita == NULL){
             echo "Please fill";
             $this->load->view('v_beranda');
@@ -248,10 +254,14 @@ class C_beranda extends CI_Controller{
                     }
                 }
                 $this->db->trans_complete();
+                $success[] = "Berita berhasil diedit";
                 
             }catch(\Exception $e){
                 $this->db->trans_rollback();
+                $error[] = "Gagal mengedit berita";
             }
+            $this->session->set_flashdata('success',$success);
+            $this->session->set_flashdata('error',$error);
             redirect('/c_beranda', 'refresh');
         }
     }

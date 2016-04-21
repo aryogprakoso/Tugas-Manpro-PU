@@ -188,7 +188,6 @@ class C_artikel extends CI_Controller{
         
         $id = $this->input->post('idArtikel');
         
-        //error handling belum benar
         if($judulArtikel == NULL || $isiArtikel == NULL){
             echo "Please fill";
             $this->load->view('v_artikel');

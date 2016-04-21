@@ -25,7 +25,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
     
     <!-- Table -->
     <div class = "container table-responsive">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped tabel-peminjaman">
             <thead>
               <tr>
                 <th class = "text-center">Tanggal</th>

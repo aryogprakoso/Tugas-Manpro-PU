@@ -14,7 +14,7 @@ $this->load->view('v_header', array('nav_artikel'=>"active"));
             if($success != null){
                 if(count($success)>0){
         ?>
-        <div class="alert alert-success text-center" role="alert">
+        <div class="container alert alert-success text-center" role="alert">
             <ul>
             <?php
                 foreach($success as $value){
@@ -32,7 +32,7 @@ $this->load->view('v_header', array('nav_artikel'=>"active"));
                 if(count($error)>0){
         ?>
 
-        <div class="alert alert-danger text-center" role="alert">
+        <div class="container alert alert-danger text-center" role="alert">
             <ul>
             <?php
                 foreach($error as $value){
@@ -123,7 +123,7 @@ $this->load->view('v_header', array('nav_artikel'=>"active"));
             <input type="hidden" name="idArtikel" id="idArtikel"><label class="control-label"><h3 class="font-bold">TAMBAH ARTIKEL</h3></label>
             <div class="text-left form-group">
                 <label class="control-label">Judul</label>
-                <input type="text" class="form-control" placeholder="Judul Artikel" name="judulArtikel" id="judulArtikel" required>
+                <input type="text" class="form-control" placeholder="Judul Artikel" name="judulArtikel" id="judulArtikel" required maxlength="50">
             </div>
             <div class="text-left form-group">
                 <label class="control-label">Isi</label>

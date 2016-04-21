@@ -571,6 +571,28 @@ ul.nav-pills{
     margin-top: 10vh;
 }
 
+.tabel-peminjaman td:nth-child(5),
+.tabel-peminjaman td:nth-child(7){
+    text-align: left;
+}
+
+.tabel-peminjaman td:nth-child(8){
+    min-width: 200px;
+}
+
+.tabel-peminjaman td:nth-child(8) button{
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+}
+
+.tabel-peminjaman td:nth-child(8):after
+.tabel-peminjaman td:nth-child(8):before{
+    clear: both;
+    content: ' ';
+    display: table;
+}
+
 /* SEARCH */
 
 .white{
