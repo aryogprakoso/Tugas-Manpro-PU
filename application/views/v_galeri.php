@@ -13,6 +13,8 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         </div>
         <div class="text-center">
             <img id="imagebesar"  class="img-thumbnail">
+        </div>
+        <div>
             <label id="labelbesar" class="control-label"></label>
         </div>
     </div>
@@ -62,7 +64,9 @@ $this->load->view('v_header', array('nav_galeri'=>"active"));
         </div>
         <div class="text-center"> 
             <img id="imagedelete"  class="img-thumbnail">
-            <br><br><label id="labeldelete" class="control-label"></label><br>
+        </div>
+        <div>
+            <label id="labeldelete" class="control-label"></label><br>
         </div>
         <div class="col-sm-offset-0 col-sm-12">
             <a id="btndelete" class="btn">Hapus</a>            
