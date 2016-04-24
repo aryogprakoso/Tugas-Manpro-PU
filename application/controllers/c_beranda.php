@@ -280,7 +280,7 @@ class C_beranda extends CI_Controller{
             $status->status = "success";
             $status->message = "Berita berhasil dihapus";
             
-        }catch(){
+        }catch(\Exception $e){
             $status->status = "gagal";
             $status->message = "Gagal menghapus berita";
         }
