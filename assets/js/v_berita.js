@@ -139,16 +139,18 @@ function confirmDelete(event, element){
             var status = JSON.parse(data)
             if(status.status=="success"){
                 loadBerita();
+               $('#global-notification').html('<div class="alert alert-success text-center" role="alert">'+ status.message +'</div>'); $(element).parents('.modal').modal("hide");
+            }
+            else if(status.status == "gagal"){
+                $('#global-notification').html('<div class="alert alert-danger text-center" role="alert">'+ status.message +'</div>');
                 $(element).parents('.modal').modal("hide");
             }
-            data = JSON.parse(data)
-            if(data.length == 0){
-                console.log("gagal");
-            }else{
-            }
+            data = JSON.parse(data);
         },
         error: function(){
-            
+           console.log(error);
+            $('#global-notification').html('<div class="alert alert-danger text-center" role="alert">'+"Telah terjadi kesalahan pada sistem. Silahkan refresh"+'</div>');
+            $('#deleteform').modal('hide'); 
         }
     })
 }

@@ -14,7 +14,7 @@ $this->load->view('v_header', array('nav_beranda'=>"active"));
             if($success != null){
                 if(count($success)>0){
         ?>
-        <div class="container alert alert-success text-center" role="alert">
+        <div class="alert alert-success text-center" role="alert">
             <ul>
             <?php
                 foreach($success as $value){
@@ -32,7 +32,7 @@ $this->load->view('v_header', array('nav_beranda'=>"active"));
                 if(count($error)>0){
         ?>
 
-        <div class="container alert alert-danger text-center" role="alert">
+        <div class="alert alert-danger text-center" role="alert">
             <ul>
             <?php
                 foreach($error as $value){
