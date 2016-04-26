@@ -19,31 +19,33 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
 
               <?php
             $i = 0;
-            foreach($data2 as $d){
-                ?>
-                <div class="item-artikel">
-                    <?php
-                    setlocale(LC_ALL, 'INDONESIA');
-                    $date = $d['waktu'];
-                    $date = date_create($date);
-                    $date = date_format($date,"l, d F Y");
-                    $date = strftime("%A, %d %B %Y", time());
+            if(count($data2)>0){
+                foreach($data2 as $d){
                     ?>
+                    <div class="item-artikel">
+                        <?php
+                        setlocale(LC_ALL, 'INDONESIA');
+                        $date = $d['waktu'];
+                        $date = date_create($date);
+                        $date = date_format($date,"l, d F Y");
+                        $date = strftime("%A, %d %B %Y", time());
+                        ?>
 
-                    <?php 
-                        $er2 = $d['idBerita'];
-                       
-                        $er2 = str_replace("%20","",$er2);
-                      
-                     ?>
-                    <div class="search-judul">
-                        <a href="<?php echo base_url()."index.php/c_pencarian/selanjutnya2/"; echo $er2;  ?>">
-                            <?php echo $d['judulBerita']; ?>
-                        </a>
+                        <?php 
+                            $er2 = $d['idBerita'];
+
+                            $er2 = str_replace("%20","",$er2);
+
+                         ?>
+                        <div class="search-judul">
+                            <a href="<?php echo base_url()."index.php/c_pencarian/selanjutnya2/"; echo $er2;  ?>">
+                                <?php echo $d['judulBerita']; ?>
+                            </a>
+                        </div>
+
                     </div>
-                    
-                </div>
-            <?php $i++; } 
+                <?php $i++; } 
+            }
                 if($i == 0){
                     echo '<div class="italic">Berita tidak ditemukan</div>';
                 }
@@ -57,30 +59,32 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
             <div class="padding-0em-3em">
              <?php
             $i = 0;
-            foreach($test as $d){
-                ?>
-                <div class="item-artikel">
-                    <?php
-                    setlocale(LC_ALL, 'INDONESIA');
-                    $date = $d['waktu'];
-                    $date = date_create($date);
-                    $date = date_format($date,"l, d F Y");
-                    $date = strftime("%A, %d %B %Y", time());
+            if(count($data2)>0){
+                foreach($test as $d){
                     ?>
-                    <div class="search-judul">
-                    <?php 
-                        $er = $d['idArtikel'];
-                       
-                        $er = str_replace("%20","",$er);
-                      
-                     ?>
-                        <a href="<?php echo base_url()."index.php/c_pencarian/selanjutnya/"; echo $er;  ?>">
-                            <?php echo $d['judulArtikel']; ?>
-                        </a>
+                    <div class="item-artikel">
+                        <?php
+                        setlocale(LC_ALL, 'INDONESIA');
+                        $date = $d['waktu'];
+                        $date = date_create($date);
+                        $date = date_format($date,"l, d F Y");
+                        $date = strftime("%A, %d %B %Y", time());
+                        ?>
+                        <div class="search-judul">
+                        <?php 
+                            $er = $d['idArtikel'];
+
+                            $er = str_replace("%20","",$er);
+
+                         ?>
+                            <a href="<?php echo base_url()."index.php/c_pencarian/selanjutnya/"; echo $er;  ?>">
+                                <?php echo $d['judulArtikel']; ?>
+                            </a>
+                        </div>
+
                     </div>
-                  
-                </div>
-            <?php $i++; }
+                <?php $i++; }
+            }
                 if($i == 0){
                     echo '<div class="italic">Artikel tidak ditemukan</div>';
                 }
