@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php 
 $this->load->view('v_header', array('nav_peminjaman'=>"active"));
 ?>
-
+<link href='<?php echo assets()."css/peminjaman.css" ?>' rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src='<?php echo assets()."js/v_peminjaman.js"; ?>'></script>
 
 <div class="wrap-content height-content">

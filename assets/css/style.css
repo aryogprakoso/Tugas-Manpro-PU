@@ -571,9 +571,13 @@ ul.nav-pills{
     margin-top: 10vh;
 }
 
-.tabel-peminjaman td:nth-child(5),
+.tabel-peminjaman td:nth-child(1){
+    min-width: 100px;
+}
+
 .tabel-peminjaman td:nth-child(7){
     text-align: left;
+    
 }
 
 .tabel-peminjaman td:nth-child(8){

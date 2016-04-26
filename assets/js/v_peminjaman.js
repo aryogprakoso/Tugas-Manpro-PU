@@ -185,6 +185,54 @@ $(document).ready(function()
          });
      });
     
+    //Code dibawah ini berfungsi untuk mencegah input pada jamMulaiTambah
+    //menitMulaiTambah, jamSelesaiTambah & menitSelesaiTambah
+    $(document).on("keypress", "#jamMulaiTambah, #jamSelesaiTambah, #menitMulaiTambah, #menitSelesaiTambah", function(evt){
+        evt.preventDefault();
+    });
+    
+    $(document).on("change", "#jamMulaiTambah, #jamSelesaiTambah", function(){
+        var tampJamMulai = parseInt($('#jamMulaiTambah').val());
+        var tampJamSelesai = parseInt($('#jamSelesaiTambah').val());
+        var tampMenitMulai = parseInt($('#menitMulaiTambah').val());
+        var tampMenitSelesai = parseInt($('#menitSelesaiTambah').val());
+        
+        if(tampJamMulai >= tampJamSelesai)
+        {
+            $('#jamSelesaiTambah').val(tampJamMulai);
+            if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai != 45)
+                $('#menitSelesaiTambah').val(tampMenitMulai + 15);
+            else if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai == 45)
+            {
+                tampJamMulai++;
+                $('#jamSelesaiTambah').val(tampJamMulai);
+                $('#menitSelesaiTambah').val(0);
+            }
+        }
+    });
+    
+    $(document).on("change", "#menitMulaiTambah, #menitSelesaiTambah", function(){
+        var tampJamMulai = parseInt($('#jamMulaiTambah').val());
+        var tampJamSelesai = parseInt($('#jamSelesaiTambah').val());
+        var tampMenitMulai = parseInt($('#menitMulaiTambah').val());
+        var tampMenitSelesai = parseInt($('#menitSelesaiTambah').val());
+        
+        if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai != 45)
+            $('#menitSelesaiTambah').val(tampMenitMulai + 15);
+        else if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai == 45)
+        {
+            tampJamMulai++;
+            $('#jamSelesaiTambah').val(tampJamMulai);
+            $('#menitSelesaiTambah').val(0);
+        }
+    });
+    
+    $(document).on("click", ":radio", function(){
+        $ruangClick = true;
+        if($ruangClick)
+            $("#submitTambahPeminjaman").prop('disabled', false);
+    });
+    
     $(document).on("click", ":radio", function(){
         $ruangClick = true;
         if($ruangClick)
@@ -219,7 +267,6 @@ $(document).ready(function()
             if(index != bykCheck-1)
                 alatPeminjaman = alatPeminjaman + ",";
         });
-        console.log("asdasda");
         $.ajax({
             type     : 'POST',
             url      : 'http://localhost/pendeta_universitas/index.php/c_peminjaman/tambah_peminjaman',

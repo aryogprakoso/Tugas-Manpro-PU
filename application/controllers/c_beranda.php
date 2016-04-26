@@ -290,17 +290,7 @@ class C_beranda extends CI_Controller{
             //jika ada POST dengan KEY username, maka LOAD model 'login_model'
             $this->load->model('login_model');
             //Validasi POST dengan KEY 'username' dan 'password' dengan fungsi validate_user dari login_model
-            if($this->login_model->validate_user($this->input->post())) 
-            {
-                //set SESSION dengan KEY 'username' dan VALUE dari $_POST['username']
-                $this->session->set_userdata('username', $_POST['username']); 
-                redirect($this->agent->referrer()); //referrer digunakan untuk lihat page yang dikunjungi sebelumnya
-                exit();   
-            }
-            else
-            {
-                redirect($this->agent->referrer()); //referrer digunakan untuk lihat page yang dikunjungi sebelumnya
-            }
+            $this->login_model->validate_user($this->input->post());
         }
     }
     
@@ -309,6 +299,12 @@ class C_beranda extends CI_Controller{
         $this->session->unset_userdata('username'); 
         redirect($this->agent->referrer()); //referrer digunakan untuk lihat page yang dikunjungi sebelumnya
         exit();
+    }
+    
+    public function do_editPass()
+    {
+        $this->load->model('login_model');
+        $this->login_model->edit_password($this->input->post());
     }
 }
 ?>
