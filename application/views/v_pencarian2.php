@@ -19,9 +19,6 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
 
               <?php
             $i = 0;
-            if($data2 == null){
-                echo 'Berita tidak ditemukan beb :*';
-            }
             foreach($data2 as $d){
                 ?>
                 <div class="item-artikel">
@@ -46,7 +43,11 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
                     </div>
                     
                 </div>
-            <?php $i++; } ?>
+            <?php $i++; } 
+                if($i == 0){
+                    echo '<div class="italic">Berita tidak ditemukan</div>';
+                }
+                ?>
                 
             </div>
         </div>
@@ -56,9 +57,6 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
             <div class="padding-0em-3em">
              <?php
             $i = 0;
-            if($test == null){
-                echo 'Artikel tidak ditemukan beb :*';
-            }
             foreach($test as $d){
                 ?>
                 <div class="item-artikel">
@@ -82,7 +80,11 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
                     </div>
                   
                 </div>
-            <?php $i++; } ?>
+            <?php $i++; }
+                if($i == 0){
+                    echo '<div class="italic">Artikel tidak ditemukan</div>';
+                }
+                ?>
             </div>
         </div>
     </div>

@@ -10,13 +10,10 @@ class C_pencarian extends CI_Controller {
       
     }
 	public function index(){
-	$data2 = $this->search_model->get_search();
+        $data2 = $this->search_model->get_search();
         $test = $this->search_model->get_search2();
-	
-	$this->load->helper('html_divider');
+        $this->load->helper('html_divider');
         $this->load->view('v_pencarian2', array('data2' => $data2, 'test' => $test));
-        	
-		
 	}
 
      function selanjutnya(){
