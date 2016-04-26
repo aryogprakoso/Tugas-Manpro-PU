@@ -10,31 +10,10 @@ class C_pencarian extends CI_Controller {
       
     }
 	public function index(){
-		$data2 = $this->search_model->get_search();
+        $data2 = $this->search_model->get_search();
         $test = $this->search_model->get_search2();
-		if(($data2 || $test) != null){
-                    $this->load->helper('html_divider');
-            for($i = 0; $i < count($data2); $i++){
-                $isi2 = $this->db->query('select isiBerita from isiberita where idBerita = '.$data2[$i]['idBerita'])->result_array();
-            
-            $isi_processed = array();
-            
-            foreach($isi2 as $item_isi){
-                $isi_processed[] = $item_isi['isiBerita'];
-            }
-            $isi_hasil = htmlJoin($isi_processed);
-            
-            $data2[$i]['isiBerita'] = $isi_hasil;
-            }
-
-
-             $this->load->view('v_pencarian2', array('data2' => $data2, 'test' => $test));
-                 
-             
-        }else if ($data2 == null && $test == null){
-			$this->load->view('v_pencarian');	
-		}
-		
+        $this->load->helper('html_divider');
+        $this->load->view('v_pencarian2', array('data2' => $data2, 'test' => $test));
 	}
 
      function selanjutnya(){

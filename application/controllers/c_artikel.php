@@ -270,16 +270,23 @@ class C_artikel extends CI_Controller{
     }
     
     public function delete(){
-        if(!$this->session->userdata('username')){
+        try{
+            if(!$this->session->userdata('username')){
+                $status = new stdClass();
+                $status->status = "success";
+                echo json_encode($status);
+            }
+            $id = $this->input->post('idArtikel');
+            $this->artikel_model->form_delete($id);
+            $this->artikel_model->isi_delete($id);
             $status = new stdClass();
             $status->status = "success";
-            echo json_encode($status);
+            $status->message = "Artikel berhasil dihapus";
+            
+        }catch(\Exception $e){
+            $status->status = "gagal";
+            $status->message = "Gagal menghapus artikel";
         }
-        $id = $this->input->post('idArtikel');
-        $this->artikel_model->form_delete($id);
-        $this->artikel_model->isi_delete($id);
-        $status = new stdClass();
-        $status->status = "success";
         echo json_encode($status);
         //redirect('/c_artikel', 'refresh');
     }

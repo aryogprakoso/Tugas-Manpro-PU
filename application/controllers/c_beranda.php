@@ -267,16 +267,23 @@ class C_beranda extends CI_Controller{
     }
     
     public function delete(){
-        if(!$this->session->userdata('username')){
+        try{
+            if(!$this->session->userdata('username')){
+                $status = new stdClass();
+                $status->status = "success";
+                echo json_encode($status);
+            }
+            $id = $this->input->post('idBerita');
+            $this->berita_model->form_delete($id);
+            $this->berita_model->isi_delete($id);
             $status = new stdClass();
             $status->status = "success";
-            echo json_encode($status);
+            $status->message = "Berita berhasil dihapus";
+            
+        }catch(\Exception $e){
+            $status->status = "gagal";
+            $status->message = "Gagal menghapus berita";
         }
-        $id = $this->input->post('idBerita');
-        $this->berita_model->form_delete($id);
-        $this->berita_model->isi_delete($id);
-        $status = new stdClass();
-        $status->status = "success";
         echo json_encode($status);
         //redirect('/c_beranda', 'refresh');
     }
