@@ -23,7 +23,8 @@ class peminjaman_model extends CI_Model{
         $query = $this->db->get('penanggungjawab')->row();
         
         //code dibawah ini digunakan untuk mengubah format waktuModal dd-mm-yy menjadi format database yy-mm-dd
-        $data['waktuModal'] = date('Y-m-d', strtotime($data['waktuModal']));
+        $data['waktuModal'] = DateTime::createFromFormat("d-m-Y", $data['waktuModal'])->getTimestamp();
+        $data['waktuModal'] = date('Y-m-d', $data['waktuModal']);
         
         //jika salah satu atau banyak alat dipilih maka alatPeminjaman diisi sesuai dengan alat yang dipilih
         if(isset($data['alat']))
@@ -58,7 +59,7 @@ class peminjaman_model extends CI_Model{
     
     public function lihatPeminjaman($data)
     {
-        $data = strtotime($data);       //$data dengan format STRING diubah menjadi TIME
+        $data = DateTime::createFromFormat("Y-m", $data)->getTimestamp(); //$data dengan format STRING diubah menjadi TIME
         $month = date("m", $data);      //$month menampung INT dari bulan yang ada pada $data
         $year = date("Y", $data);       //$year menampung INT dari tahun yang ada pada $data
         
@@ -77,15 +78,15 @@ class peminjaman_model extends CI_Model{
             $query2 = $this->db->get('penanggungjawab')->row();
     
             //mengubah format date yang ada pada mysql 'yyyy-mm-dd' menjadi 'mm/dd/yyyy' sesuai dengan input date id 'waktuModal'
-            $dateBaru = strtotime($row->tanggalPeminjaman);
+            $dateBaru = DateTime::createFromFormat("Y-m-d", $row->tanggalPeminjaman)->getTimestamp();
             $dateBaru = date("d-m-Y", $dateBaru);
             
             //mengubah format time yang ada pada mysql 'HH:mm:ss' menjadi 'HH:mm' sesuai dengan format MULAI 'Jam:Menit'
-            $mulaiBaru = strtotime($row->waktuMulai);
+            $mulaiBaru = DateTime::createFromFormat("H:i:s", $row->waktuMulai)->getTimestamp();
             $mulaiBaru = date("H:i" , $mulaiBaru);
             
             //mengubah format time yang ada pada mysql 'HH:mm:ss' menjadi 'HH:mm' sesuai dengan format AKHIR 'Jam:Menit'
-            $selesaiBaru = strtotime($row->waktuSelesai);
+            $selesaiBaru = DateTime::createFromFormat("H:i:s", $row->waktuSelesai)->getTimestamp();
             $selesaiBaru = date("H:i" , $selesaiBaru);
             
             //echo ini digunakan untuk memunculkan tanggalPeminjaman pada tabel Peminjaman dengan format baru
@@ -126,7 +127,8 @@ class peminjaman_model extends CI_Model{
         $query = $this->db->get('penanggungjawab')->row();
         
         //code dibawah ini digunakan untuk mengubah format waktuModal dd-mm-yy menjadi format database yy-mm-dd
-        $data['waktuModalEdit'] = date('Y-m-d', strtotime($data['waktuModalEdit']));
+        $data['waktuModalEdit'] = DateTime::createFromFormat("d-m-Y", $data['waktuModalEdit'])->getTimestamp();
+        $data['waktuModalEdit'] = date('Y-m-d', $data['waktuModalEdit']);
         
         //jika salah satu atau banyak alat dipilih maka alatPeminjaman diisi sesuai dengan alat yang dipilih
         if(isset($data['alatEdit']))
