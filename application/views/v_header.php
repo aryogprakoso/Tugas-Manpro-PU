@@ -158,7 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-0 col-sm-12">
-                    <button class="btn btn-default" id="submitEditPassword">Simpan</button>
+                    <button class="btn btn-default" id="submitEditPass">Simpan</button>
                 </div>
             </div>
         </div>
