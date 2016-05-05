@@ -163,8 +163,6 @@ $(document).ready(function()
         var jumlahHuruf = $("#keteranganEdit").val().length;
         $("#sisaHurufEdit").html(200 - jumlahHuruf);
         
-        //$("#submitEditPeminjaman").attr('disabled', true);
-        
         tampID = this.id;
     });
     
@@ -217,14 +215,116 @@ $(document).ready(function()
         var tampMenitMulai = parseInt($('#menitMulaiTambah').val());
         var tampMenitSelesai = parseInt($('#menitSelesaiTambah').val());
         
-        if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai != 45)
-            $('#menitSelesaiTambah').val(tampMenitMulai + 15);
-        else if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai == 45)
+        if(tampMenitMulai == 60)
         {
             tampJamMulai++;
-            $('#jamSelesaiTambah').val(tampJamMulai);
-            $('#menitSelesaiTambah').val(0);
+            $('#menitMulaiTambah').val(0);
+            $('#jamMulaiTambah').val(tampJamMulai);
         }
+        else if(tampMenitMulai == -15)
+        {
+            tampJamMulai--;
+            $('#menitMulaiTambah').val(45);
+            $('#jamMulaiTambah').val(tampJamMulai);
+        }
+        
+        if(tampMenitSelesai == 60)
+        {
+            tampJamSelesai++;
+            $('#menitSelesaiTambah').val(0);
+            $('#jamSelesaiTambah').val(tampJamSelesai);
+        }
+        else if(tampMenitSelesai == -15)
+        {
+            tampJamSelesai--;
+            tampMenitSelesai = 45;
+            $('#menitSelesaiTambah').val(45);
+            $('#jamSelesaiTambah').val(tampJamSelesai);
+        }
+        
+        if(tampJamMulai >= tampJamSelesai)
+        {
+            if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai < 45)
+                $('#menitSelesaiTambah').val(tampMenitMulai + 15);
+            else if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai == 45)
+            {
+                tampJamMulai++;
+                $('#jamSelesaiTambah').val(tampJamMulai);
+                $('#menitSelesaiTambah').val(0);
+            }
+            else if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai > 45)
+                $('#menitSelesaiTambah').val(15);
+        }
+        
+    });
+    
+    $(document).on("change", "#jamMulaiEdit, #jamSelesaiEdit", function(){
+        var tampJamMulai = parseInt($('#jamMulaiEdit').val());
+        var tampJamSelesai = parseInt($('#jamSelesaiEdit').val());
+        var tampMenitMulai = parseInt($('#menitMulaiEdit').val());
+        var tampMenitSelesai = parseInt($('#menitSelesaiEdit').val());
+        
+        if(tampJamMulai >= tampJamSelesai)
+        {
+            $('#jamSelesaiEdit').val(tampJamMulai);
+            if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai != 45)
+                $('#menitSelesaiEdit').val(tampMenitMulai + 15);
+            else if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai == 45)
+            {
+                tampJamMulai++;
+                $('#jamSelesaiEdit').val(tampJamMulai);
+                $('#menitSelesaiEdit').val(0);
+            }
+        }
+    });
+    
+    $(document).on("change", "#menitMulaiEdit, #menitSelesaiEdit", function(){
+        var tampJamMulai = parseInt($('#jamMulaiEdit').val());
+        var tampJamSelesai = parseInt($('#jamSelesaiEdit').val());
+        var tampMenitMulai = parseInt($('#menitMulaiEdit').val());
+        var tampMenitSelesai = parseInt($('#menitSelesaiEdit').val());
+        
+        if(tampMenitMulai == 60)
+        {
+            tampJamMulai++;
+            $('#menitMulaiEdit').val(0);
+            $('#jamMulaiEdit').val(tampJamMulai);
+        }
+        else if(tampMenitMulai == -15)
+        {
+            tampJamMulai--;
+            $('#menitMulaiEdit').val(45);
+            $('#jamMulaiEdit').val(tampJamMulai);
+        }
+        
+        if(tampMenitSelesai == 60)
+        {
+            tampJamSelesai++;
+            $('#menitSelesaiEdit').val(0);
+            $('#jamSelesaiEdit').val(tampJamSelesai);
+        }
+        else if(tampMenitSelesai == -15)
+        {
+            tampJamSelesai--;
+            tampMenitSelesai = 45;
+            $('#menitSelesaiEdit').val(45);
+            $('#jamSelesaiEdit').val(tampJamSelesai);
+        }
+        
+        if(tampJamMulai >= tampJamSelesai)
+        {
+            if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai < 45)
+                $('#menitSelesaiEdit').val(tampMenitMulai + 15);
+            else if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai == 45)
+            {
+                tampJamMulai++;
+                $('#jamSelesaiEdit').val(tampJamMulai);
+                $('#menitSelesaiEdit').val(0);
+            }
+            else if(tampMenitMulai >= tampMenitSelesai && tampMenitMulai > 45)
+                $('#menitSelesaiEdit').val(15);
+        }
+        
     });
     
     $(document).on("click", ":radio", function(){
@@ -283,16 +383,28 @@ $(document).ready(function()
                        },
             success  : function(data)
             {
-                $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
-                $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
-                $(".tambah :radio:checked").attr("checked", false);
-                $(".tambah :checkbox:checked").each(function(){
-                    $(this).attr("checked", false);
-                });
-                $("#keteranganTambah").val("");
-                $("#jarak").hide();
-                $("#info").html("Tambah Data Peminjaman Berhasil Dilakukan");
-                $("#info").show();
+                var arr = data.split(" ");
+                var PJ = "";
+                for(var i = 3; i<arr.length; i++)
+                    PJ += " " + arr[i];
+                if(arr[0] == 0)
+                {
+                    $("#errorTambahPeminjaman").html("Pada Jam " + arr[1] + " - Jam " + arr[2] + " dipakai oleh" + PJ);
+                }
+                else
+                {
+                    $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
+                    $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
+                    $(".tambah :radio:checked").attr("checked", false);
+                    $(".tambah :checkbox:checked").each(function(){
+                        $(this).attr("checked", false);
+                    });
+                    $("#keteranganTambah").val("");
+                    $("#jarak").hide();
+                    $("#info").html("Tambah Data Peminjaman Berhasil Dilakukan");
+                    $("#info").show();
+                    $("#modalTambahPeminjaman").modal("hide");
+                }
             }
         });
     });
@@ -338,8 +450,28 @@ $(document).ready(function()
                        },
             success  : function(data)
             {
-                $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
-                $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
+                var arr = data.split(" ");
+                var PJ = "";
+                for(var i = 3; i<arr.length; i++)
+                    PJ += " " + arr[i];
+                if(arr[0] == 0)
+                {
+                    $("#errorEditPeminjaman").html("Pada Jam " + arr[1] + " - Jam " + arr[2] + " dipakai oleh" + PJ);
+                }
+                else
+                {
+                    $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
+                    $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
+                    $(".edit :radio:checked").attr("checked", false);
+                    $(".edit :checkbox:checked").each(function(){
+                        $(this).attr("checked", false);
+                    });
+                    $("#keteranganEdit").val("");
+                    $("#jarak").hide();
+                    $("#info").html("Edit Data Peminjaman Berhasil Dilakukan");
+                    $("#info").show();
+                    $("#modalEditPeminjaman").modal("hide");
+                }
             }
         });
     });

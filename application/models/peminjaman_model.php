@@ -8,24 +8,71 @@ class peminjaman_model extends CI_Model{
 
     public function tambahPeminjaman($data) 
     {
-        //code dibawah ini digunakan untuk mengkonversi jamMulai dan menitMulai menjadi format Time supaya bisa dimasukkan kedalam database
+        //code dibawah ini digunakan untuk mengkonversi jamMulai dan menitMulai menjadi format Time
         $insertMulai = (3600 * $data['jamMulai']) + (60 * $data['menitMulai']);
-        $insertMulai =  gmdate("H:i", $insertMulai);
         
-        //code dibawah ini digunakan untuk mengkonversi jamSelesai dan menitSelesai menjadi format Time supaya bisa dimasukkan kedalam database
+        //code dibawah ini digunakan untuk mengkonversi jamSelesai dan menitSelesai menjadi format Time
         $insertSelesai = (3600 * $data['jamSelesai']) + (60 * $data['menitSelesai']);
-        $insertSelesai = gmdate("H:i", $insertSelesai);
-        
-        //Query dibawah ini untuk mendapatkan dari 'idPenanggungJawab'
-        //sesuai dengan 'namaPenanggungJawab yang' ada di table 'peminjaman'
-        $this->db->select('idPenanggungJawab');
-        $this->db->where('namaPenanggungJawab', $data['penanggungJawab']);
-        $query = $this->db->get('penanggungjawab')->row();
         
         //code dibawah ini digunakan untuk mengubah format waktuModal dd-mm-yy menjadi format database yy-mm-dd
         $data['waktuModal'] = DateTime::createFromFormat("d-m-Y", $data['waktuModal'])->getTimestamp();
         $data['waktuModal'] = date('Y-m-d', $data['waktuModal']);
         
+        //Query dibawah ini untuk mendapatkan 'idPenanggungJawab'
+        //sesuai dengan 'namaPenanggungJawab yang' ada di table 'peminjaman'
+        $this->db->select('idPenanggungJawab');
+        $this->db->where('namaPenanggungJawab', $data['penanggungJawab']);
+        $queryPJ = $this->db->get('penanggungjawab')->row();
+        
+        //Query dibawah ini berguna sebagai pengecekan data, dan disesuaikan dengan fungsi lihatPeminjaman
+        $this->db->where('tanggalPeminjaman', $data['waktuModal']);
+        $this->db->where('ruangPeminjaman', $data['ruang']);
+        $this->db->order_by('waktuMulai', 'asc');
+        $this->db->order_by('waktuSelesai', 'asc');
+        $queryCek = $this->db->get('peminjaman');
+        
+        //Cek apakah Data yang akan ditambahkan sudah ada pada database atau tidak
+        foreach($queryCek->result() as $row)
+        {
+            //code dibawah ini digunakan untuk mengkonversi waktuMulai Int untuk perbandingan
+            $tampCekMulai = DateTime::createFromFormat("H:i:s", $row->waktuMulai)->getTimestamp();
+            $tampCekMulai = (3600 * idate("H", $tampCekMulai)) + (60 * idate("i", $tampCekMulai));
+            
+            //code dibawah ini digunakan untuk mengkonversi waktuSelesai Int untuk perbandingan
+            $tampCekSelesai = DateTime::createFromFormat("H:i:s", $row->waktuSelesai)->getTimestamp();
+            $tampCekSelesai = (3600 * idate("H", $tampCekSelesai)) + (60 * idate("i", $tampCekSelesai));
+            
+            //code dibawah ini digunakan sebagai pesan error apabila masuk kedalam kondisi pengecekan
+            $printErrMulai = DateTime::createFromFormat("H:i:s", $row->waktuMulai)->getTimestamp();
+            $printErrMulai = date("H:i", $printErrMulai);
+            
+            //code dibawah ini digunakan sebagai pesan error apabila masuk kedalam kondisi pengecekan
+            $printErrSelesai = DateTime::createFromFormat("H:i:s", $row->waktuSelesai)->getTimestamp();
+            $printErrSelesai = date("H:i" , $printErrSelesai);
+            
+            //apabila jam insertMulai berada di antara jam waktuMulai dan waktuSelesai Database, akan mengembalikan pesan error
+            if(($tampCekMulai <= $insertMulai) && ($tampCekSelesai >= $insertMulai))
+            {
+                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $data['penanggungJawab'];
+                return; 
+            }
+            //apabila jam insertSelesai berada di antara jam waktuMulai dan waktuSelesai Database, akan mengembalikan pesan error
+            else if(($tampCekMulai <= $insertSelesai) && ($tampCekSelesai) >= $insertSelesai)
+            {
+                echo "0 " . $printErrSelesai . " " . $printErrSelesai . " " . $data['penanggungJawab'];
+                return;
+            }
+            //apabila jam waktuMulai dan waktuSelesai Database berada di antara  
+            //jam insertMulai dan insertSelesai akan mengembalikan pesan error
+            else if(($tampCekMulai >= $insertMulai) && ($tampCekSelesai <= $insertSelesai))
+            {
+                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $data['penanggungJawab'];
+                return;
+            }
+        }
+        
+        $insertMulai =  gmdate("H:i", $insertMulai);
+        $insertSelesai = gmdate("H:i", $insertSelesai);
         //jika salah satu atau banyak alat dipilih maka alatPeminjaman diisi sesuai dengan alat yang dipilih
         if(isset($data['alat']))
         {
@@ -36,7 +83,7 @@ class peminjaman_model extends CI_Model{
               'ruangPeminjaman' => $data['ruang'],
               'alatPeminjaman'  => $data['alat'],
               'keteranganPeminjaman' => $data['keterangan'],
-              'idPenanggungJawab' => $query->idPenanggungJawab
+              'idPenanggungJawab' => $queryPJ->idPenanggungJawab
             );
         }
         //jika tidak ada alat yang dipilih maka alatPeminjaman diisi dengan 'NULL'
@@ -49,10 +96,10 @@ class peminjaman_model extends CI_Model{
               'ruangPeminjaman' => $data['ruang'],
               'alatPeminjaman'  => NULL,
               'keteranganPeminjaman' => $data['keterangan'],
-              'idPenanggungJawab' => $query->idPenanggungJawab
+              'idPenanggungJawab' => $queryPJ->idPenanggungJawab
             );
         }
-              
+
         $this->db->insert('peminjaman', $insertTable);
         $this->lihatPeminjaman($data['waktuSearch']);
     }
@@ -67,6 +114,7 @@ class peminjaman_model extends CI_Model{
         $this->db->where('Year(tanggalPeminjaman)', $year);       //Query Builder dari CI untuk WHERE tanggalPeminjaman
         $this->db->order_by('tanggalPeminjaman', 'asc');
         $this->db->order_by('waktuMulai', 'asc');
+        $this->db->order_by('waktuSelesai', 'asc');
         $query =  $this->db->get('peminjaman');                 //Query Builder dari CI untuk SELECT ALL ke table 'peminjaman'
         
         foreach ($query->result() as $row)      //for untuk setiap row yang didapatkan dari query
@@ -112,13 +160,15 @@ class peminjaman_model extends CI_Model{
     
     public function editPeminjaman($data)
     {
-        //code dibawah ini digunakan untuk mengkonversi jamMulai dan menitMulai menjadi format Time supaya bisa dimasukkan kedalam database
+        //code dibawah ini digunakan untuk mengkonversi jamMulaiEdit dan menitMulaiEdit menjadi format Time
         $editMulai = (3600 * $data['jamMulaiEdit']) + (60 * $data['menitMulaiEdit']);
-        $editMulai =  gmdate("H:i", $editMulai);
         
-        //code dibawah ini digunakan untuk mengkonversi jamSelesai dan menitSelesai menjadi format Time supaya bisa dimasukkan kedalam database
+        //code dibawah ini digunakan untuk mengkonversi jamSelesaiEdit dan menitSelesaiEdit menjadi format Time
         $editSelesai = (3600 * $data['jamSelesaiEdit']) + (60 * $data['menitSelesaiEdit']);
-        $editSelesai = gmdate("H:i", $editSelesai);
+        
+        //code dibawah ini digunakan untuk mengubah format waktuModal dd-mm-yy menjadi format database yy-mm-dd
+        $data['waktuModalEdit'] = DateTime::createFromFormat("d-m-Y", $data['waktuModalEdit'])->getTimestamp();
+        $data['waktuModalEdit'] = date('Y-m-d', $data['waktuModalEdit']);
         
         //Query dibawah ini untuk mendapatkan dari 'idPenanggungJawab'
         //sesuai dengan 'namaPenanggungJawab yang' ada di table 'peminjaman'
@@ -126,10 +176,58 @@ class peminjaman_model extends CI_Model{
         $this->db->where('namaPenanggungJawab', $data['penanggungJawabEdit']);
         $query = $this->db->get('penanggungjawab')->row();
         
-        //code dibawah ini digunakan untuk mengubah format waktuModal dd-mm-yy menjadi format database yy-mm-dd
-        $data['waktuModalEdit'] = DateTime::createFromFormat("d-m-Y", $data['waktuModalEdit'])->getTimestamp();
-        $data['waktuModalEdit'] = date('Y-m-d', $data['waktuModalEdit']);
+        //Query dibawah ini berguna sebagai pengecekan data, dan disesuaikan dengan fungsi lihatPeminjaman
+        $this->db->where('tanggalPeminjaman', $data['waktuModalEdit']);
+        $this->db->where('ruangPeminjaman', $data['ruangEdit']);
+        $this->db->order_by('waktuMulai', 'asc');
+        $this->db->order_by('waktuSelesai', 'asc');
+        $queryCek = $this->db->get('peminjaman');
         
+        foreach($queryCek->result() as $row)
+        {
+            //abaikan pengecekan jam pada id yang sama
+            if($row->idPeminjaman == $data['idEdit'])
+                continue;
+            
+            //code dibawah ini digunakan untuk mengkonversi waktuMulai Int untuk perbandingan
+            $tampCekMulai = DateTime::createFromFormat("H:i:s", $row->waktuMulai)->getTimestamp();
+            $tampCekMulai = (3600 * idate("H", $tampCekMulai)) + (60 * idate("i", $tampCekMulai));
+            
+            //code dibawah ini digunakan untuk mengkonversi waktuSelesai Int untuk perbandingan
+            $tampCekSelesai = DateTime::createFromFormat("H:i:s", $row->waktuSelesai)->getTimestamp();
+            $tampCekSelesai = (3600 * idate("H", $tampCekSelesai)) + (60 * idate("i", $tampCekSelesai));
+            
+            //code dibawah ini digunakan sebagai pesan error apabila masuk kedalam kondisi pengecekan
+            $printErrMulai = DateTime::createFromFormat("H:i:s", $row->waktuMulai)->getTimestamp();
+            $printErrMulai = date("H:i", $printErrMulai);
+            
+            //code dibawah ini digunakan sebagai pesan error apabila masuk kedalam kondisi pengecekan
+            $printErrSelesai = DateTime::createFromFormat("H:i:s", $row->waktuSelesai)->getTimestamp();
+            $printErrSelesai = date("H:i" , $printErrSelesai);
+            
+            //apabila jam editMulai berada di antara jam waktuMulai dan waktuSelesai Database, akan mengembalikan pesan error
+            if(($tampCekMulai <= $editMulai) && ($tampCekSelesai >= $editMulai))
+            {
+                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $data['penanggungJawabEdit'];
+                return; 
+            }
+            //apabila jam editSelesai berada di antara jam waktuMulai dan waktuSelesai Database, akan mengembalikan pesan error
+            else if(($tampCekMulai <= $editSelesai) && ($tampCekSelesai) >= $editSelesai)
+            {
+                echo "0 " . $printErrSelesai . " " . $printErrSelesai . " " . $data['penanggungJawabEdit'];
+                return;
+            }
+            //apabila jam waktuMulai dan waktuSelesai Database berada di antara
+            //jam editMulai dan editSelesai akan mengembalikan pesan error
+            else if(($tampCekMulai >= $editMulai) && ($tampCekSelesai <= $editSelesai))
+            {
+                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $data['penanggungJawabEdit'];
+                return;
+            }
+        }
+        
+        $editMulai =  gmdate("H:i", $editMulai);
+        $editSelesai = gmdate("H:i", $editSelesai);
         //jika salah satu atau banyak alat dipilih maka alatPeminjaman diisi sesuai dengan alat yang dipilih
         if(isset($data['alatEdit']))
         {

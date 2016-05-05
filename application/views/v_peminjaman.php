@@ -92,7 +92,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
                           <div class="col-sm-4">
                             <input class="text-center" type="number" id="jamMulaiTambah" min="0" max="23" step="1" value="0"/>
                             <b>:</b>
-                            <input class="text-center" type="number" id="menitMulaiTambah" min="0" max="45" step="15" value="0"/>
+                            <input class="text-center" type="number" id="menitMulaiTambah" min="-15" max="60" step="15" value="0"/>
                           </div>
                           <label><small>(Format Mulai = Jam:Menit)</small></label>
                           <div class="clearfix"></div>
@@ -102,7 +102,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
                           <div class="col-sm-4">
                             <input class="text-center" type="number" id="jamSelesaiTambah" min="0" max="23" step="1" value="0"/>
                             <b>:</b>
-                            <input class="text-center" type="number" id="menitSelesaiTambah" min="0" max="45" step="15" value="0"/>
+                            <input class="text-center" type="number" id="menitSelesaiTambah" min="-15" max="60" step="15" value="15"/>
                           </div>
                           <label><small>(Format Selesai = Jam:Menit)</small></label>
                           <div class="clearfix"></div>
@@ -134,11 +134,16 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
                           <label class="col-sm-4">Penanggung Jawab:</label>
                           <select id="selectPJTambah"></select>
                       </div>
+                      <div class="form-group text-center">
+                          <div class="col-sm-offset-0 col-sm-12">
+                              <label class="error-message" id="errorTambahPeminjaman"></label>
+                          </div>
+                      </div>
                 </div>
 
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button class="btn btn-primary" id="submitTambahPeminjaman" data-dismiss="modal"> Tambah Data </button>
+                    <button class="btn btn-primary" id="submitTambahPeminjaman"> Tambah Data </button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
                 </div>
             </div>
@@ -205,7 +210,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
                           <div class="col-sm-4">
                             <input class="text-center" type="number" id="jamMulaiEdit" min="0" max="23" step="1" value="0"/>
                             <b>:</b>
-                            <input class="text-center" type="number" id="menitMulaiEdit" min="0" max="45" step="15" value="0"/>
+                            <input class="text-center" type="number" id="menitMulaiEdit" min="-15" max="60" step="15" value="0"/>
                           </div>
                           <label><small>(Format Mulai = Jam:Menit)</small></label>
                           <div class="clearfix"></div>
@@ -215,7 +220,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
                           <div class="col-sm-4">
                             <input class="text-center" type="number" id="jamSelesaiEdit" min="0" max="23" step="1" value="0"/>
                             <b>:</b>
-                            <input class="text-center" type="number" id="menitSelesaiEdit" min="0" max="45" step="15" value="0"/>
+                            <input class="text-center" type="number" id="menitSelesaiEdit" min="-15" max="60" step="15" value="15"/>
                           </div>
                           <label><small>(Format Selesai = Jam:Menit)</small></label>
                           <div class="clearfix"></div>
@@ -247,11 +252,16 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
                           <label class="col-sm-4">Penanggung Jawab:</label>
                           <select id="selectPJEdit"></select>
                       </div>
+                      <div class="form-group text-center">
+                          <div class="col-sm-offset-0 col-sm-12">
+                              <label class="error-message" id="errorEditPeminjaman"></label>
+                          </div>
+                      </div>
                 </div>
 
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button class="btn btn-primary" id="submitEditPeminjaman" data-dismiss="modal"> Edit Data </button>
+                    <button class="btn btn-primary" id="submitEditPeminjaman"> Edit Data </button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"> Batal </button>
                 </div>
             </div>

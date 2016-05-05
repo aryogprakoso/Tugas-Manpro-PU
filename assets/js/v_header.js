@@ -8,7 +8,6 @@ $(document).ready(function() {
                            password: $("#inputPassword3").val()},       //Value - value yang dilempar ke url yang ditunjuk
             success     : function(data)
                         {
-                            data = parseInt(data);
                             if(data == 1)
                             {
 
@@ -33,7 +32,6 @@ $(document).ready(function() {
                                password: $("#inputPassword3").val()},       //Value - value yang dilempar ke url yang ditunjuk
                 success     : function(data)
                             {
-                                data = parseInt(data);
                                 if(data == 1)
                                 {
 
@@ -64,7 +62,6 @@ $(document).ready(function() {
                            passwordBaru: passBaru},       //Value - value yang dilempar ke url yang ditunjuk
             success     : function(data)
                         {
-                            data = parseInt(data);
                             if(data == 1)
                             {
 
@@ -101,7 +98,6 @@ $(document).ready(function() {
                                passwordBaru: passBaru},       //Value - value yang dilempar ke url yang ditunjuk
                 success     : function(data)
                             {
-                                data = parseInt(data);
                                 if(data == 1)
                                 {
 
