@@ -1,0 +1,28 @@
+NOTULEN RAPAT
+MATA KULIAH MANAJEMEN PROYEK
+KELOMPOK 4 - PENDETA UNIVERSITAS
+
+------------------------------------------------------------------------------------------------------------
+
+
+Tanggal : 15 April 2016
+Waktu	: 10.47 - 12.00
+Tempat	: FTI baru Ruang "Gateway"
+
+
+
+Hasil Rapat:
+- Tester sudah membuat dokumen untuk Test Case, testing berdasarkan UI, dan sebagainya
+
+- Programmer memperlihatkan hasil kerjanya
+  Sudah bisa login menggunkan admin.
+  1. Peminjaman: Kurang waktu selesai
+		 pada keterangan bisa kosong atau tidak
+		 Pada penanggung jawab baru bisa diisi 1
+  2. Artikel: Sudah selesai
+  3. Galeri : kurang pagination
+	      penataan gambarnya belum dirapikan
+  4. Pencariian : Masih dalam proses
+  5. Kontak : kurang bagian map nya
+  6. Tentang : sudah selesai
+  7. Beranda : masih belum ada slide show gambar
