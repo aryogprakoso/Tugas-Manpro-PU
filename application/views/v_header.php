@@ -100,6 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="col-sm-7">
                     <input type="text" name="username" class="form-control" id="inputUsername3" placeholder="Username" required>
                 </div>
+                <br>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label">Password</label>
@@ -126,26 +127,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="exit text-right">
                 <a id="profile" data-toggle="modal" data-target="#profileform" data-whatever="@mdo"><span class="glyphicon glyphicon-remove point"></span></a>
             </div>
-
-            <div class="form-group">
+            <div class="form-group text-left">
                 <label for="inputUsername3" class="col-sm-5 control-label">Username</label>
                 <div class="col-sm-7">
                     <input type="text" name="username" class="form-control" id="inputEditUsername" placeholder="Username" value="<?php echo $this->session->userdata('username'); ?>" disabled>
                 </div>
+                <br>
             </div>
-            <div class="form-group">
+            <div class="form-group text-left">
                 <label for="inputPassword3" class="col-sm-5 control-label">Password Lama</label>
                 <div class="col-sm-7">
                     <input type="password" name="passwordLama" class="form-control" id="inputEditPasswordLama" placeholder="Password Lama" required>
                 </div>
+                <br>
             </div>
-            <div class="form-group">
+            <div class="form-group text-left">
                 <label for="inputPassword3" class="col-sm-5 control-label">Password Baru</label>
                 <div class="col-sm-7">
                     <input type="password" name="passwordBaru" class="form-control" id="inputEditPasswordBaru" placeholder="Password Baru" required>
                 </div>
+                <br>
             </div>
-            <div class="form-group">
+            <div class="form-group text-left">
                 <label for="inputPassword3" class="col-sm-5 control-label">Confirm Password Baru</label>
                 <div class="col-sm-7">
                     <input type="password" name="passwordBaruConfirm" class="form-control" id="inputKonfirmasiPasswordBaru" placeholder="Confirm Password Baru" required>
