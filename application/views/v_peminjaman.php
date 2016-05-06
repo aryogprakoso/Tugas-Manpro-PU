@@ -24,7 +24,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
     </div>
     
     <!-- Table -->
-    <div class = "container table-responsive">
+    <div class = "container-fluid table-responsive">
         <table class="table table-bordered table-striped tabel-peminjaman">
             <thead>
               <tr>
