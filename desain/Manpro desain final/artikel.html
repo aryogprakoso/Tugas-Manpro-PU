@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	<title>Blog post | Initio - Free, multipurpose html5 template by GetTemplate</title>
+
+	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+	
+	<!-- Bootstrap -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<!-- Icon font -->
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="assets/css/styles.css">
+
+	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+
+</head>
+<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			</div>
+			
+			<div class="navbar-collapse collapse">
+				
+				<ul class="nav navbar-nav">
+					<button id="login" alt=""  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" >LOGIN</button> 
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <div id="respond">
+											<h3 id="reply-title">Login</h3>
+											<form action="" method="post" id="commentform" class="">
+												<div class="form-group">
+													<label for="inputName">Username</label>
+													<input type="text" class="form-control" id="inputName" placeholder="Enter your username">
+												</div>
+												<div class="form-group">
+													<label for="inputEmail">Password</label>
+													<input type="password" class="form-control" id="inputName" placeholder="Enter your password">
+												</div>										
+												<div class="row">
+													<div class="col-md-9 text-right">
+														<button type="cancel" class="btn btn-action">Cancel</button>
+													</div>
+													<div class="col-md-3 text-right">
+					  									<button type="submit" class="btn btn-action">Login</button>
+												</div>
+												
+											</form>
+										</div> <!-- /respond -->
+
+					      </div>
+					     
+					    </div>
+					  </div>
+					  </div>
+		  
+				</ul>
+			
+			</div><!--/.nav-collapse -->
+<body>
+<header>
+			<h1 id="logo" class="text-center">
+			<div id="ukdw">
+					<img src="images/logo.png"/>
+				</div>
+				
+			<span class="tagline"><div id="date">
+				<script type='text/javascript'>
+    				<!--
+    				var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    				var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+    				var date = new Date();
+    				var day = date.getDate();
+    				var month = date.getMonth();
+    				var thisDay = date.getDay(),
+        				thisDay = myDays[thisDay];
+    				var yy = date.getYear();
+    				var year = (yy < 1000) ? yy + 1900 : yy;
+    					document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+    				//-->
+    			</script>
+				</div>
+				<div id="clock">
+				<script type="text/javascript">
+					<!--
+					function showTime() {
+    					var a_p = "";
+    					var today = new Date();
+    					var curr_hour = today.getHours();
+    					var curr_minute = today.getMinutes();
+    					var curr_second = today.getSeconds();
+    					//if (curr_hour < 12) {
+        				//a_p = "AM";
+    					//} else {
+        				//a_p = "PM";
+    					//}
+    					//if (curr_hour == 0) {
+        				//	curr_hour = 12;
+    					//}
+    					//if (curr_hour > 12) {
+        					//curr_hour = curr_hour - 12;
+    					//}
+    						curr_hour = checkTime(curr_hour);
+    						curr_minute = checkTime(curr_minute);
+    						curr_second = checkTime(curr_second);
+ 							document.getElementById('clock').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
+    					}
+
+					function checkTime(i) {
+    					if (i < 10) {
+        				i = "0" + i;
+    					}
+    					return i;
+						}
+						setInterval(showTime, 500);
+					//-->
+				</script>
+				</div></span>
+		</h1>
+	</div>
+	<!-- ===================== Live Status ===================== -->
+			<div id="livestatus">
+				<marquee direction="left" scrollamount="4">SELAMAT DATANG WEBSITE PENDETA UNIVERSITAS</marquee>
+			</div>
+
+
+			
+	<nav class="navbar navbar-default navbar-sticky">
+		<div class="container-fluid">
+			
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			</div>
+			
+			<div class="navbar-collapse collapse">
+				
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">BERANDA</a></li>
+					<li><a href="about.html">TENTANG PU</a></li>
+					<li><a href="peminjaman.html">PEMINJAMAN</a></li>
+					<li class="active"><a href="artikel.html">ARTIKEL</a></li>
+					<li><a href="galeri.html">GALERI</a></li>
+				</ul>
+			
+			</div><!--/.nav-collapse -->			
+		</div>	
+	</nav>
+</header>
+
+<main id="main">
+
+
+	<div class="container">
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+			<div class="row">
+				     <div class="col-lg-6">
+				    <div class="input-group">
+				      <input type="text" class="form-control" placeholder="Search for...">
+				      <span class="input-group-btn">
+				        <button class="btn btn-default" type="button">Go!</button>
+				      </span>
+				    </div><!-- /input-group -->
+			  </div><!-- /.col-lg-6 -->
+			
+			</div><!-- /.row -->
+			<br>
+			<div class="container">
+		    	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Tambah Artikel</button><br><br>
+		    	 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#edit">Edit Artikel</button><br><br>
+					 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#hapus">Hapus Artikel</button>
+					 
+					  <div id="demo" class="collapse">
+					   <div id="respond">
+							<h3 id="reply-title">Tambah Artikel</h3>
+								<form action="" method="post" id="commentform" class="">
+									<div class="form-group">
+										<label for="inputName">Judul</label>
+										<input type="text" class="form-control" id="inputName" placeholder="Enter your title">
+									</div>
+									<div class="form-group">
+										<label for="inputEmail">Deskripsi</label>
+										<input type="email" class="form-control" id="inputEmail" placeholder="Enter your description">			
+									</div>
+									<div class="fileinput fileinput-new" data-provides="fileinput">
+									    <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
+									    <span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
+									</div>
+									<div class="row">
+										<div class="col-md-8">			
+									</div>
+									<div class="col-md-4 text-right">
+					  					<button type="submit" class="btn btn-action">Simpan</button>
+									</div>
+												
+								</form>
+						</div> <!-- /respond -->    
+					  </div>
+					  
+					  </div>
+					
+
+					  </div>
+
+					</div>
+
+
+ 				<article class="post">
+					<header class="entry-header">
+ 						<div class="entry-meta"> 
+ 							<span class="posted-on"><time class="entry-date published" date="2013-06-17">June 17, 2013</time></span>			
+ 						</div> 
+ 						<h1 class="entry-title"><a href="single.html" rel="bookmark">Vivamus Lacus Mauris</a></h1>
+					</header> 
+					<div class="entry-content"> 
+						<p><img alt="" src="assets/images/mac.jpg"></p>
+						<p>Mauris eget quam orci. Quisque porta varius dui, quis posuere nibh mollis quis. Mauris commodo rhoncus porttitor. Maecenas et euismod elit. Nulla facilisi. Vivamus lacus libero, ultrices non ullamcorper ac, tempus sit amet enim. Suspendisse at semper ipsum. Suspendisse sagittis diam a massa viverra sollicitudin. Vivamus sagittis est eu diam fringilla nec tristique metus vestibulum. Donec magna purus, pellentesque vel lobortis ut, convallis id augue. Sed odio magna, pellentesque eget convallis ac, vehicula vel arcu. Sed eu scelerisque dui. Sed eu arcu at nibh hendrerit viverra. Vivamus lacus augue, sodales id cursus in, condimentum at risus. <a href="single.html" class="more-link">Continue reading&#8230;</a></p>
+					</div> 
+				</article><!-- #post-## -->
+											
+				<article class="post">
+					<header class="entry-header">
+ 						<div class="entry-meta"> 
+ 							<span class="posted-on"><time class="entry-date published" date="2013-06-17">June 17, 2013</time></span>			
+ 						</div> 
+ 						<h1 class="entry-title"><a href="single.html" rel="bookmark">Vivamus Lacus Mauris</a></h1>
+					</header> 
+					<div class="entry-content"> 
+						<p>Mauris eget quam orci. Quisque porta varius dui, quis posuere nibh mollis quis. Mauris commodo rhoncus porttitor. Maecenas et euismod elit. Nulla facilisi. Vivamus lacus libero, ultrices non ullamcorper ac, tempus sit amet enim. Suspendisse at semper ipsum. Suspendisse sagittis diam a massa viverra sollicitudin. Vivamus sagittis est eu diam fringilla nec tristique metus vestibulum. Donec magna purus, pellentesque vel lobortis ut, convallis id augue. Sed odio magna, pellentesque eget convallis ac, vehicula vel arcu. Sed eu scelerisque dui. Sed eu arcu at nibh hendrerit viverra. Vivamus lacus augue, sodales id cursus in, condimentum at risus.</p>
+					</div> 
+				</article><!-- #post-## -->
+											
+				<article class="post">
+					<header class="entry-header"> 
+						<div class="entry-meta"> 
+							<span class="posted-on"><time class="entry-date published" date="2013-04-04">April 4, 2013</time></span>			
+						</div>
+						<h1 class="entry-title"><a href="single.html" rel="bookmark">Maecenas Quisque Suspendisse Lorem</a></h1>
+					</header>
+					<div class="entry-content">
+						<p>Mauris eget quam orci. Quisque porta varius dui, quis posuere nibh mollis quis. Mauris commodo rhoncus porttitor. Maecenas et euismod elit. Nulla facilisi. Vivamus lacus libero, ultrices non ullamcorper ac, tempus sit amet enim. Suspendisse at semper ipsum. Suspendisse sagittis diam a massa viverra sollicitudin. Vivamus sagittis est eu diam fringilla nec tristique metus vestibulum. Donec magna purus, pellentesque vel lobortis ut, convallis id augue. Sed odio magna, pellentesque eget convallis ac, vehicula vel arcu. Sed eu scelerisque dui. Sed eu arcu at nibh hendrerit viverra. Vivamus lacus augue, sodales id cursus in, condimentum at risus. <a href="single.html" class="more-link">Continue reading&#8230;</a></p>
+					</div>
+ 				</article><!-- #post-## -->
+											
+				<article class="post">
+					<header class="entry-header">
+ 						<div class="entry-meta"> 
+ 							<span class="posted-on"><time class="entry-date published" date="2013-03-20">March 20, 2013</time></span>			
+ 						</div>
+						<h1 class="entry-title"><a href="single.html" rel="bookmark">Pellentesque Eget Convallis</a></h1>
+					</header>
+					<div class="entry-content">
+						<p>Mauris eget quam orci. Quisque porta varius dui, quis posuere nibh mollis quis. Mauris commodo rhoncus porttitor. Maecenas et euismod elit. Nulla facilisi. Vivamus lacus libero, ultrices non ullamcorper ac, tempus sit amet enim. Suspendisse at semper ipsum. Suspendisse sagittis diam a massa viverra sollicitudin. Vivamus sagittis est eu diam fringilla nec tristique metus vestibulum. Donec magna purus, pellentesque vel lobortis ut, convallis id augue. Sed odio magna, pellentesque eget convallis ac, vehicula vel arcu. Sed eu scelerisque dui. Sed eu arcu at nibh hendrerit viverra. Vivamus lacus augue, sodales id cursus in, condimentum at risus. <a href="single.html" class="more-link">Continue reading&#8230;</a></p>
+					</div>
+				</article><!-- #post-## --> 
+			</div> 
+		</div>
+
+		<center class="">
+			<ul class="pagination">
+				<li class="disabled"><a href="">&laquo;</a></li>
+				<li class="active"><a href="">1</a></li>
+				<li><a href="">2</a></li>
+				<li><a href="">3</a></li>
+				<li><a href="">4</a></li>
+				<li><a href="">5</a></li>
+				<li><a href="">6</a></li>
+				<li><a href="">&raquo;</a></li>
+			</ul>
+		</center>
+	
+
+	</div>	<!-- /container -->
+	
+		
+	</div>	<!-- /container -->
+
+</main>
+<br>
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Contact</h3>
+				<div class="widget-body">
+				<p>Pendeta Universitas <br> Universitas Kristen Duta Wacana <br> Jl. Dr. Wahidin Sudirohusodo 5-25 <br> Yogyakarta (55224) Indonesia. <br> Tel: +62 274 563929, Ext.104</p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Follow me</h3>
+				<div class="widget-body">
+					<p class="follow-me-icons">
+						<a href=""><i class="fa fa-twitter fa-2"></i></a>
+						<a href=""><i class="fa fa-dribbble fa-2"></i></a>
+						<a href=""><i class="fa fa-github fa-2"></i></a>
+						<a href=""><i class="fa fa-facebook fa-2"></i></a>
+					</p>
+				</div>
+			</div>
+			<!--
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Text widget</h3>
+				<div class="widget-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, nihil natus explicabo ipsum quia iste aliquid repellat eveniet velit ipsa sunt libero sed aperiam id soluta officia asperiores adipisci maxime!</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, nihil natus explicabo ipsum quia iste aliquid repellat eveniet velit ipsa sunt libero sed aperiam id soluta officia asperiores adipisci maxime!</p>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Form widget</h3>
+				<div class="widget-body">
+					<p>+234 23 9873237<br>
+						<a href="mailto:#">some.email@somewhere.com</a><br>
+						<br>
+						234 Hidden Pond Road, Ashland City, TN 37015
+					</p>	
+				</div>
+			</div>
+			-->
+
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+<!--
+<footer id="underfooter">
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-md-6 widget">
+				<div class="widget-body">
+					<p>234 Hidden Pond Road, Ashland City, TN 37015 </p>
+				</div>
+			</div>
+
+			<div class="col-md-6 widget">
+				<div class="widget-body">
+					<p class="text-right">
+						Copyright &copy; 2014, Your awesome name here<br> 
+						Design: <a href="http://www.gettemplate.com" rel="designer">Initio by GetTemplate</a> </p>
+				</div>
+			</div>
+
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+
+
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/template.js"></script>
+
+<script>
+	$('.textarea').wysihtml5();
+</script>
+
+<script type="text/javascript" charset="utf-8">
+	$(prettyPrint);
+</script>
+
+</body>
+</html>

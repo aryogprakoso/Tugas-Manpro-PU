@@ -12,7 +12,7 @@ $(document).ready(function()
     var year = date.getYear() + 1900;
     date = year + "-" + month;
     $('#waktuSearch').val(date);
-    
+
     $('#info').hide();
     
     var ruangClick = false;
@@ -36,8 +36,62 @@ $(document).ready(function()
         data        : {waktu: $("#waktuSearch").val()},       //Value - value yang dilempar ke url yang ditunjuk
         success     : function(data)
                     {
-                        $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
-                        $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
+                        if(data == 0)
+                        {
+                            var tampDate = new Date($("#waktuSearch").val());
+                            var tampMonth;
+                            switch(tampDate.getMonth())
+                            {
+                                case 0 : 
+                                    tampMonth = "Januari";
+                                    break;
+                                case 1 :
+                                    tampMonth = "Februari";
+                                    break;
+                                case 2 :
+                                    tampMonth = "Maret";
+                                    break;
+                                case 3 :
+                                    tampMonth = "April";
+                                    break;
+                                case 4 :
+                                    tampMonth = "Mei";
+                                    break;
+                                case 5 :
+                                    tampMonth = "Juni";
+                                    break;
+                                case 6 :
+                                    tampMonth = "Juli";
+                                    break;
+                                case 7 :
+                                    tampMonth = "Agustus";
+                                    break;
+                                case 8 :
+                                    tampMonth = "September";
+                                    break;
+                                case 9 :
+                                    tampMonth = "Oktober";
+                                    break;
+                                case 10 :
+                                    tampMonth = "November";
+                                    break;
+                                case 11 :
+                                    tampMonth = "Desember";
+                                    break;
+                            }
+                            $("#keteranganTabel").show();
+                            $("#keteranganTabel").html("Tidak Ada Peminjaman Ruang pada Bulan " + tampMonth + " " + tampDate.getFullYear());
+                            $(".tabel-peminjaman").hide();
+                        }
+                        else
+                        {
+                            $("#keteranganTabel").hide();
+                            $(".tabel-peminjaman").show();
+                            $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
+                            $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
+                            $("#jarak").show();
+                            $("#info").hide();
+                        }
                     }
     });
     
@@ -49,10 +103,62 @@ $(document).ready(function()
            data     : {waktu: $("#waktuSearch").val()},       //Value - value yang dilempar ke url yang ditunjuk
            success  : function(data)
                     {
-                        $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
-                        $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
-                        $("#jarak").show();
-                        $("#info").hide();
+                        if(data == 0)
+                        {
+                            var tampDate = new Date($("#waktuSearch").val());
+                            var tampMonth;
+                            switch(tampDate.getMonth())
+                            {
+                                case 0 : 
+                                    tampMonth = "Januari";
+                                    break;
+                                case 1 :
+                                    tampMonth = "Februari";
+                                    break;
+                                case 2 :
+                                    tampMonth = "Maret";
+                                    break;
+                                case 3 :
+                                    tampMonth = "April";
+                                    break;
+                                case 4 :
+                                    tampMonth = "Mei";
+                                    break;
+                                case 5 :
+                                    tampMonth = "Juni";
+                                    break;
+                                case 6 :
+                                    tampMonth = "Juli";
+                                    break;
+                                case 7 :
+                                    tampMonth = "Agustus";
+                                    break;
+                                case 8 :
+                                    tampMonth = "September";
+                                    break;
+                                case 9 :
+                                    tampMonth = "Oktober";
+                                    break;
+                                case 10 :
+                                    tampMonth = "November";
+                                    break;
+                                case 11 :
+                                    tampMonth = "Desember";
+                                    break;
+                            }
+                            $("#keteranganTabel").show();
+                            $("#keteranganTabel").html("Tidak Ada Peminjaman Ruang pada Bulan " + tampMonth + " " + tampDate.getFullYear());
+                            $(".tabel-peminjaman").hide();
+                        }
+                        else
+                        {
+                            $("#keteranganTabel").hide();
+                            $(".tabel-peminjaman").show();
+                            $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
+                            $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
+                            $("#jarak").show();
+                            $("#info").hide();
+                        }
                     }
         });
     });
@@ -169,6 +275,11 @@ $(document).ready(function()
     $(document).on("click", "#modalTambahData", function(){
         date = day + "-" + month + "-" + year;
         $('#waktuModalTambah').val(date);
+        $(".tambah :checkbox:checked").each(function(){
+            $(this).attr("checked", false);
+        });
+        $("#keteranganTambah").val("");
+        $(".tambah :radio:checked").attr("checked", false);
         $("#submitTambahPeminjaman").prop('disabled', true);
         $("#sisaHurufTambah").html("200");
          
@@ -371,7 +482,6 @@ $(document).ready(function()
             type     : 'POST',
             url      : 'http://localhost/pendeta_universitas/index.php/c_peminjaman/tambah_peminjaman',
             data     : {waktuModal: $("#waktuModalTambah").val(),
-                        waktuSearch: $("#waktuSearch").val(),
                         jamMulai: $("#jamMulaiTambah").val(),
                         menitMulai: $("#menitMulaiTambah").val(),
                         jamSelesai: $("#jamSelesaiTambah").val(),
@@ -387,6 +497,14 @@ $(document).ready(function()
                 var PJ = "";
                 for(var i = 3; i<arr.length; i++)
                     PJ += " " + arr[i];
+                
+                var tampInsertDate = new Date($("#waktuModalTambah").val());
+                var tampInsertYear = tampInsertDate.getFullYear();
+                var tampInsertMonth = tampInsertDate.getDate();
+                if(tampInsertMonth < 10)
+                    tampInsertMonth = "0" + tampInsertMonth;                
+                tampInsertDate = tampInsertYear + "-" + tampInsertMonth;
+                
                 if(arr[0] == 0)
                 {
                     $("#errorTambahPeminjaman").html("Pada Jam " + arr[1] + " - Jam " + arr[2] + " dipakai oleh" + PJ);
@@ -395,14 +513,10 @@ $(document).ready(function()
                 {
                     $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
                     $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
-                    $(".tambah :radio:checked").attr("checked", false);
-                    $(".tambah :checkbox:checked").each(function(){
-                        $(this).attr("checked", false);
-                    });
-                    $("#keteranganTambah").val("");
                     $("#jarak").hide();
                     $("#info").html("Tambah Data Peminjaman Berhasil Dilakukan");
                     $("#info").show();
+                    $("#waktuSearch").val(tampInsertDate);
                     $("#modalTambahPeminjaman").modal("hide");
                 }
             }
@@ -437,7 +551,6 @@ $(document).ready(function()
             type     : 'POST',
             url      : 'http://localhost/pendeta_universitas/index.php/c_peminjaman/edit_peminjaman',
             data     : {waktuModalEdit: $("#waktuModalEdit").val(),
-                        waktuSearch: $("#waktuSearch").val(),
                         jamMulaiEdit: $("#jamMulaiEdit").val(),
                         menitMulaiEdit: $("#menitMulaiEdit").val(),
                         jamSelesaiEdit: $("#jamSelesaiEdit").val(),
@@ -454,6 +567,14 @@ $(document).ready(function()
                 var PJ = "";
                 for(var i = 3; i<arr.length; i++)
                     PJ += " " + arr[i];
+                
+                var tampEditDate = new Date($("#waktuModalEdit").val());
+                var tampEditYear = tampEditDate.getFullYear();
+                var tampEditMonth = tampEditDate.getDate();
+                if(tampEditMonth < 10)
+                    tampEditMonth = "0" + tampEditMonth;                
+                tampEditDate = tampEditYear + "-" + tampEditMonth;
+                
                 if(arr[0] == 0)
                 {
                     $("#errorEditPeminjaman").html("Pada Jam " + arr[1] + " - Jam " + arr[2] + " dipakai oleh" + PJ);
@@ -462,14 +583,10 @@ $(document).ready(function()
                 {
                     $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
                     $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
-                    $(".edit :radio:checked").attr("checked", false);
-                    $(".edit :checkbox:checked").each(function(){
-                        $(this).attr("checked", false);
-                    });
-                    $("#keteranganEdit").val("");
                     $("#jarak").hide();
                     $("#info").html("Edit Data Peminjaman Berhasil Dilakukan");
                     $("#info").show();
+                    $("#waktuSearch").val(tampEditDate);
                     $("#modalEditPeminjaman").modal("hide");
                 }
             }

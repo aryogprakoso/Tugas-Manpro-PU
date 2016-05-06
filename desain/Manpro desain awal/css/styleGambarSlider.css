@@ -1,0 +1,74 @@
+#iklanslider{
+    width: 950px;
+    -moz-border-radius: 5px;
+    border: 1px inset;
+    margin: 0px;
+    padding: 5px 5px;
+    -webkit-border-radius: 5px;
+    border: 1px inset;
+    margin: 0px;
+    padding: 5px 5px;
+    margin-top: 5px;
+    background-color: white;
+}
+
+#iklansld{
+    text-align: center;
+    background: white;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 0 0px 0;
+    padding: 0px 0 0px;
+    border-top: #000 solid 1px;
+    border-bottom: #000 solid 1px;
+}
+
+#slider {
+    width: 950px; 
+    height: 210px; 
+    position: relative; 
+	overflow: hidden; 
+    background-color: white;
+}
+#sliderContent {
+    width: 950px; 
+    position: absolute;
+	right: 0;
+	margin: 0;
+    background-color: white;
+}
+.sliderImage {
+    float: left;
+    position: relative;
+	display: none;
+    background-color: white;
+}
+.sliderImage span {
+    position: absolute;
+	font: 10px/15px Arial, Helvetica, sans-serif;
+    padding: 10px 13px;
+    width: 950px;
+    background-color: #000;
+    filter: alpha(opacity=70);
+    -moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+    opacity: 0.5;
+    color: #fff;
+    display: none;
+}
+.clear {
+	clear: both;
+}
+.sliderImage span strong {
+    font-size: 14px;
+}
+.top {
+	top: 0;
+	left: 0;
+}
+.bottom {
+	bottom: 0;
+    left: 0;
+}
+ul { list-style-type: none;}

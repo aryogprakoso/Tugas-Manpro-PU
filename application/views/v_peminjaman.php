@@ -37,7 +37,12 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
     ?>
     
     <!-- Table -->
+<<<<<<< HEAD
+    <div class = "container table-responsive">
+        <p class="text-center"><i id="keteranganTabel"></i></p>
+=======
     <div class = "container-fluid table-responsive">
+>>>>>>> d96b0c3df1cf7dbadabb8c65dc204a904a785c17
         <table class="table table-bordered table-striped tabel-peminjaman">
             <thead>
               <tr>

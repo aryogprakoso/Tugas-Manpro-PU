@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PENDETA UKDW</title>
+		<link rel="stylesheet" type="text/css" href="css/berandalogin.css">
+		<link rel="stylesheet" type="text/css" href="css/styleGambarSlider.css">
+		<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="js/s3slider.js"></script>
+		<script type="text/javascript" src="js/jscriptSlider.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+		<link rel="StyleSheet" href="css/dtree.css" type="text/css" />
+		<script type="text/javascript" src="js/createdtree.js"></script>
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<!-- ===================== Header ===================== -->
+			<!-- login part -->
+					<script>
+						$(document).ready(function()
+						{	
+							$(".sign_in").click(function()
+							{
+								$("#sign_box").toggle();
+								return false;
+							});
+
+						});
+					</script>
+
+
+					</head>
+
+						<div id="header">
+							<div class="container">			
+								<div id="login">
+								<a href="beranda.html" >LOGOUT</a><br/>
+								<div id="sign_box">
+							</div>
+						</div>
+					</div>
+			</div>
+	
+			<!-- ===================== Logo UKDW ===================== -->
+			<div id="logo">
+				<div id="ukdw">
+					<img src="images/logo.png"/>
+				</div>
+				<div id="date">
+				<script type='text/javascript'>
+    				<!--
+    				var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    				var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+    				var date = new Date();
+    				var day = date.getDate();
+    				var month = date.getMonth();
+    				var thisDay = date.getDay(),
+        				thisDay = myDays[thisDay];
+    				var yy = date.getYear();
+    				var year = (yy < 1000) ? yy + 1900 : yy;
+    					document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+    				//-->
+    			</script>
+				</div>
+				<div id="clock">
+				<script type="text/javascript">
+					<!--
+					function showTime() {
+    					var a_p = "";
+    					var today = new Date();
+    					var curr_hour = today.getHours();
+    					var curr_minute = today.getMinutes();
+    					var curr_second = today.getSeconds();
+    					/*if (curr_hour < 12) {
+        				a_p = "AM";
+    					} else {
+        				a_p = "PM";
+    					}
+    					if (curr_hour == 0) {
+        					curr_hour = 12;
+    					}
+    					if (curr_hour > 12) {
+        					curr_hour = curr_hour - 12;
+    					}*/
+    						curr_hour = checkTime(curr_hour);
+    						curr_minute = checkTime(curr_minute);
+    						curr_second = checkTime(curr_second);
+ 							document.getElementById('clock').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
+    					}
+
+					function checkTime(i) {
+    					if (i < 10) {
+        				i = "0" + i;
+    					}
+    					return i;
+						}
+						setInterval(showTime, 500);
+					//-->
+				</script>
+				</div>
+			</div>
+
+			<!-- ===================== Live Status ===================== -->
+			<div id="livestatus">
+				<marquee direction="left" scrollamount="4">SELAMAT DATANG WEBSITE PENDETA UNIVERSITAS</marquee>
+			</div>
+
+
+			<!-- ===================== Menu ===================== -->
+			<div id="menu">
+				<div id="beranda">
+					<a href="berandalogin.html">BERANDA</a> 
+				</div>
+				<div id="tentang">
+					<a href="tentanglogin.html">TENTANG PU</a>
+				</div>
+				<div id="peminjaman">
+					<a href="peminjamanlogin.html">PEMINJAMAN</a>
+				</div>
+				<div id="artikel">
+					<a href="artikellogin.html">ARTIKEL</a>
+				</div>
+				<div id="galeri">
+					<a href="galerilogin.html">GALERI</a>
+				</div>
+			</div>
+
+			<!-- ===================== Gambar Bergerak ===================== -->
+			<div id="iklanslider">
+				<div id="iklansld">	
+
+        		<!-- start slider -->
+	   			<div id="slider">
+            		<ul id="sliderContent">
+                		<li class="sliderImage">
+                    		<img src="images/1.jpg"/>
+                    		<span class="top"><strong>1</strong></span>
+                		</li>
+                		<li class="sliderImage">
+                    		<img src="images/2.jpg"/>
+                    		<span class="bottom"><strong>2</strong></span>
+                		</li>
+                		<li class="sliderImage">
+                    		<img src="images/3.jpg"/>
+                    		<span class="bottom"><strong>3</strong></span>
+                		</li>
+                		<li class="sliderImage">
+                    		<img src="images/4.jpg"/>
+                    		<span class="top"><strong>4</strong></span>
+                		</li>
+                		<div class="clear sliderImage">
+                		</div>
+            		</ul>
+       			</div>
+				<!-- // end slider -->
+    			</div>
+			</div>
+
+			<!-- ===================== Halaman ===================== -->
+			<div id="section">
+				<table>
+					<tr>
+						<td><div id="kiri">
+							<h1>Selamat datang di PU</h1>
+							<p>Visi dan Misi<br><br>
+								Visi  :<br>
+
+								Menjadi universitas Kristen unggul dan terpercaya yang melahirkan generasi profesional mandiri bagi dunia pluralistik berdasarkan kasih.
+
+								<br><br>Misi :<br>
+
+								1. Pendeta Universitas adalah pendeta yang melakukan pelayanan dan penggembalaan terhadap Pimpinan, Pegawai Akademik (PA), Pegawai Pendukung Akademik (PPA), dan Mahasiswa Universitas, yang bertanggung jawab kepada yayasan. (Statuta UKDW QADW-1100-SU-10.01.001).<br>
+
+								2. Unit Pelayanan Kerohanian Kampus dengan PU sebagai motornya selanjutnya akan mengembangkan model integrasi pelayanan untuk mendukung tercapainya penanaman nilai-nilai Duta Wacana dan darma bakti perguruan tinggi kepada masyarakat.</p><br><br>
+							
+							</div>
+						</td>
+						<td>
+							<div id="tengah">
+							<h1></h1>
+							<p></p><br><br>
+							</div>
+						</td>
+						
+						<td>
+							<div id="kanan">
+							<div class="dtree">
+
+									<h1>Berita</h1>
+									<script type="text/javascript">
+									<!--
+
+									d = new dTree('d');
+
+									d.add(0,-1,'Berita');
+									d.add(1,0,'2016','#.html');
+									d.add(2,1,'Pelaksanaan PMK AG, Kapel Bawah','berita.html');
+									d.add(3,1,'Ibadah Senin, Kapel Atas','berita.html');
+									d.add(4,1,'3','berita.html');
+									d.add(5,0,'2015','#.html');
+									d.add(6,5,'1','berita.html');
+									d.add(7,5,'2','berita.html');
+									d.add(8,5,'3','berita.html');
+									d.add(9,0,'2014','#.html');
+									d.add(10,9,'1','berita.html');
+									d.add(11,9,'2','berita.html');
+									d.add(13,0,'2013','#.html','Pictures I\'ve taken over the years','','','img/imgfolder.gif');
+									d.add(14,13,'1','berita.html');
+									d.add(15,13,'2','berita.html');
+
+									document.write(d);
+
+									//-->
+									</script>
+									<br><br><br><br>
+									<h1>Pejabat dan Staff</h1>
+									<p>Pdt. Nani Minarni, S.Si, M.Hum</p>
+									<p>Jabatan  : Pendeta Universitas</p>
+									<p>Email : nanida@staff.ukdw.ac.id</p>
+									<p> Galih Widi Handoyo</p> 
+									<p> Jabatan : Staff Administrasi</p>
+									<p>  Email    : galih@staff.ukdw.ac.id</p>
+
+							</div>
+
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+<!-- ===================== Footer ===================== -->
+			<div id="footer">
+				<p>Pendeta Universitas <br> Universitas Kristen Duta Wacana <br> Jl. Dr. Wahidin Sudirohusodo 5-25 <br> Yogyakarta (55224) Indonesia. <br> Tel: +62 274 563929, Ext.104</p>
+			</div>
+
+	</body>
+</html>
