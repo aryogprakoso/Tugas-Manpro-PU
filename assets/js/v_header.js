@@ -16,7 +16,7 @@ $(document).ready(function() {
                             }
                             else
                             {
-                                $("#errorLogin").html(data);
+                                $("#errorLogin").html("Username / Password Salah");
                             }
                         }
         });
