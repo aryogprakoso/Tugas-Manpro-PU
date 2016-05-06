@@ -1,0 +1,295 @@
+body{
+	font-family: calibri;
+}
+
+#wrapper{
+	width: 960px;
+	height: auto;
+	margin: 0 auto;
+	padding: 0;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+#header{
+	background-color: purple;
+	width: 960px;
+	height: 53px;
+}
+
+#login
+{
+    float: right;
+    color: purple;
+    height: 53px;
+}
+
+#login a
+{
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background: purple;
+}
+    
+#sign_box
+{
+    width:240px;
+    background-color: purple;
+    padding:10px;
+    float:right;
+    position:absolute;
+    margin-left:-220px;
+    display:none;
+    margin-top: 33px;
+    border-style:solid;
+    border-width:0px 1px 1px 1px;
+    border-color:#000;
+    color: white;
+}
+#sign_box a 
+{ 
+    font-size:12px;
+    font-weight:normal; 
+    text-decoration:none;
+}
+#sign_box a:hover
+{ 
+
+    font-size:12px; 
+    text-decoration:none;
+    font-weight:normal;
+    color: white;
+}
+
+.ungu{
+    background-color: white;
+    color: purple;
+}
+.ungu:hover{
+    background: purple;
+    color: white;
+}
+
+
+.kecil{
+    font-size:11px;
+    line-height:16px;
+    padding: 2px 10px;
+}
+
+#login{
+	margin-left: 900px;
+
+}
+#ukdw{
+	width: 200px;
+	height: 53px;
+	margin-left: 10px;
+	margin-top: 20px;
+}
+#date{
+	font-size: 20px;
+	margin-left: 720px;
+	margin-top: -35px;
+	width: 230px;
+	height: auto;
+	text-align: center;
+}
+
+#clock{
+	font-size: 20px;
+	margin-left: 750px;
+	margin-top: 0px;
+	width: 170px;
+	height: auto;
+	text-align: center;
+}
+
+#livestatus{
+	background-color: #444243;
+	margin-top: 44px;
+}
+
+#livestatus marquee{
+	font-size: 25px;
+	color: white;
+	font-weight: bold;
+}
+
+#livestatus:hover{
+	background-color: #d33232;
+}
+
+#livestatus marquee:hover{
+	color: black;
+}
+
+#menu{
+	background-color: purple;
+	margin-top: -5px;
+	width: 960px;
+	height: 50px;
+}
+
+#beranda{
+	font-size: 30px;
+	text-align: center;
+	width: 200px;
+	height: auto;
+	padding-top: 6.5px;
+	padding-bottom: 6.5px;
+	margin-left: 80px;
+	position: absolute;
+	font-weight: bold;
+}
+
+#beranda a{
+	color: white;
+}
+
+#beranda:hover{
+	background-color: #d33232;
+}
+
+#beranda a:hover{
+	color: black;
+}
+
+#peminjaman{
+	font-size: 30px;
+	text-align: center;
+	width: 200px;
+	height: auto;
+	padding-top: 6.5px;
+	padding-bottom: 6.5px;
+	margin-left: 281px;
+	position: absolute;
+	font-weight: bold;
+}
+
+#peminjaman a{
+	color: white;
+}
+
+#peminjaman:hover{
+	background-color: #d33232;
+}
+
+#peminjaman a:hover{
+	color: black;
+}
+
+#artikel{
+	font-size: 30px;
+	text-align: center;
+	width: 200px;
+	height: auto;
+	padding-top: 6.5px;
+	padding-bottom: 6.5px;
+	margin-left: 482px;
+	position: absolute;
+	font-weight: bold;
+}
+
+#artikel a{
+	color: white;
+}
+
+#artikel:hover{
+	background-color: #d33232;
+}
+
+#artikel a:hover{
+	color: black;
+}
+
+#galeri{
+	font-size: 30px;
+	text-align: center;
+	width: 200px;
+	height: auto;
+	padding: 6.5px;
+	margin-left: 684px;
+	font-weight: bold;
+}
+
+#galeri a{
+	color: white;
+}
+
+#galeri:hover{
+	background-color: #d33232;
+}
+
+#galeri a:hover{
+	color: black;
+}
+
+#section{
+	margin-top: 6px;
+	width: 960px;
+	height: 400px;
+}
+
+#section a{
+	color: blue;
+}
+
+
+#kiri{
+	background-color: white;
+	width: 640px;
+	height: 400px;
+	text-align: justify;
+}
+
+#kiri h1{
+	text-align: center;
+	background-color: #444243;
+	color: white;
+}
+
+
+#tengah{
+	background-color: white;
+	width: 10px;
+	height: 400px;
+	text-align: justify;
+
+}
+
+#tengah h1{
+	text-align: center;
+	background-color: #444243;
+	color: white;
+}
+
+#kanan{
+	background-color: white;
+	width: 320px;
+	height: 400px;
+	text-align: justify;
+}
+
+#kanan a{
+	color: blue;
+}
+
+#kanan h1{
+	text-align: center;
+	background-color: #444243;
+	color: white;
+}
+
+#footer{
+	background-color: purple;
+	margin-top: 800px;
+	padding: 20px;
+	height: 100px;
+	color: white;
+}
