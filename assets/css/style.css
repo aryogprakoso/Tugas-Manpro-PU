@@ -70,6 +70,10 @@ header *{
 	color: white;
 }
 
+.navbar-css{
+    border-bottom: 5px solid white;
+}
+
 .nav > li > a{
     transition: all 0.5s ease;
     color: white;
@@ -270,6 +274,13 @@ div#repo{
     max-height: 400px;
     height: auto;
     margin: 0;
+}
+
+.slide-show-height{
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .margin-top-5em{
@@ -748,6 +759,12 @@ input[type='search']{
 
 .footer-cipta{
     font-size: 11px;
+}
+
+.browser{
+    font-size: 11px;
+    color: white;
+    text-align: left;
 }
 
 /* MAP */
