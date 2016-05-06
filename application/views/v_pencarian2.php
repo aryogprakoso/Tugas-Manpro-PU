@@ -19,8 +19,8 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
 
               <?php
             $i = 0;
-            if(count($data2)>0){
-                foreach($data2 as $d){
+            if(count($berita)>0){
+                foreach($berita as $d){
                     ?>
                     <div class="item-artikel">
                         <?php
@@ -33,9 +33,7 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
 
                         <?php 
                             $er2 = $d['idBerita'];
-
                             $er2 = str_replace("%20","",$er2);
-
                          ?>
                         <div class="search-judul">
                             <a href="<?php echo base_url()."index.php/c_pencarian/selanjutnya2/"; echo $er2;  ?>">
@@ -59,8 +57,8 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
             <div class="padding-0em-3em">
              <?php
             $i = 0;
-            if(count($data2)>0){
-                foreach($test as $d){
+            if(count($artikel)>0){
+                foreach($artikel as $d){
                     ?>
                     <div class="item-artikel">
                         <?php
@@ -73,9 +71,7 @@ $this->load->view('v_header', array('nav_pencarian'=>"active"));
                         <div class="search-judul">
                         <?php 
                             $er = $d['idArtikel'];
-
                             $er = str_replace("%20","",$er);
-
                          ?>
                             <a href="<?php echo base_url()."index.php/c_pencarian/selanjutnya/"; echo $er;  ?>">
                                 <?php echo $d['judulArtikel']; ?>

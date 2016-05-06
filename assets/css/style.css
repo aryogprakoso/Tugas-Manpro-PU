@@ -120,6 +120,7 @@ header *{
 }
 
 .profile-box{
+    max-width: 95%;
     margin-top: 20vh;
     border-radius: 10px;
     padding: 1em 2em 2em 2em;
@@ -413,7 +414,8 @@ ul.nav-pills{
 }
 
 .height-content{
-    min-height: 400px;
+    min-height: 500px;
+    max-height: auto;
 }
 
 .form-horizontal .form-group {

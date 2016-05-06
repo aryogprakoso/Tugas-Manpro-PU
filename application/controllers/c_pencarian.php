@@ -10,10 +10,10 @@ class C_pencarian extends CI_Controller {
       
     }
 	public function index(){
-        $data2 = $this->search_model->get_search();
-        $test = $this->search_model->get_search2();
+        $berita = $this->search_model->get_search();
+        $artikel = $this->search_model->get_search2();
         $this->load->helper('html_divider');
-        $this->load->view('v_pencarian2', array('data2' => $data2, 'test' => $test));
+        $this->load->view('v_pencarian2', array('berita' => $berita, 'artikel' => $artikel));
 	}
 
      function selanjutnya(){
@@ -34,12 +34,8 @@ class C_pencarian extends CI_Controller {
             
             $data[$i]['isiArtikel'] = $isi_hasil;
         }
-
-
-
-
            $this->load->view('v_pencarian3', array('data' => $data)); 
-        }
+    }
 
 
      function selanjutnya2(){
@@ -61,15 +57,7 @@ class C_pencarian extends CI_Controller {
             
             $data[$i]['isiBerita'] = $isi_hasil;
         }
-
-
-
-
            $this->load->view('v_pencarian4', array('data' => $data)); 
-        }
-
-
-    
+    }
 }
-
 ?>

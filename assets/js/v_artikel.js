@@ -278,7 +278,7 @@ function createArtikelDiv(artikel,number){
     container.append($('<span class="judulArtikel text-center"><h1>'+artikel.judulArtikel+'</h3></span>'));
     
     //menampilkan tanggal pembuatan artikel
-    var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum$#39;at', 'Sabtu'];
+    var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
     var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
     
     
