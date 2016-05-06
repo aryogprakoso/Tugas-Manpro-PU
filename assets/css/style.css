@@ -242,7 +242,7 @@ div#repo{
 .artikel-small-page.active,
 .berita-small-page.active{
     display: block;
-}
+}   
 
 .wrap-content *{
     -webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */

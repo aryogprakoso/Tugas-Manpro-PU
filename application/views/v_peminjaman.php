@@ -21,7 +21,20 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
     
     <div class="container">
         <div class="text-center alert alert-success" id="info"></div>
+    </div>    
+    
+    <?php
+        if($this->session->userdata('username'))
+        {
+    ?>
+    <!-- Button Tambah Peminjaman -->
+    <div class="container">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalTambahPeminjaman" id="modalTambahData">Tambah Data</button>
     </div>
+    <br>
+    <?php
+        }
+    ?>
     
     <!-- Table -->
     <div class = "container-fluid table-responsive">
@@ -48,17 +61,6 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
             <tbody class="text-center" id="tableBody"></tbody>
         </table>
     </div>
-    <?php
-        if($this->session->userdata('username'))
-        {
-    ?>
-    <!-- Button Tambah Peminjaman -->
-    <div class="container">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalTambahPeminjaman" id="modalTambahData">Tambah Data</button>
-    </div>
-    <?php
-        }
-    ?>
     
     <!-- Modal Tambah Peminjaman -->
     <div class="modal fade" id="modalTambahPeminjaman" tabindex="-1" role="dialog" aria-labelledby="judulTambah" aria-hidden="true">
