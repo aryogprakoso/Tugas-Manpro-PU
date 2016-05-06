@@ -101,12 +101,12 @@ class peminjaman_model extends CI_Model{
         }
 
         $this->db->insert('peminjaman', $insertTable);
-        $this->lihatPeminjaman($data['waktuSearch']);
+        $this->lihatPeminjaman($data['waktuModal']);
     }
     
     public function lihatPeminjaman($data)
     {
-        $data = DateTime::createFromFormat("Y-m", $data)->getTimestamp(); //$data dengan format STRING diubah menjadi TIME
+        $data = strtotime($data); //$data dengan format STRING diubah menjadi TIME
         $month = date("m", $data);      //$month menampung INT dari bulan yang ada pada $data
         $year = date("Y", $data);       //$year menampung INT dari tahun yang ada pada $data
         
@@ -115,15 +115,21 @@ class peminjaman_model extends CI_Model{
         $this->db->order_by('tanggalPeminjaman', 'asc');
         $this->db->order_by('waktuMulai', 'asc');
         $this->db->order_by('waktuSelesai', 'asc');
-        $query =  $this->db->get('peminjaman');                 //Query Builder dari CI untuk SELECT ALL ke table 'peminjaman'
+        $queryCetak =  $this->db->get('peminjaman');                 //Query Builder dari CI untuk SELECT ALL ke table 'peminjaman'
         
-        foreach ($query->result() as $row)      //for untuk setiap row yang didapatkan dari query
+        if(empty($queryCetak->result()))
+        {
+            echo "0";
+            return;
+        }
+        
+        foreach ($queryCetak->result() as $row)      //for untuk setiap row yang didapatkan dari query
         {
             //Query dibawah ini untuk mendapatkan dari 'namaPenanggungJawab'
             //sesuai dengan 'idPenanggungJawab yang' ada di table 'peminjaman'
             $this->db->select('namaPenanggungJawab');
             $this->db->where('idPenanggungJawab', $row->idPenanggungJawab);
-            $query2 = $this->db->get('penanggungjawab')->row();
+            $queryPJ = $this->db->get('penanggungjawab')->row();
     
             //mengubah format date yang ada pada mysql 'yyyy-mm-dd' menjadi 'mm/dd/yyyy' sesuai dengan input date id 'waktuModal'
             $dateBaru = DateTime::createFromFormat("Y-m-d", $row->tanggalPeminjaman)->getTimestamp();
@@ -147,7 +153,7 @@ class peminjaman_model extends CI_Model{
             else
                 echo "<td> - </td>";
             //echo ini digunakan untuk memunculkan idPenanggungJawab pada Tabel Peminjaman
-            echo "<td>" . $query2->namaPenanggungJawab . "</td>";
+            echo "<td>" . $queryPJ->namaPenanggungJawab . "</td>";
             //echo ini digunakan untuk memunculkan keteranganPeminjaman pada Tabel Peminjaman
             echo "<td>" . $row->keteranganPeminjaman . "</td>";
             if($this->session->userdata('username'))
@@ -257,7 +263,7 @@ class peminjaman_model extends CI_Model{
         
         $this->db->where('idPeminjaman', $data['idEdit']);
         $this->db->update('peminjaman', $editTable);
-        $this->lihatPeminjaman($data['waktuSearch']);
+        $this->lihatPeminjaman($data['waktuModalEdit']);
     }
     
     public function hapusPeminjaman($idHapus)
