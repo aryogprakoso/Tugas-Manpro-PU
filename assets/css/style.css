@@ -53,6 +53,29 @@ body{
     max-width: 100%;
 }
 
+@media only screen and (max-width:1199px){
+    .navbar-header{
+        float: none;
+    }
+    
+    .navbar-collapse.collapse{
+        display: none !important;
+    }
+    
+    .navbar-nav > li {
+        float: none;
+    }
+    
+    .navbar-collapse.collapse.in{
+        display: block !important;
+    }
+    
+    .navbar-toggle{
+        display: inline-block !important;
+        float: right;
+    }
+}
+
 nav{
 	background: purple;
 }
@@ -68,10 +91,6 @@ nav{
 
 header *{
 	color: white;
-}
-
-.navbar-css{
-    border-bottom: 5px solid white;
 }
 
 .nav > li > a{
@@ -490,30 +509,6 @@ ul.nav-pills{
     display: inline-block;
     background: white;
 }
-
-@media only screen and (max-width:1199px){
-    .navbar-header{
-        float: none;
-    }
-    
-    .navbar-collapse.collapse{
-        display: none !important;
-    }
-    
-    .navbar-nav > li {
-        float: none;
-    }
-    
-    .navbar-collapse.collapse.in{
-        display: block !important;
-    }
-    
-    .navbar-toggle{
-        display: inline-block !important;
-        float: right;
-    }
-}
-
 
 .galeri-thumb{
     display: block;

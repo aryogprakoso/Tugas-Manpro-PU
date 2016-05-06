@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body class="">
     <header class="">
-        <nav class="navbar navbar-fixed-top navbar-sticky navbar-css">
+        <nav class="navbar navbar-fixed-top navbar-sticky">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header" style="margin-right:1em">
