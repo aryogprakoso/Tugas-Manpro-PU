@@ -268,6 +268,7 @@ $(document).ready(function()
         $("#keteranganEdit").val(keterangan);
         var jumlahHuruf = $("#keteranganEdit").val().length;
         $("#sisaHurufEdit").html(200 - jumlahHuruf);
+        $("#errorEditPeminjaman").html("");
         
         tampID = this.id;
     });
@@ -282,6 +283,7 @@ $(document).ready(function()
         $(".tambah :radio:checked").attr("checked", false);
         $("#submitTambahPeminjaman").prop('disabled', true);
         $("#sisaHurufTambah").html("200");
+        $("#errorTambahPeminjaman").html("");
          
         $.ajax({
             type     : 'POST',
