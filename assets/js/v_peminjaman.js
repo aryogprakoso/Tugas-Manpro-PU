@@ -506,8 +506,6 @@ $(document).ready(function()
                 var tampInsertDate = $("#waktuModalTambah").val().split("-");           
                 tampInsertDate = tampInsertDate[2] + "-" + tampInsertDate[1];
                 
-                alert(tampInsertDate);
-                
                 if(arr[0] == 0)
                 {
                     $("#errorTambahPeminjaman").html("Pada Jam " + arr[1] + " - Jam " + arr[2] + " dipakai oleh" + PJ);

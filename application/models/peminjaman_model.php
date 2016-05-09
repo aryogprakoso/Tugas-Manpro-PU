@@ -50,23 +50,27 @@ class peminjaman_model extends CI_Model{
             $printErrSelesai = DateTime::createFromFormat("H:i:s", $row->waktuSelesai)->getTimestamp();
             $printErrSelesai = date("H:i" , $printErrSelesai);
             
+            $this->db->select('namaPenanggungJawab');
+            $this->db->where('idPenanggungJawab', $row->idPenanggungJawab);
+            $queryPJ2 = $this->db->get('penanggungjawab')->row();
+            
             //apabila jam insertMulai berada di antara jam waktuMulai dan waktuSelesai Database, akan mengembalikan pesan error
             if(($tampCekMulai <= $insertMulai) && ($tampCekSelesai >= $insertMulai))
             {
-                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $data['penanggungJawab'];
+                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $queryPJ2->namaPenanggungJawab;
                 return; 
             }
             //apabila jam insertSelesai berada di antara jam waktuMulai dan waktuSelesai Database, akan mengembalikan pesan error
             else if(($tampCekMulai <= $insertSelesai) && ($tampCekSelesai) >= $insertSelesai)
             {
-                echo "0 " . $printErrSelesai . " " . $printErrSelesai . " " . $data['penanggungJawab'];
+                echo "0 " . $printErrSelesai . " " . $printErrSelesai . " " . $queryPJ2->namaPenanggungJawab;
                 return;
             }
             //apabila jam waktuMulai dan waktuSelesai Database berada di antara  
             //jam insertMulai dan insertSelesai akan mengembalikan pesan error
             else if(($tampCekMulai >= $insertMulai) && ($tampCekSelesai <= $insertSelesai))
             {
-                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $data['penanggungJawab'];
+                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $queryPJ2->namaPenanggungJawab;
                 return;
             }
         }
@@ -211,23 +215,27 @@ class peminjaman_model extends CI_Model{
             $printErrSelesai = DateTime::createFromFormat("H:i:s", $row->waktuSelesai)->getTimestamp();
             $printErrSelesai = date("H:i" , $printErrSelesai);
             
+            $this->db->select('namaPenanggungJawab');
+            $this->db->where('idPenanggungJawab', $row->idPenanggungJawab);
+            $queryPJ2 = $this->db->get('penanggungjawab')->row();
+            
             //apabila jam editMulai berada di antara jam waktuMulai dan waktuSelesai Database, akan mengembalikan pesan error
             if(($tampCekMulai <= $editMulai) && ($tampCekSelesai >= $editMulai))
             {
-                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $data['penanggungJawabEdit'];
+                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $queryPJ2->namaPenanggungJawab;
                 return; 
             }
             //apabila jam editSelesai berada di antara jam waktuMulai dan waktuSelesai Database, akan mengembalikan pesan error
             else if(($tampCekMulai <= $editSelesai) && ($tampCekSelesai) >= $editSelesai)
             {
-                echo "0 " . $printErrSelesai . " " . $printErrSelesai . " " . $data['penanggungJawabEdit'];
+                echo "0 " . $printErrSelesai . " " . $printErrSelesai . " " . $queryPJ2->namaPenanggungJawab;
                 return;
             }
             //apabila jam waktuMulai dan waktuSelesai Database berada di antara
             //jam editMulai dan editSelesai akan mengembalikan pesan error
             else if(($tampCekMulai >= $editMulai) && ($tampCekSelesai <= $editSelesai))
             {
-                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $data['penanggungJawabEdit'];
+                echo "0 " . $printErrMulai . " " . $printErrSelesai . " " . $queryPJ2->namaPenanggungJawab;
                 return;
             }
         }
@@ -298,6 +306,7 @@ class peminjaman_model extends CI_Model{
             }
         }
         
+        echo "1";
         $insertTable = array(
             'namaPenanggungJawab' => $data['namaPJ']
         );
