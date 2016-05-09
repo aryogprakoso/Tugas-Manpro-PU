@@ -284,4 +284,24 @@ class peminjaman_model extends CI_Model{
         }
     }
     
+    public function tambahPJ($data)
+    {
+        $this->db->where('namaPenanggungJawab', $data['namaPJ']);
+        $queryPJ = $this->db->get('penanggungjawab');
+        
+        foreach ($queryPJ->result() as $row)
+        {
+            if($row->namaPenanggungJawab == $data['namaPJ'])
+            {
+                echo "0";
+                return;
+            }
+        }
+        
+        $insertTable = array(
+            'namaPenanggungJawab' => $data['namaPJ']
+        );
+        $this->db->insert('penanggungjawab', $insertTable);
+    }
+    
 }

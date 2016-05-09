@@ -43,6 +43,12 @@ class C_peminjaman extends CI_Controller{
         $this->load->model('peminjaman_model');
         $this->peminjaman_model->lihatPenanggungJawab();
     }
+    
+    public function tambah_penanggung_jawab()
+    {
+        $this->load->model('peminjaman_model');
+        $this->peminjaman_model->tambahPJ($this->input->post());
+    }
 
 }
 

@@ -17,7 +17,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
         <input type="month" id="waktuSearch" required="required"/>
     </div>
     
-    <div class="row" id="jarak">a</div>
+    <br>
     
     <div class="container">
         <div class="text-center alert alert-success" id="info"></div>
@@ -30,6 +30,7 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
     <!-- Button Tambah Peminjaman -->
     <div class="container">
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalTambahPeminjaman" id="modalTambahData">Tambah Data</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalTambahPJ" id="btnTambahPJ">Tambah PJ</button>
     </div>
     <br>
     <?php
@@ -37,12 +38,10 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
     ?>
     
     <!-- Table -->
-<<<<<<< HEAD
     <div class = "container table-responsive">
-        <p class="text-center"><i id="keteranganTabel"></i></p>
-=======
+    <p class="text-center"><i id="keteranganTabel"></i></p>
     <div class = "container-fluid table-responsive">
->>>>>>> d96b0c3df1cf7dbadabb8c65dc204a904a785c17
+
         <table class="table table-bordered table-striped tabel-peminjaman">
             <thead>
               <tr>
@@ -273,6 +272,40 @@ $this->load->view('v_header', array('nav_peminjaman'=>"active"));
                 </div>
             </div>
         </div>
+    </div>
+        
+     
+    <!-- Modal Tambah PJ -->
+    <div class="modal fade" id="modalTambahPJ" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content tambah-PJ">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-center">Tambah Penanggung Jawab</h4>
+          </div>
+          <div class="modal-body text-center">
+              <div class="form-group">
+                  <label class="col-sm-4">Penanggung Jawab:</label>
+                  <div class="col-sm-3">
+                      <input type="text" id="PJ"/>
+                  </div>
+                  <label><small>(Harus Diisi)</small></label>
+              </div>
+              <div class="form-group text-center">
+                  <div class="col-sm-offset-0 col-sm-12">
+                      <label class="error-message" id="errorTambahPJ"></label>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="submitTambahPJ" disabled>Tambah</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
     </div>
 </div>
 

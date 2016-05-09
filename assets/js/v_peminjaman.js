@@ -439,9 +439,7 @@ $(document).ready(function()
     });
     
     $(document).on("click", ":radio", function(){
-        $ruangClick = true;
-        if($ruangClick)
-            $("#submitTambahPeminjaman").prop('disabled', false);
+        $("#submitTambahPeminjaman").prop('disabled', false);
     });
     
     $(document).on("click", ":radio", function(){
@@ -468,6 +466,13 @@ $(document).ready(function()
     $(document).on("keydown", "#keteranganEdit", function(){
         $sisa = 200 - $("#keteranganEdit").val().length;
         $("#sisaHurufEdit").html($sisa);
+    });
+    
+    $(document).on("input", "#PJ", function(){
+        if($("#PJ").val() == "")
+            $("#submitTambahPJ").prop('disabled', true);
+        else
+            $("#submitTambahPJ").prop('disabled', false);
     });
     
     $(document).on("click", "#submitTambahPeminjaman", function(){
@@ -498,12 +503,10 @@ $(document).ready(function()
                 for(var i = 3; i<arr.length; i++)
                     PJ += " " + arr[i];
                 
-                var tampInsertDate = new Date($("#waktuModalTambah").val());
-                var tampInsertYear = tampInsertDate.getFullYear();
-                var tampInsertMonth = tampInsertDate.getDate();
-                if(tampInsertMonth < 10)
-                    tampInsertMonth = "0" + tampInsertMonth;                
-                tampInsertDate = tampInsertYear + "-" + tampInsertMonth;
+                var tampInsertDate = $("#waktuModalTambah").val().split("-");           
+                tampInsertDate = tampInsertDate[2] + "-" + tampInsertDate[1];
+                
+                alert(tampInsertDate);
                 
                 if(arr[0] == 0)
                 {
@@ -513,7 +516,6 @@ $(document).ready(function()
                 {
                     $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
                     $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
-                    $("#jarak").hide();
                     $("#info").html("Tambah Data Peminjaman Berhasil Dilakukan");
                     $("#info").show();
                     $("#waktuSearch").val(tampInsertDate);
@@ -531,7 +533,6 @@ $(document).ready(function()
             success  : function(data)
             {
                 $("#" + tampID).closest('tr').remove();
-                $("#jarak").hide();
                 $("#info").html("Hapus Data Peminjaman Berhasil Dilakukan");
                 $("#info").show();
             }
@@ -568,12 +569,8 @@ $(document).ready(function()
                 for(var i = 3; i<arr.length; i++)
                     PJ += " " + arr[i];
                 
-                var tampEditDate = new Date($("#waktuModalEdit").val());
-                var tampEditYear = tampEditDate.getFullYear();
-                var tampEditMonth = tampEditDate.getDate();
-                if(tampEditMonth < 10)
-                    tampEditMonth = "0" + tampEditMonth;                
-                tampEditDate = tampEditYear + "-" + tampEditMonth;
+                var tampInsertDate = $("#waktuModalTambah").val().split("-");           
+                tampInsertDate = tampInsertDate[2] + "-" + tampInsertDate[1];
                 
                 if(arr[0] == 0)
                 {
@@ -583,11 +580,31 @@ $(document).ready(function()
                 {
                     $("#tableBody").empty();        //Mengosongkan semua element yang ada didalam ID tableBody
                     $("#tableBody").append(data)    //Memasukkan semua element yang ada kedalam ID tableBody
-                    $("#jarak").hide();
                     $("#info").html("Edit Data Peminjaman Berhasil Dilakukan");
                     $("#info").show();
                     $("#waktuSearch").val(tampEditDate);
                     $("#modalEditPeminjaman").modal("hide");
+                }
+            }
+        });
+    });
+    
+    $(document).on("click", "#submitTambahPJ", function(){
+        $.ajax({
+            type     : 'POST',
+            url      : 'http://localhost/pendeta_universitas/index.php/c_peminjaman/tambah_penanggung_jawab',
+            data     : {namaPJ: $("#PJ").val()},
+            success  : function(data)
+            {
+                if(data == 0)
+                {
+                    $("#errorTambahPJ").html($("#PJ").val() + " sudah ada dalam database");
+                }
+                else
+                {
+                    $("#info").html("Tambah Penanggung Jawab Berhasil Dilakukan");
+                    $("#info").show();
+                    $("#modalTambahPJ").modal("hide");
                 }
             }
         });

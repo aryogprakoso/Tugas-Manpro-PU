@@ -610,8 +610,8 @@ ul.nav-pills{
 
 .tabel-peminjaman td:nth-child(7){
     text-align: left;
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 200px;
+    max-width: 200px;
 }
 
 .tabel-peminjaman td:nth-child(8){
